@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reservation:</strong>
+  <%= @quote.reservation_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @quote.user_id %>
+</p>
+
+<p>
+  <strong>Quote value:</strong>
+  <%= @quote.quote_value %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @quote.start_time %>
+</p>
+
+<p>
+  <strong>Estimated duration:</strong>
+  <%= @quote.estimated_duration %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @quote.comment %>
+</p>
+
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<%= link_to 'Back', quotes_path %>
