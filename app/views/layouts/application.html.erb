@@ -8,32 +8,12 @@
 </head>
 <body>
   <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-        TradieFind
+        <div class="container">
+          <div class="navbar-brand">
+            <%= link_to "Tradie Find", root_path %>
+          </div>
         </div>
-          <ul class="nav navbar-nav navbar-left">
-            <li><%= link_to "Home", root_path %></li>
-            <% if @current_user.present? && @current_user.admin.present? %>
-            <% end %>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <% if @current_user.present? %>
-                <li><%= link_to "Edit profile", edit_user_path(@current_user) %></li>
-                <li><%= link_to "Logout #{ @current_user.email}", login_path, :method => :delete %></li>
-            <% else %>
-            <li><span class="signup-li glyphicon glyphicon-user">   <%= link_to "Sign up", 'users/new' %></span></li>
-            <li><span class="signup-li glyphicon glyphicon-log-in">   <%= link_to "Login", login_path %></span></li>
-            <% end %>
-          </ul>
-
       </nav>
-
-      <% if flash[:error].present? %>
-    <h2 class="error errorMsg">
-      <%= flash[:error] %>
-    </h2>
-      <% end %>
-
 <%= yield %>
 
 </body>

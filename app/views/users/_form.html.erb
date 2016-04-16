@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= simple_form_for @user, html: {multipart: true} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,44 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, :required => true %>
+  <div class="form-group">
+    <%= f.input :first_name, :required => true, input_html: { class: 'form-control'} %>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, :required => true  %>
+  <div class="form-group">
+    <%= f.input :last_name, :required => true, input_html: { class: 'form-control'}  %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email, :required => true  %>
+  <div class="form-group">
+    <%= f.input :email, :required => true, input_html: { class: 'form-control'}  %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password_digest, :required => true  %>
+  <div class="form-group">
+    <%= f.input :password, :required => true, input_html: { class: 'form-control'}  %>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_digest, :required => true  %>
+  <div class="form-group">
+    <%= f.input :confirm_password, :required => true, input_html: { class: 'form-control'}  %>
   </div>
-  <h3 class="newUser">If you are a tradie continue on.</h3>
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
+  <h3 class="newUser">If you are a tradesman continue on.</h3>
+  <div class="form-group">
+    <%= f.input :company_name, input_html: { class: 'form-control'}  %>
   </div>
-  <div class="field">
-    <%= f.label :trade %><br>
-    <%= f.text_field :trade %>
+  <div class="form-group">
+    <%= f.input :trade, input_html: { class: 'form-control'}  %>
   </div>
-  <div class="field">
-    <%= f.label "Rate $per/h" %><br>
-    <%= f.number_field :rate %>
+  <div class="form-group">
+    <%= f.input :rate, input_html: { class: 'form-control'}  %>
   </div>
-  <div class="field">
-    <%= f.label :qualifications %><br>
-    <%= f.text_area :qualifications %>
+  <div class="form-group">
+    <%= f.input :qualifications, input_html: { class: 'form-control'}  %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.button :submit, class: "btn btn-info" %>
 <% end %>
