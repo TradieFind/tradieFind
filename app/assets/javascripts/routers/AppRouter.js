@@ -3,8 +3,8 @@ var app = app || {};
 app.AppRouter = Backbone.Router.extend({
     routes: {
       '': 'home',
-      'reservation/:id': 'showReservation'
-      'confirmation': 'showConfirmed',
+      'reservation/:id': 'showReservation',
+      'confirmation': 'showConfirmed'
     },
 
     home: function() {

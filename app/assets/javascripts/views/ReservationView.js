@@ -23,4 +23,6 @@ app.ReservationView = Backbone.View.extend({
 
   app.router.navigate('/confirmation', true);
 
-},
+}
+
+});
