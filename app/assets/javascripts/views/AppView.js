@@ -49,5 +49,5 @@ app.AppView = Backbone.View.extend({
     this.$el.find('ul').remove();
 
 
-  
+
 });
