@@ -1,6 +1,4 @@
 == README For tradie find
 
 
-===Realtion Between Models
-
-*
+Relations Between Models
