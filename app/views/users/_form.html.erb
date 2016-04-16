@@ -1,54 +1,126 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, :required => true %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, :required => true  %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email, :required => true  %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password_digest, :required => true  %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_digest, :required => true  %>
-  </div>
-  <h3 class="newUser">If you are a tradie continue on.</h3>
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
-  </div>
-  <div class="field">
-    <%= f.label :trade %><br>
-    <%= f.text_field :trade %>
-  </div>
-  <div class="field">
-    <%= f.label "Rate $per/h" %><br>
-    <%= f.number_field :rate %>
-  </div>
-  <div class="field">
-    <%= f.label :qualifications %><br>
-    <%= f.text_area :qualifications %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @user.errors.any? %>
+   <%= render 'shared/errors', obj: @user %>
 <% end %>
+
+
+<div class="row">
+  <div class="col-md-12">
+
+    <%= form_for(@user, :html => { class: "form-horizontal", role: "form"}) do  |f|%>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-1 control-label col-sm-2">
+          <%= f.label :first_name %>
+        </div>
+        <div class="col-sm-9">
+        <%= f.text_field :first_name, class:"form-control", placeholder: "Enter First Name", autofocus: true %>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-1 control-label col-sm-2">
+        <%= f.label :last_name %>
+      </div>
+      <div class="col-sm-9">
+      <%= f.text_field :last_name, class:"form-control", placeholder: "Enter Last Name" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-1 control-label col-sm-2">
+        <%= f.label :email %>
+      </div>
+      <div class="col-sm-9">
+      <%= f.text_field :email, class:"form-control", placeholder: "Enter Email Address" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-1 control-label col-sm-2">
+        <%= f.label :password %>
+      </div>
+      <div class="col-sm-9">
+      <%= f.password_field :password, class:"form-control", placeholder: "Enter Password" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-1 control-label col-sm-2">
+        <%= f.label :password_confirmation %>
+      </div>
+      <div class="col-sm-9">
+      <%= f.password_field :password_confirmation, class:"form-control", placeholder: "Enter Password Again" %>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 control-label col-sm-2">
+    <button id="show-tradie-form" type="button" class="btn btn-default">I'm a tradie</button>
+  </div>
+  </div>
+
+
+<div id="tradie-signup">
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 control-label col-sm-2">
+      <%= f.label :company_name %>
+    </div>
+    <div class="col-sm-9">
+    <%= f.text_field :company_name, class:"form-control", placeholder: "Enter company_name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 control-label col-sm-2">
+      <%= f.label :trade %>
+    </div>
+    <div class="col-sm-9">
+    <%= f.text_field :trade, class:"form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 control-label col-sm-2">
+      <%= f.label "Rate $per/h" %>
+    </div>
+    <div class="col-sm-9">
+    <%= f.number_field :rate, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 control-label col-sm-2">
+      <%= f.label :qualifications %>
+    </div>
+    <div class="col-sm-9">
+    <%= f.text_area :qualifications, class:"form-control", placeholder: "Enter your qualification in detail" %>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-1 control-label col-sm-2">
+  <%= f.submit "Create Account" , class: "btn btn-default" %>
+</div>
+</div>
+
+<% end %>
+
+<script>
+  $('document').ready(function () {
+    $("#tradie-signup").hide();
+    $("#show-tradie-form").on('click',function(){
+        $("#tradie-signup").toggle(500, function(){
+          if($("#show-tradie-form").text() === "I'm a tradie"){
+            $("#show-tradie-form").text("I'm not a tradie");
+          }else{
+            $("#show-tradie-form").text("I'm a tradie");
+          }
+
+        });
+    });
+});
+
+</script>
