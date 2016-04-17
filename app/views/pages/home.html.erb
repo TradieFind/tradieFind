@@ -7,8 +7,12 @@
         <p>Need a tradie fast?</p>
         <p>You've Come To The Right Place!</p>
         <p>
+          <%if logged_in? %>
+          <%= link_to "Reservations", reservations_path , class: "btn btn-default btn-lg" %>
+          <% else %>
            <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
            <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
+          <% end %>
         </p>
       </div>
     </div>
@@ -33,36 +37,36 @@
       <script type="text/template" id='userViewTemplate'>
         <!-- View their own profile and show their current and past reservations-->
         <div class="userProfile">
-        <h2><%= current_user.first_name %>'s profile</h2>
-        <p>First Name: <%= current_user.first_name %></p>
-        <p>Last Name:<%= current_user.last_name %></p>
-        <p>Email: <%= current_user.email %></p>
-        <p>Address: <%= current_user.address_one %></p>
-        <p>Joined: <%= current_user.created_at %></p>
+        <h2>{{= current_user.first_name }}'s profile</h2>
+        <p>First Name: {{= current_user.first_name }}</p>
+        <p>Last Name:{{= current_user.last_name }}</p>
+        <p>Email: {{= current_user.email }}</p>
+        <p>Address: {{= current_user.address_one }}</p>
+        <p>Joined: {{= current_user.created_at }}</p>
         <p>
-          <% if current_user.company_name === "" %>
-            Company:<%= current_user.company_name %>
-          <% end %>
+          {{ if (current_user.company_name === "") }}
+            Company:{{= current_user.company_name }}
+          {{ end }}
         </p>
         <p>
-          <% if current_user.trade === ""  %>
-            Trade:<%= current_user.trade %>
-          <% end %>
+          {{ if current_user.trade === ""  }}
+            Trade:{{= current_user.trade }}
+          {{ end }}
         </p>
         <p>
-          <% if current_user.rate === "" %>
-            Rate:<%= current_user.rate %>
-            <% end %>
+          {{ if current_user.rate === "" }}
+            Rate:{{= current_user.rate }}
+            {{ end }}
         </p>
         <p>
-          <% if current_user.phone_no === "" %>
-            Contact:<%= current_user.phone_no %>
-          <% end %>
+          {{ if current_user.phone_no === "" }}
+            Contact:{{= current_user.phone_no }}
+          {{ end }}
         </p>
         <p>
-          <% if current_user.qualifications === ""%>
-            Qualifications:<%= current_user.qualifications %>
-          <% end %>
+          {{ if current_user.qualifications === ""}}
+            Qualifications:{{= current_user.qualifications }}
+          {{ end }}
         </p>
       </div>
 
@@ -76,6 +80,8 @@
 
       <button id="cancel-reservation">Cancel Reservation</button>
       <button id="confirm-reservation">Confirm Reservation</button>
+
+      </script>
 
 
       <script type="text/template" id='confirmationViewTemplate'>

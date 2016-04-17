@@ -1,3 +1,10 @@
+// changes underscore templating to {{ }}
+_.templateSettings = {
+   interpolate: /\{\{\=(.+?)\}\}/g,
+   evaluate: /\{\{(.+?)\}\}/g
+};
+
+
 var app = app || {};
 
 $(document).ready(function() {
