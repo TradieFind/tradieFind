@@ -3,7 +3,7 @@
 # Table name: reservations
 #
 #  id           :integer          not null, primary key
-#  user_id      :integer  
+#  user_id      :integer
 #  location     :text
 #  trade_name   :text
 #  request_time :datetime
