@@ -18,7 +18,7 @@ app.ReservationView = Backbone.View.extend({
   makeReservation: function(e){
   e.stopImmediatePropagation();
 
-  var reservation = app.reservations.find({user_id: this.model.attributes.user_id, address: this.model.attributes.address, rate: this.model.attributes.rate});
+  var reservation = app.reservations.find({user_id: this.model.attributes.user_id, address: this.model.attributes.location});
   reservation.save();
 
   app.router.navigate('/confirmation', true);

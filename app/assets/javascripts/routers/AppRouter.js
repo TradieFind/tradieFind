@@ -4,7 +4,8 @@ app.AppRouter = Backbone.Router.extend({
     routes: {
       '': 'home',
       'reservation/:id': 'showReservation',
-      'confirmation': 'showConfirmed'
+      'confirmation': 'showConfirmed',
+      'user/:id': 'showUser'
     },
 
     home: function() {
@@ -23,6 +24,13 @@ app.AppRouter = Backbone.Router.extend({
       var reservation = app.reservations.get(app.reservation_id);
       var confirmationView = new app.ConfirmationView({ model: reservation });
       ConfirmationView.render();
+    },
+
+    showUser: function() {
+      var user = app.users.get(app.user_id);
+      var userView = new app.UserView({model: user});
+      app.user_id = id;
+      userView.render();
     }
 
   });
