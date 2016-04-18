@@ -14,6 +14,8 @@
 #  qualifications  :text
 #  address_one     :string
 #  address_two     :string
+#  lat             :float
+#  lon             :float
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
