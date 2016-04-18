@@ -7,7 +7,8 @@ app.AppRouter = Backbone.Router.extend({
       'confirmation': 'showConfirmed',
       'user/:id': 'showUser',
       'review/:id': 'showReview',
-      'quotes': 'showQuotes'
+      'quotes': 'showQuotes',
+      'faq': "faq"
     },
 
     home: function() {
@@ -46,7 +47,10 @@ app.AppRouter = Backbone.Router.extend({
       console.log("showQuotes: function()");
       var quoteView = new app.QuotesView();
       quoteView.render();
-    }
+    },
 
+    faq: function() {
+      faqView.render();
+    }
 
   });
