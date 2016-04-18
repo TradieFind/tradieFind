@@ -18,7 +18,10 @@ $(document).ready(function() {
   app.quotes = new app.Quotes();
   var trQuote = app.quotes.fetch();
 
-  $.when(trUsers, trRes, trQuotes).then( function() {
+  app.reviews = new app.Reviews();
+  var trReview = app.reviews.fetch();
+
+  $.when(trUsers, trRes, trQuotes, trReview).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
   });

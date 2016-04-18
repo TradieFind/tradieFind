@@ -5,7 +5,8 @@ app.AppRouter = Backbone.Router.extend({
       '': 'home',
       'reservation/:id': 'showReservation',
       'confirmation': 'showConfirmed',
-      'user/:id': 'showUser'
+      'user/:id': 'showUser',
+      'review/:id': 'showReview'
     },
 
     home: function() {
@@ -31,6 +32,13 @@ app.AppRouter = Backbone.Router.extend({
       var userView = new app.UserView({model: user});
       app.user_id = id;
       userView.render();
+    },
+
+    showReview: function(id) {
+      var review = app.reviews.get(app.user_id);
+      var reviewView = new app.ReviewView({model: review});
+      app.user_id = id;
+      reviewView.render();
     }
 
   });
