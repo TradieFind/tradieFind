@@ -2,12 +2,22 @@ var app = app || {};
 
 app.QuotesView = Backbone.View.extend({
 
-  tagName: "li",
+  el: '#main',
 
-  render: function (){
-    // this.$el.text(name & " rows: " & this.model.get("rows") & " columns: " & this.model.get("columns"));
-    this.$el.text(this.model.get("id") + " reservation_id: " + this.model.get("reservation_id") + " quote_value: " + this.model.get("quote_value"));
-    this.$el.appendTo("#quoteData");
+  render: function() {
+    console.log("app.QuotesView.render");
+		$(document).scrollTop(0);
+    var appViewTemplate = $("#quotesViewTemplate").html();
+    this.$el.html(appViewTemplate);
+    // var appViewTemplate = $("#anotherTemplate").html();
+    // this.$el.append(appViewTemplate);
+    var addData = this.$el.find("#quoteData");
+
+    app.quotes.each(function(q){
+      console.log(q);
+      var x = $('<li>').text(q.get("id") + " reservation_id: " + q.get("reservation_id") + " quote_value: " + q.get("quote_value"));
+      addData.after(x);
+    });
   }
 
 });

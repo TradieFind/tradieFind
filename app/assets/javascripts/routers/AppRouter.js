@@ -7,7 +7,7 @@ app.AppRouter = Backbone.Router.extend({
       'confirmation': 'showConfirmed',
       'user/:id': 'showUser',
       'review/:id': 'showReview',
-      'quotes/': 'showQuotes'
+      'quotes': 'showQuotes'
     },
 
     home: function() {
@@ -28,7 +28,7 @@ app.AppRouter = Backbone.Router.extend({
       ConfirmationView.render();
     },
 
-    showUser: function() {
+    showUser: function(id) {
       var user = app.users.get(app.user_id);
       var userView = new app.UserView({model: user});
       app.user_id = id;
@@ -44,8 +44,8 @@ app.AppRouter = Backbone.Router.extend({
 
     showQuotes: function() {
       console.log("showQuotes: function()");
-      var appView = new app.AppView();
-      appView.quotesList();
+      var quoteView = new app.QuotesView();
+      quoteView.render();
     }
 
 
