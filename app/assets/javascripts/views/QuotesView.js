@@ -12,10 +12,15 @@ app.QuotesView = Backbone.View.extend({
     // var appViewTemplate = $("#anotherTemplate").html();
     // this.$el.append(appViewTemplate);
     var addData = this.$el.find("#quoteData");
-    var quoteForTradie = app.quotes.where({user_id: app.current_user.id});
-    quoteForTradie.each(function(q){
+    console.log(app.current_user);
+    var quoteForTradie = app.quotes.where({user_id: app.current_user});
+
+    var Dist = distance(0,50 ,45,150,"K");
+    _(quoteForTradie).each(function(q){
       console.log(q);
-      var x = $('<li>').text(q.get("id") + " reservation_id: " + q.get("reservation_id") + " quote_value: " + q.get("quote_value"));
+      var x = $('<li>').text(q.get("id")
+            + " reservation_id: " + q.get("reservation_id")
+            + " quote_value: " + q.get("quote_value") + " Distance: " + Dist);
       addData.after(x);
     });
   }
