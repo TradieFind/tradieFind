@@ -21,6 +21,10 @@ $(document).ready(function() {
   app.reviews = new app.Reviews();
   var trReview = app.reviews.fetch();
 
+//   window.setInterval(function(){
+//   app.reservations.fetch();
+// }, 100);
+
   $.when(trUsers, trRes, trQuotes, trReview).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
