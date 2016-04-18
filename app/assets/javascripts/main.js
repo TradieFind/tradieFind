@@ -15,7 +15,10 @@ $(document).ready(function() {
   app.reservations = new app.Reservations();
   var trRes = app.reservations.fetch();
 
-  $.when(trUsers, trRes).then( function() {
+  app.quotes = new app.Quotes();
+  var trQuote = app.quotes.fetch();
+
+  $.when(trUsers, trRes, trQuotes).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
   });
