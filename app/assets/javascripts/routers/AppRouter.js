@@ -50,6 +50,7 @@ app.AppRouter = Backbone.Router.extend({
     },
 
     faq: function() {
+      var faqView = new app.FaqView();
       faqView.render();
     }
 
