@@ -1,126 +1,163 @@
-
-
 <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1 class="brand-display">TradieFind</h1>
-        <p>Need a tradie fast?</p>
-        <p>You've Come To The Right Place!</p>
-        <p>
-          <%if logged_in? %>
-          <%= link_to "Reservations", reservations_path , class: "btn btn-default btn-lg" %>
-          <% else %>
-           <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
-           <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="brand-display">TradieFind</h1>
+    <p>Need a tradie fast?</p>
+    <p>You've Come To The Right Place!</p>
+    <p>
+      <%if logged_in? %>
+      <form id="homeSearchForm" role="search">
+        <div class="form-group">
+          <div class="row">
+          <div class="col-sm-offset-2 control-label col-sm-4">
+            <label  class="search-label">Find Me:</label>
+          </div>
+          <div class="col-sm-4">
+              <select class="form-control" id="tradesfield" placeholder="Location">
+                <option selected="">All Trades</option>
+              </select>
+          </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 control-label col-sm-4">
+            <label class="search-label" for="comment">Within: </label>
+          </div>
+            <div class="col-sm-4">
+              <select class="form-control" id="placefield" placeholder="Location">
+                <option selected="">10 km</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label class="radio-inline"><input type="radio" name="optradio">My Current Address</label>
+            <label class="radio-inline"><input type="radio" name="optradio">My Home Address</label>
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="row">
+              <div class="col-xs-offset-3  col-xs-6  ">
+                <button id="homeSearchSubmit" type="submit" class="btn btn-default  ">Search</button>
+            </div>
+            </div>
+          </div>
+          </form>
+
+        <% else %>
+          <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
+          <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
           <% end %>
         </p>
       </div>
     </div>
 
-
     <div id="main"></div>
 
-      <script type="text/template" id='appViewTemplate'>
-        <!-- Search function to find tradies nearby certain areas on certain dates -->
-        <form  id="SearchForm" class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-          <select class="form-control" id="placefield" placeholder="Location">
-          <option selected="">All Sydney</option>
-          </select>
-          <select class="form-control" id="tradesfield" placeholder="Location">
-          <option selected=""> All Trades</option>
-          </select>
-          </div>
-          <button id="searchSubmit" type="submit" class="btn btn-default">Find Tradie</button>
-        </form>
-      </script>
+     <script type="text/template" id='appViewTemplate'>
+       <!-- Search function to find tradies nearby certain areas on certain dates -->
+       <form  id="SearchForm" class="navbar-form navbar-left" role="search">
+         <div class="form-group">
+         <select class="form-control" id="placefield" placeholder="Location">
+         <option selected="">All Sydney</option>
+         </select>
+         <select class="form-control" id="tradesfield" placeholder="Location">
+         <option selected=""> All Trades</option>
+         </select>
+         </div>
+         <button id="searchSubmit" type="submit" class="btn btn-default">Find Tradie</button>
+       </form>
+     </script>
 
-      <script type="text/template" id='reviewViewTemplate'>
-        <!-- Search function to find tradies nearby certain areas on certain dates -->
-        <p>Full name: </p>
-        <p>Trade: </p>
-        <p>Company name: </p>
-        <p>Jobs completed: </p>
-        <p>Ratings: </p>
-        <p>Comments: </p>
-      </script>
+     <script type="text/template" id='reviewViewTemplate'>
+       <!-- Search function to find tradies nearby certain areas on certain dates -->
+       <p>Full name: </p>
+       <p>Trade: </p>
+       <p>Company name: </p>
+       <p>Jobs completed: </p>
+       <p>Ratings: </p>
+       <p>Comments: </p>
+     </script>
 
-      <script id="reviewInputViewTemplate" type="text/template">
+     <script id="reviewInputViewTemplate" type="text/template">
 
-        <textarea id="reviewContent" placeholder="Write a review"></textarea>
-        <button>Submit</button>
+       <textarea id="reviewContent" placeholder="Write a review"></textarea>
+       <button>Submit</button>
 
-      </script>
+     </script>
 
-      <script type="text/template" id='userViewTemplate'>
-        <!-- View their own profile and show their current and past reservations-->
-        <div class="userProfile">
-        <h2>{{= current_user.first_name }}'s profile</h2>
-        <p>First Name: {{= current_user.first_name }}</p>
-        <p>Last Name:{{= current_user.last_name }}</p>
-        <p>Email: {{= current_user.email }}</p>
-        <p>Address: {{= current_user.address_one }}</p>
-        <p>Joined: {{= current_user.created_at }}</p>
-        <p>
-          {{ if (current_user.company_name !== "") }}
-            Company:{{= current_user.company_name }}
-          {{ end }}
-        </p>
-        <p>
-          {{ if current_user.trade !== ""  }}
-            Trade:{{= current_user.trade }}
-          {{ end }}
-        </p>
-        <p>
-          {{ if current_user.rate !== "" }}
-            Rate:{{= current_user.rate }}
-            {{ end }}
-        </p>
-        <p>
-          {{ if current_user.phone_no !== "" }}
-            Contact:{{= current_user.phone_no }}
-          {{ end }}
-        </p>
-        <p>
-          {{ if current_user.qualifications !== ""}}
-            Qualifications:{{= current_user.qualifications }}
-          {{ end }}
-        </p>
-      </div>
-      </script>
+     <script type="text/template" id='userViewTemplate'>
+       <!-- View their own profile and show their current and past reservations-->
+       <div class="userProfile">
+       <h2>{{= current_user.first_name }}'s profile</h2>
+       <p>First Name: {{= current_user.first_name }}</p>
+       <p>Last Name:{{= current_user.last_name }}</p>
+       <p>Email: {{= current_user.email }}</p>
+       <p>Address: {{= current_user.address_one }}</p>
+       <p>Joined: {{= current_user.created_at }}</p>
+       <p>
+         {{ if (current_user.company_name !== "") }}
+           Company:{{= current_user.company_name }}
+         {{ end }}
+       </p>
+       <p>
+         {{ if current_user.trade !== ""  }}
+           Trade:{{= current_user.trade }}
+         {{ end }}
+       </p>
+       <p>
+         {{ if current_user.rate !== "" }}
+           Rate:{{= current_user.rate }}
+           {{ end }}
+       </p>
+       <p>
+         {{ if current_user.phone_no !== "" }}
+           Contact:{{= current_user.phone_no }}
+         {{ end }}
+       </p>
+       <p>
+         {{ if current_user.qualifications !== ""}}
+           Qualifications:{{= current_user.qualifications }}
+         {{ end }}
+       </p>
+     </div>
+     </script>
 
-      <script type="text/template" id='reservationViewTemplate'>
+     <script type="text/template" id='reservationViewTemplate'>
 
-        <p>Name: </p>
-        <p>Company Name: </p>
-        <p>Phone Number: </p>
-        <p>Price: </p>
-        <p>Rating: </p>
+       <p>Name: </p>
+       <p>Company Name: </p>
+       <p>Phone Number: </p>
+       <p>Price: </p>
+       <p>Rating: </p>
 
-      <button id="cancel-reservation">Cancel Reservation</button>
-      <button id="confirm-reservation">Confirm Reservation</button>
+     <button id="cancel-reservation">Cancel Reservation</button>
+     <button id="confirm-reservation">Confirm Reservation</button>
 
-      </script>
+     </script>
 
 
-      <script type="text/template" id='confirmationViewTemplate'>
+     <script type="text/template" id='confirmationViewTemplate'>
 
-          <h2>Thank You <%%= app.current_user.name %>. The "tradie" has been notified of your request.</h2>
-          <p>Name: </p>
-          <p>Company Name: </p>
-          <p>Phone Number: </p>
-          <p>Price: </p>
-          <p>Rating: </p>
+         <h2>Thank You <%%= app.current_user.name %>. The "tradie" has been notified of your request.</h2>
+         <p>Name: </p>
+         <p>Company Name: </p>
+         <p>Phone Number: </p>
+         <p>Price: </p>
+         <p>Rating: </p>
 
-          <p><%= link_to 'Go Back Home', root_path  %></p>
+         <p><%= link_to 'Go Back Home', root_path  %></p>
 
-      </script>
+     </script>
 
 <!-- Added for dev only not the final form -->
-      <script type="text/template" id='quotesViewTemplate'>
-        <h1>Quotes view (dev)</h1>
-        <ul id="quoteData"></ul>
+     <script type="text/template" id='quotesViewTemplate'>
+       <h1>Quotes view (dev)</h1>
+       <ul id="quoteData"></ul>
 
-        <p><%= link_to 'Go Back Home', root_path  %></p>
+       <p><%= link_to 'Go Back Home', root_path  %></p>
 
-      </script>
+     </script>

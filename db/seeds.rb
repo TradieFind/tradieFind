@@ -62,6 +62,11 @@
 #   t.text     "comment"
 #   t.datetime "created_at",         null: false
 #   t.datetime "updated_at",         null: false
+#
+# create_table "trades", force: :cascade do |t|
+#   t.string   "name"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
 
 User.destroy_all()
 Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken")
@@ -69,9 +74,9 @@ Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmai
 Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken")
 
 Review.destroy_all()
-review1 = Review.create(user_id: 1, tradie_id: 1, comment: "Sucks", rating: 0)
-review2 = Review.create(user_id: 2, tradie_id: 2, comment: "Not Bad", rating: 3)
-review3 = Review.create(user_id: 3, tradie_id: 3, comment: "Great", rating: 5)
+review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
+review2 = Review.create(reviewer_id: 2, reviewee_id: 2, comment: "Not Bad", rating: 3)
+review3 = Review.create(reviewer_id: 3, reviewee_id: 3, comment: "Great", rating: 5)
 
 Reservation.destroy_all()
 reservation1 = Reservation.create(user_id: 1, location: "Milsons Point", trade_name: "Mechanic", request_time: "1202", comments: "Alright", job_status: "Pending")
@@ -82,3 +87,8 @@ Quote.destroy_all()
 quote1 = Quote.create(reservation_id: 1, user_id: 1, quote_value: "$3.00", start_time: "1100", estimated_duration: "3 Hours", comment: "Aight")
 quote2 = Quote.create(reservation_id: 2, user_id: 2, quote_value: "$30000.00", start_time: "1300", estimated_duration: "5 Hours", comment: "Not Bad")
 quote3 = Quote.create(reservation_id: 3, user_id: 3, quote_value: "$200.00", start_time: "0400", estimated_duration: "10 Hours", comment: "Not Good")
+
+Trade.destroy_all()
+trade1 = Trade.create(name: "Mechanic")
+trade2 = Trade.create(name: "Carpenter")
+trade3 = Trade.create(name: "Lock Smith")
