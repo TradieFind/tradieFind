@@ -2,7 +2,7 @@ var app = app || {};
 
 app.AppView = Backbone.View.extend({
 
-  el: '#search',
+  el: '#main',
   events: {
     'click #searchSubmit': 'createSearch'
   },

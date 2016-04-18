@@ -33,6 +33,7 @@ app.AppRouter = Backbone.Router.extend({
       var userView = new app.UserView({model: user});
       app.user_id = id;
       userView.render();
+
     },
 
     showReview: function(id) {
@@ -47,6 +48,5 @@ app.AppRouter = Backbone.Router.extend({
       var quoteView = new app.QuotesView();
       quoteView.render();
     }
-
 
   });
