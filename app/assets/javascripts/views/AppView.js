@@ -27,7 +27,21 @@ app.AppView = Backbone.View.extend({
   },
 
   createHash: function(){
-     
+    var radius = $('#distance').val();
+    var  trade= $('#options option:selected').val();
+
+    console.log(app.current_user);
+    // var thisUser = new app.User(app.current_user)
+    var thisUser = app.users.where({id: app.current_user});
+    //var thisUser = app.users(app.current_user)
+    console.log(thisUser);
+    debugger;
+    console.log(thisUser[0].attributes.lon);
+    console.log(thisUser[0].attributes.lat);
+    console.log(thisUser[0].attributes.email);
+
+    //console.log(trade);
+    //console.log(radius);
   },
 
   render: function() {
