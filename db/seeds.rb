@@ -74,9 +74,9 @@ Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmai
 Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken")
 
 Review.destroy_all()
-review1 = Review.create(user_id: 1, tradie_id: 1, comment: "Sucks", rating: 0)
-review2 = Review.create(user_id: 2, tradie_id: 2, comment: "Not Bad", rating: 3)
-review3 = Review.create(user_id: 3, tradie_id: 3, comment: "Great", rating: 5)
+review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
+review2 = Review.create(reviewer_id: 2, reviewee_id: 2, comment: "Not Bad", rating: 3)
+review3 = Review.create(reviewer_id: 3, reviewee_id: 3, comment: "Great", rating: 5)
 
 Reservation.destroy_all()
 reservation1 = Reservation.create(user_id: 1, location: "Milsons Point", trade_name: "Mechanic", request_time: "1202", comments: "Alright", job_status: "Pending")

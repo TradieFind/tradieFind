@@ -1,2 +1,2 @@
-class Trade < ActiveRecord::Base
+class Trade < ActiveRecord::Base 
 end
