@@ -2,7 +2,9 @@
 
 <script>
      var app = app || {};
-     app.current_user = <%= current_user.id %>
+     <% if current_user  %>
+       app.current_user = <%= current_user.id %>
+    <% end %>
 
 </script>
 
