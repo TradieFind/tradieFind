@@ -21,6 +21,8 @@ app.AppView = Backbone.View.extend({
     trades = tradesfield.value;
   },
 
+
+  //
   search : function (){
     var appViewTemplate = $("#headerViewTemplate").html();
     this.$el.html(appViewTemplate);
@@ -32,7 +34,7 @@ app.AppView = Backbone.View.extend({
     aeroplaneSearchView.renderSearch();
     this.buttonClicks();
 
-    },
+    }
 
 
 
