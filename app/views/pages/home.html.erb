@@ -1,4 +1,11 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
+
+<script>
+     var app = app || {};
+     app.current_user = <%= @current_user.to_json.html_safe %>;
+</script>
+
+
 <div class="jumbotron">
   <div class="container">
     <h1 class="brand-display">TradieFind</h1>
