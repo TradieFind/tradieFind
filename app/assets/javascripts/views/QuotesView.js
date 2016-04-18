@@ -15,12 +15,14 @@ app.QuotesView = Backbone.View.extend({
     console.log(app.current_user);
     var quoteForTradie = app.quotes.where({user_id: app.current_user});
 
-    var Dist = distance(0,50 ,45,150,"K");
+    var Dist = distanceSimple( -33.872232, 151.210164,-33.886666, 151.219605,"K");
+    var googDist = googDistance( -33.872232, 151.210164,-33.886666, 151.219605);
     _(quoteForTradie).each(function(q){
       console.log(q);
       var x = $('<li>').text(q.get("id")
             + " reservation_id: " + q.get("reservation_id")
-            + " quote_value: " + q.get("quote_value") + " Distance: " + Dist);
+            + " quote_value: " + q.get("quote_value")
+            + " Distance: " + Dist + " googDistance: " + googDist);
       addData.after(x);
     });
   }

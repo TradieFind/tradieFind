@@ -1,6 +1,6 @@
 var app = app || {};
 
-function distance(lat1, lon1, lat2, lon2, unit) {
+function distanceSimple(lat1, lon1, lat2, lon2, unit) {
 	var radlat1 = Math.PI * lat1/180
 	var radlat2 = Math.PI * lat2/180
 	var theta = lon1-lon2
