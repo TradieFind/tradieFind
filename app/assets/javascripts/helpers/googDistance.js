@@ -9,6 +9,7 @@ function googDistance(lat1, lon1, lat2, lon2) {
     destinations: destinationA,
     travelMode: google.maps.TravelMode.DRIVING,
     unitSystem: google.maps.UnitSystem.METRIC,
+    API_KEY: "AIzaSyB32mEDd7-dhwbIOHSh8E5TlioKl403o7k",
     avoidHighways: false,
     avoidTolls: false
   }, function(response, status) {
