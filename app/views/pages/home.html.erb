@@ -44,27 +44,27 @@
         <p>Address: {{= current_user.address_one }}</p>
         <p>Joined: {{= current_user.created_at }}</p>
         <p>
-          {{ if (current_user.company_name === "") }}
+          {{ if (current_user.company_name !== "") }}
             Company:{{= current_user.company_name }}
           {{ end }}
         </p>
         <p>
-          {{ if current_user.trade === ""  }}
+          {{ if current_user.trade !== ""  }}
             Trade:{{= current_user.trade }}
           {{ end }}
         </p>
         <p>
-          {{ if current_user.rate === "" }}
+          {{ if current_user.rate !== "" }}
             Rate:{{= current_user.rate }}
             {{ end }}
         </p>
         <p>
-          {{ if current_user.phone_no === "" }}
+          {{ if current_user.phone_no !== "" }}
             Contact:{{= current_user.phone_no }}
           {{ end }}
         </p>
         <p>
-          {{ if current_user.qualifications === ""}}
+          {{ if current_user.qualifications !== ""}}
             Qualifications:{{= current_user.qualifications }}
           {{ end }}
         </p>
