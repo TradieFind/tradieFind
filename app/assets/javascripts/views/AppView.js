@@ -19,19 +19,6 @@ app.AppView = Backbone.View.extend({
     event.preventDefault();
     place = parseInt(placefield.value);
     trades = tradesfield.value;
-  },
-
-
-  //
-  quotesList : function (){
-    var appViewTemplate = $("#quotesViewTemplate").html();
-    this.$el.html(appViewTemplate);
-    // var appViewTemplate = $("#anotherTemplate").html();
-    // this.$el.append(appViewTemplate);
-    QuotesView.renderList();
-    // this.buttonClicks();
   }
-
-
 
 });
