@@ -62,6 +62,11 @@
 #   t.text     "comment"
 #   t.datetime "created_at",         null: false
 #   t.datetime "updated_at",         null: false
+#
+# create_table "trades", force: :cascade do |t|
+#   t.string   "name"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
 
 User.destroy_all()
 Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken")
@@ -82,3 +87,8 @@ Quote.destroy_all()
 quote1 = Quote.create(reservation_id: 1, user_id: 1, quote_value: "$3.00", start_time: "1100", estimated_duration: "3 Hours", comment: "Aight")
 quote2 = Quote.create(reservation_id: 2, user_id: 2, quote_value: "$30000.00", start_time: "1300", estimated_duration: "5 Hours", comment: "Not Bad")
 quote3 = Quote.create(reservation_id: 3, user_id: 3, quote_value: "$200.00", start_time: "0400", estimated_duration: "10 Hours", comment: "Not Good")
+
+Trade.destroy_all()
+trade1 = Trade.create(name: "Mechanic")
+trade2 = Trade.create(name: "Carpenter")
+trade3 = Trade.create(name: "Lock Smith")
