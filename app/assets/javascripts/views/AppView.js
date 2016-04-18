@@ -34,7 +34,7 @@ app.AppView = Backbone.View.extend({
     aeroplaneSearchView.renderSearch();
     this.buttonClicks();
 
-    },
+    }
 
 
 
