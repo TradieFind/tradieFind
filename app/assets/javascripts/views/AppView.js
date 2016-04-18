@@ -2,7 +2,7 @@ var app = app || {};
 
 app.AppView = Backbone.View.extend({
 
-  el: '#main',
+  el: '#search',
   events: {
     'click #searchSubmit': 'createSearch'
   },
@@ -18,7 +18,7 @@ app.AppView = Backbone.View.extend({
   createSearch: function(event) {
     event.preventDefault();
     place = parseInt(placefield.value);
-    date = datefield.value;
+    trades = tradesfield.value;
 }
 
 
