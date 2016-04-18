@@ -21,6 +21,10 @@ $(document).ready(function() {
   app.reviews = new app.Reviews();
   var trReview = app.reviews.fetch();
 
+  app.trades = new app.Trades();
+  var trTrade = app.trades.fetch();
+
+
 //   window.setInterval(function(){
 //   app.reservations.fetch();
 // }, 100);

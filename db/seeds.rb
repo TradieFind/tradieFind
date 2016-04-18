@@ -68,10 +68,29 @@
 #   t.datetime "created_at", null: false
 #   t.datetime "updated_at", null: false
 
+# create_table :users do |t|
+#   t.string :first_name
+#   t.string :last_name
+#   t.string :email
+#   t.text :password_digest
+#   t.string :company_name
+#   t.string :trade
+#   t.integer :rate
+#   t.string :phone_no
+#   t.text :qualifications
+#   t.string :address_one
+#   t.string :address_two
+#   t.float :lat
+#   t.float :lon
+
 User.destroy_all()
-Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken")
-Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken")
-Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken")
+Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken",address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+
+
+
 
 Review.destroy_all()
 review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
