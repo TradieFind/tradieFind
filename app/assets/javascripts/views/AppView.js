@@ -23,16 +23,16 @@ app.AppView = Backbone.View.extend({
 
 
   //
-  search : function (){
-    var appViewTemplate = $("#headerViewTemplate").html();
+  quotesList : function (){
+    var appViewTemplate = $("#quotesViewTemplate").html();
     this.$el.html(appViewTemplate);
-    var appViewTemplate = $("#searchControlsTemplate").html();
-    this.$el.append(appViewTemplate);
+    // var appViewTemplate = $("#anotherTemplate").html();
+    // this.$el.append(appViewTemplate);
     var appViewTemplate = $("#searchContentTemplate").html();
     this.$el.append(appViewTemplate);
-    var aeroplaneSearchView = new app.AeroplaneSearchView({collection: app.flights});
-    aeroplaneSearchView.renderSearch();
-    this.buttonClicks();
+    var list_quotesView = new app.AeroplaneSearchView({collection: app.quotes});
+    QuotesView.renderList();
+    // this.buttonClicks();
 
     }
 

@@ -11,7 +11,6 @@ app.ReservationView = Backbone.View.extend({
 		$(document).scrollTop(0);
     var reservationViewTemplate = $('#reservationViewTemplate').html();
 		var reservationViewHTML = _.template( reservationViewTemplate );
-		raise hell
     this.$el.html(reservationViewHTML({this.model.toJSON() }));
 
   },
