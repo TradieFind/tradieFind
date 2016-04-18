@@ -2,7 +2,8 @@
 
 <script>
      var app = app || {};
-     app.current_user = <%= @current_user.to_json.html_safe %>;
+     app.current_user = <%= current_user.id %>
+
 </script>
 
 

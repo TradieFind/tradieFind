@@ -13,11 +13,11 @@ app.QuotesView = Backbone.View.extend({
     // this.$el.append(appViewTemplate);
     var addData = this.$el.find("#quoteData");
     var quoteForTradie = app.quotes.where({user_id: app.current_user.id});
-    quoteForTradie.each(function(q){
-      console.log(q);
-      var x = $('<li>').text(q.get("id") + " reservation_id: " + q.get("reservation_id") + " quote_value: " + q.get("quote_value"));
-      addData.after(x);
-    });
+    // quoteForTradie.each(function(q){
+    //   console.log(q);
+    //   var x = $('<li>').text(q.get("id") + " reservation_id: " + q.get("reservation_id") + " quote_value: " + q.get("quote_value"));
+    //   addData.after(x);
+    // });
   }
 
 });
