@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find params[:id]
-    @user = @current_user
 
+    # @user = @current_user
   end
 
   def new

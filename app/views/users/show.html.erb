@@ -33,6 +33,7 @@
   <%= @user.address_two %>
 </p>
 
+<% if (@user.trade != "customer") %>
 <p>
   <strong>Company name:</strong>
   <%= @user.company_name %>
@@ -53,11 +54,12 @@
   <%= @user.phone_no %>
 </p>
 
-
 <p>
   <strong>Qualifications:</strong>
   <%= @user.qualifications %>
 </p>
+
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

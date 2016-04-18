@@ -19,9 +19,22 @@ app.AppView = Backbone.View.extend({
     event.preventDefault();
     place = parseInt(placefield.value);
     trades = tradesfield.value;
-}
+  },
 
 
+  //
+  quotesList : function (){
+    var appViewTemplate = $("#quotesViewTemplate").html();
+    this.$el.html(appViewTemplate);
+    // var appViewTemplate = $("#anotherTemplate").html();
+    // this.$el.append(appViewTemplate);
+    var appViewTemplate = $("#searchContentTemplate").html();
+    this.$el.append(appViewTemplate);
+    var list_quotesView = new app.AeroplaneSearchView({collection: app.quotes});
+    QuotesView.renderList();
+    // this.buttonClicks();
+
+    }
 
 
 
