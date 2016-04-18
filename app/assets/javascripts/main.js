@@ -25,7 +25,7 @@ $(document).ready(function() {
 //   app.reservations.fetch();
 // }, 100);
 
-  $.when(trUsers, trRes, trQuotes, trReview).then( function() {
+  $.when(trUsers, trRes, trQuote, trReview).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
   });
