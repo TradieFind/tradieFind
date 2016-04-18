@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20160418041850) do
     t.text     "qualifications"
     t.string   "address_one"
     t.string   "address_two"
+    t.float    "lat"
+    t.float    "lon"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

@@ -12,6 +12,8 @@ class CreateUsers < ActiveRecord::Migration
       t.text :qualifications
       t.string :address_one
       t.string :address_two
+      t.float :lat
+      t.float :lon
 
       t.timestamps null: false
     end

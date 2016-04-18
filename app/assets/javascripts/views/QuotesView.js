@@ -12,12 +12,19 @@ app.QuotesView = Backbone.View.extend({
     // var appViewTemplate = $("#anotherTemplate").html();
     // this.$el.append(appViewTemplate);
     var addData = this.$el.find("#quoteData");
-    var quoteForTradie = app.quotes.where({user_id: app.current_user.id});
-    // quoteForTradie.each(function(q){
-    //   console.log(q);
-    //   var x = $('<li>').text(q.get("id") + " reservation_id: " + q.get("reservation_id") + " quote_value: " + q.get("quote_value"));
-    //   addData.after(x);
-    // });
+    console.log(app.current_user);
+    var quoteForTradie = app.quotes.where({user_id: app.current_user});
+
+    var Dist = distanceSimple( -33.872232, 151.210164,-33.886666, 151.219605,"K");
+    var googDist = googDistance( -33.872232, 151.210164,-33.886666, 151.219605);
+    _(quoteForTradie).each(function(q){
+      console.log(q);
+      var x = $('<li>').text(q.get("id")
+            + " reservation_id: " + q.get("reservation_id")
+            + " quote_value: " + q.get("quote_value")
+            + " Distance: " + Dist + " googDistance: " + googDist);
+      addData.after(x);
+    });
   }
 
 });
