@@ -2,7 +2,7 @@ var app = app || {};
 
 app.AppView = Backbone.View.extend({
 
-  el: '#search',
+  el: '#main',
   events: {
     'click #searchSubmit': 'createSearch'
   },
@@ -17,12 +17,14 @@ app.AppView = Backbone.View.extend({
   // page from being refreshed.
   createSearch: function(event) {
     event.preventDefault();
-    place = parseInt(placefield.value);
-    trades = tradesfield.value;
+    //place = parseInt(placefield.value);
+    //trades = tradesfield.value;
+    var trade = tradesfield.value;
+    var distance = distance.value;
+
   },
 
 
-  //
   quotesList : function (){
     var appViewTemplate = $("#quotesViewTemplate").html();
     this.$el.html(appViewTemplate);
