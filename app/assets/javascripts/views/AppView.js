@@ -19,9 +19,20 @@ app.AppView = Backbone.View.extend({
     event.preventDefault();
     place = parseInt(placefield.value);
     trades = tradesfield.value;
-}
+  },
 
+  search : function (){
+    var appViewTemplate = $("#headerViewTemplate").html();
+    this.$el.html(appViewTemplate);
+    var appViewTemplate = $("#searchControlsTemplate").html();
+    this.$el.append(appViewTemplate);
+    var appViewTemplate = $("#searchContentTemplate").html();
+    this.$el.append(appViewTemplate);
+    var aeroplaneSearchView = new app.AeroplaneSearchView({collection: app.flights});
+    aeroplaneSearchView.renderSearch();
+    this.buttonClicks();
 
+    },
 
 
 

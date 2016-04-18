@@ -10,12 +10,18 @@ var app = app || {};
 $(document).ready(function() {
 
   app.users = new app.Users();
-  app.users.fetch();
+  var trUsers = app.users.fetch();
 
   app.reservations = new app.Reservations();
-  app.reservations.fetch();
+  var trRes = app.reservations.fetch();
 
-  app.router = new app.AppRouter();
-  Backbone.history.start();
+  app.quotes = new app.Quotes();
+  var trQuote = app.quotes.fetch();
+
+  $.when(trUsers, trRes, trQuotes).then( function() {
+    app.router = new app.AppRouter();
+    Backbone.history.start();
+  });
+
 
 });
