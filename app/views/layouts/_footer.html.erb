@@ -1,7 +1,7 @@
 <div class="container">
 
   <footer class="footer">
-
+<% if params[:action] == "home" %>
     <div class="homeIndexContent">
       <div class="benefits">
        <h2> Benefits Of Using TradieFind </h2>
@@ -20,6 +20,7 @@
        <%= image_tag "customersati.jpg", { :height => "350px",  :width => "269px" } %>
      </div>
    </div>
+   <% end %>
 
     <h6 id="copyright">
        copyright &copy; TradieFind 2016
