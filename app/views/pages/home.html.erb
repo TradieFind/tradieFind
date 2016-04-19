@@ -11,14 +11,15 @@
 
 <div class="jumbotron">
   <div class="container">
-        <div id="main"></div>
-        <div class="tradieList"></div>
-      </div>
-    </div>
+    <div id="main"></div>
+    <div class="tradieList"></div>
+  </div>
+</div>
+<div id="homeContent"></div>
 
      <script type="text/template" id='appViewTemplate'>
        <!-- Search function to find tradies nearby certain areas on certain dates -->
-       <h1 class="brand-display">TradieFind</h1>
+           <h1 class="brand-display">TradieFind</h1>
        <p>Need a tradie fast?</p>
        <p>You've Come To The Right Place!</p>
        <p>
@@ -72,6 +73,25 @@
              <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
              <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
              <% end %>
+
+             <div class="homeIndexContent">
+               <div class="benefits">
+                <h2> Benefits Of Using TradieFind </h2>
+                <p>No more searching through Yellow Pages or Local Papers.</p>
+                <p> No more ringing around chasing tradespeople. </p>
+                <p> No more unreturned phone calls or worse ‘NO SHOWS’ </p>
+                <p> More Free time at your disposal </p>
+                <p> Single Point Of Contact</p>
+                <%= image_tag "benefits.jpg", { :height => "350px",  :width => "269px" } %>
+              </div>
+              <div class="howWork">
+                <h2> How It Works </h2>
+                <p> 1. Contact us with your job requirements. </p>
+                <p> 2. We will forward your request to the appropriate contractor/s.</p>
+                <p> 3. They will contact you to arrange a quote.</p>
+                <%= image_tag "customersati.jpg", { :height => "350px",  :width => "269px" } %>
+              </div>
+            </div>
 
      </script>
 
