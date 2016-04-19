@@ -1,12 +1,23 @@
 var app = app || {};
 
 app.TradieListView = Backbone.View.extend({
+
+
+
   tagName: 'li',
   events: {
     'click': 'showTradie'
   },
 
+  initialize: function(options) {
+      this.options = options;
+      _.bindAll(this, 'render');
+        console.log(this.options.radius);
+  },
+
+
   render: function() {
+
     var name = this.model.attributes.first_name + " " + this.model.attributes.last_name;
     var company_name = this.model.attributes.company_name;
     // revRating = this.model.attributes.reviews
