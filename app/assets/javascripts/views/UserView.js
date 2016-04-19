@@ -1,7 +1,9 @@
 var app = app || {};
 
 app.UserView = Backbone.View.extend({
-  tagName: 'li',
+
+  el: '#main',
+
   events: {
     'click': 'getInContact'
   },
@@ -24,7 +26,7 @@ app.UserView = Backbone.View.extend({
 		var userViewHTML = _.template( userViewTemplate );
     this.$el.html(userViewHTML(this.model.toJSON() ));
 
-    this.$el.appendTo(".userProfile");
+     this.$el.appendTo("#main");
   },
 
   getInContact: function(e){
