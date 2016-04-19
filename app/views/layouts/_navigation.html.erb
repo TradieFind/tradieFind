@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to "Home", root_path %><span class="sr-only">(current)</span></li>
+        <% if logged_in? %>
         <li><%= link_to "FAQ", "#faq" %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -29,6 +30,7 @@
           </ul>
           <li><%= link_to "Contact Us", "#contactUs" %></li>
         </li>
+        <% end %>
       </ul>
       <div id="search"></div>
       <ul class="nav navbar-nav navbar-right">
