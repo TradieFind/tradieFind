@@ -28,22 +28,35 @@
   margin: 40px;
 }
 
-.howWork {
-  text-align: left;
+.homeIndexContent {
+  position: relative;
 }
 
-.howWork img {
-  vertical-align: right;
-  text-align: right;
+.homeIndexContent img {
+  position: absolute;
+}
+
+.homeIndexContent .img1 {
+  max-height: 360px;
+  max-width: 269px;
+  left: 0;
+  top: 0;
+}
+
+.homeIndexContent .img2 {
+  max-height: 360px;
+  max-width: 269px;
+  right: 0;
+  bottom: 0;
+}
+
+.howWork {
+  text-align: left;
+  margin-top: 100px;
 }
 
 .benefits {
   text-align: right;
-}
-
-.benefits img {
-  vertical-align: left;
-  text-align: left;
 }
 
 #copyright {
