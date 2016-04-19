@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :reservations
   resources :quotes
 
-
   get '/users' => "users#index"
   get '/users/:id' => "users#show", :as => 'user_profile'
   get '/users/edit' => "users#edit", :as => 'edit_user'
