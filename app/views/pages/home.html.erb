@@ -95,40 +95,38 @@
 
      <script type="text/template" id='userViewTemplate'>
        <!-- View their own profile and show their current and past reservations-->
-       <div class="userProfile">
          <h1>User Profile</h1>
-       <h2>{{= current_user.first_name }}'s profile</h2>
-       <p>First Name: {{= current_user.first_name }}</p>
-       <p>Last Name:{{= current_user.last_name }}</p>
-       <p>Email: {{= current_user.email }}</p>
-       <p>Address: {{= current_user.address_one }}</p>
-       <p>Joined: {{= current_user.created_at }}</p>
+       <h2>{{= first_name }}'s profile</h2>
+       <p>First Name: {{= first_name }}</p>
+       <p>Last Name:{{= last_name }}</p>
+       <p>Email: {{= email }}</p>
+       <p>Address: {{= address_one }}</p>
        <p>
-         {{ if (current_user.company_name !== "") }}
-           Company:{{= current_user.company_name }}
-         {{ end }}
+         {{ if (company_name !== ""){ }}
+           Company:{{= company_name }}
+         {{ } }}
        </p>
        <p>
-         {{ if current_user.trade !== ""  }}
-           Trade:{{= current_user.trade }}
-         {{ end }}
+         {{ if (trade !== "") { }}
+           Trade:{{= trade }}
+         {{ } }}
        </p>
        <p>
-         {{ if current_user.rate !== "" }}
-           Rate:{{= current_user.rate }}
-           {{ end }}
+         {{ if (rate !== ""){ }}
+           Rate:{{= rate }}
+           {{ } }}
        </p>
        <p>
-         {{ if current_user.phone_no !== "" }}
-           Contact:{{= current_user.phone_no }}
-         {{ end }}
+         {{ if (phone_no !== "") { }}
+           Contact:{{= phone_no }}
+         {{ } }}
        </p>
        <p>
-         {{ if current_user.qualifications !== ""}}
-           Qualifications:{{= current_user.qualifications }}
-         {{ end }}
+         {{ if (qualifications !== "") { }}
+           Qualifications:{{= qualifications }}
+         {{ } }}
        </p>
-     </div>
+       
      <%= link_to "Edit", "#edituser" %>
      <%= link_to "Back Home", "" %>
      </script>

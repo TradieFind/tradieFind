@@ -17,13 +17,12 @@ app.UserView = Backbone.View.extend({
     var address_one = this.model.attributes.address_one;
     var address_two = this.model.attributes.address_two;
 
-    this.$el.appendTo(".userProfile");
 
     var userViewTemplate = $('#userViewTemplate').html();
 		var userViewHTML = _.template( userViewTemplate );
     this.$el.html(userViewHTML(this.model.toJSON() ));
 
-
+    this.$el.appendTo("#main");
   },
 
   getInContact: function(e){
