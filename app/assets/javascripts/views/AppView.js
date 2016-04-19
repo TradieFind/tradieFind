@@ -28,19 +28,16 @@ app.AppView = Backbone.View.extend({
 
   createHash: function(){
     var radius = $('#distance').val();
-    var  trade= $('#options option:selected').val();
+    var  inTrade= $('#options option:selected').val();
 
-    console.log(app.current_user);
-    // var thisUser = new app.User(app.current_user)
     var thisUser = app.users.where({id: app.current_user});
-    //var thisUser = app.users(app.current_user)
-    console.log(thisUser);
-    console.log(thisUser[0].attributes.lat);
-    console.log(thisUser[0].attributes.lon);
-    console.log(thisUser[0].attributes.email);
-
-    //console.log(trade);
-    //console.log(radius);
+    var customer_Lat = thisUser[0].attributes.lat;
+    var customer_Lon = thisUser[0].attributes.lon;
+    //var tradieListViewOld = app.TradieListView.render(customer_Lat, customer_Lon, inTrade, radius );
+    var tradieListView =new  app.TradieListView({"customer_Lat":customer_Lat,
+                               "customer_Lon":customer_Lon,
+                                "inTrade": inTrade,
+                                "radius": radius } );
   },
 
   render: function() {
