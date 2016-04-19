@@ -8,7 +8,6 @@ app.TradeView = Backbone.View.extend({
   render: function(){
     var name = this.model.get("name");
     this.$el.text(name);
-    console.log(name);
     this.$el.appendTo('#tradeOptions');
   }
 });
