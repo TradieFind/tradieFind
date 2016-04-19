@@ -10,6 +10,7 @@ app.AppRouter = Backbone.Router.extend({
       'reviewinput/:id': 'reviewInput',
       'quotes': 'showQuotes',
       'contactUs': 'contactUs',
+      'edituser': 'editUser',
       'faq': "faq"
     },
 
@@ -39,6 +40,14 @@ app.AppRouter = Backbone.Router.extend({
       var userView = new app.UserView({model: user});
       app.user_id = id;
       userView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    editUser: function(id) {
+      var user = app.users.get(app.user_id);
+      var editUserView = new app.EditUserView({ model: user });
+      app.user_id = id;
+      editUserView.render();
       $(".homeIndexContent").hide();
     },
 
