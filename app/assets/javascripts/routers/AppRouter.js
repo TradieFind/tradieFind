@@ -9,6 +9,7 @@ app.AppRouter = Backbone.Router.extend({
       'review/:id': 'showReview',
       'reviewinput/:id': 'reviewInput',
       'quotes': 'showQuotes',
+      'addquote': 'addQuote',
       'contactUs': 'contactUs',
       'edituser': 'editUser',
       'faq': "faq"
@@ -77,6 +78,16 @@ app.AppRouter = Backbone.Router.extend({
     contactUs: function() {
       var contactUsView = new app.contactUsView();
       contactUsView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    addQuote: function(id) {
+      if (!id) {
+        id = app.current_user
+      }
+      var user = app.users.get(id);
+      var addQuoteView = new app.AddQuoteView();
+      addQuoteView.render();
       $(".homeIndexContent").hide();
     },
 
