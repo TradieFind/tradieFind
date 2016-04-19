@@ -1,15 +1,13 @@
-function googDistance(lat1, lon1, lat2, lon2) {
-  var xyz = googDistanceCallback(lat1, lon1, lat2, lon2);
-  $.when(xyz).then(function() {xyz = distanceIs});
-  console.log("C "+xyz);
-  return xyz;
-};
+// function googDistance(lat1, lon1, lat2, lon2) {
+//   var xyz = googDistanceCallback(lat1, lon1, lat2, lon2);
+//   $.when(xyz).then(function() {xyz = distanceIs});
+//   console.log("C "+xyz);
+//   return xyz;
+// };
 
-
-function googDistanceCallback(lat1, lon1, lat2, lon2) {
+function googDistance(lat1, lon1, lat2, lon2, tag_ref) {
   var origin1 = new google.maps.LatLng(lat1, lon1);
   var destination1 = new google.maps.LatLng(lat2, lon2);
-  // var distanceResults = -1;
   var service = new google.maps.DistanceMatrixService();
   dfd =$.Deferred(service.getDistanceMatrix(
     { origins: [origin1],
@@ -26,10 +24,8 @@ function googDistanceCallback(lat1, lon1, lat2, lon2) {
             distanceResults = results[j].distance.value;
             console.log("A " + distanceResults);
             distanceIs = distanceResults;
-            console.log(distanceIs);
-
-
-
+            var tag_value = tag_ref;
+            $('#' + tag_value).text(distanceIs);
           }
         }
       }
