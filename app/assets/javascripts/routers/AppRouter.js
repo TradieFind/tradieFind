@@ -5,6 +5,7 @@ app.AppRouter = Backbone.Router.extend({
       '': 'home',
       'reservation/:id': 'showReservation',
       'confirmation': 'showConfirmed',
+      'user': 'showUser',
       'user/:id': 'showUser',
       'review/:id': 'showReview',
       'reviewinput/:id': 'reviewInput',
@@ -37,9 +38,12 @@ app.AppRouter = Backbone.Router.extend({
     },
 
     showUser: function(id) {
-      var user = app.users.get(app.user_id);
+      if (!id){
+        id = app.current_user;
+      }
+      var user = app.users.get(id);
       var userView = new app.UserView({model: user});
-      app.user_id = id;
+
       userView.render();
       $(".homeIndexContent").hide();
     },
