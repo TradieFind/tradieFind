@@ -18,7 +18,7 @@
 
      <script type="text/template" id='appViewTemplate'>
        <!-- Search function to find tradies nearby certain areas on certain dates -->
-           <h1 class="brand-display">TradieFind</h1>
+        <h1 class="brand-display">TradieFind</h1>
        <p>Need a tradie fast?</p>
        <p>You've Come To The Right Place!</p>
        <p>
@@ -30,8 +30,8 @@
                <label  class="search-label">Find Me:</label>
              </div>
              <div class="col-sm-4">
-                 <select  id="options"class="form-control" placeholder="Location">
-                 </select>
+                 <select  id="tradeOptions" class="form-control">
+                  </select>
              </div>
              </div>
            </div>
@@ -72,6 +72,7 @@
              <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
              <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
              <% end %>
+
 
      </script>
 

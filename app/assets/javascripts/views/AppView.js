@@ -47,10 +47,4 @@ app.AppView = Backbone.View.extend({
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
   },
-
-  // Function associated with the search click that
-  // logs the values entered initially and prevents the
-  // page from being refreshed.
-
-
 });

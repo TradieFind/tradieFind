@@ -21,17 +21,21 @@ $(document).ready(function() {
   app.reviews = new app.Reviews();
   var trReview = app.reviews.fetch();
 
-  app.trades = new app.Trades();
-  var trTrade = app.trades.fetch();
+  // app.trades = new app.Trades();
+  // var trTrade = app.trades.fetch();
 
 
 //   window.setInterval(function(){
 //   app.reservations.fetch();
 // }, 100);
 
-  $.when(trUsers, trRes, trQuote, trReview, trTrade).then( function() {
+  $.when(trUsers, trRes, trQuote, trReview).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
+
+    app.trades = new app.Trades();
+    var trTrade = app.trades.fetch();
+
   });
 
 
