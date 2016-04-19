@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160418041850) do
     t.string   "email"
     t.text     "password_digest"
     t.string   "company_name"
-    t.string   "trade"
+    t.string   "trade", :default => "customer"
     t.integer  "rate"
     t.string   "phone_no"
     t.text     "qualifications"

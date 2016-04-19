@@ -81,7 +81,7 @@ app.AppRouter = Backbone.Router.extend({
     },
 
     contactUs: function() {
-      var contactUsView = new app.ContactUsView();
+      var contactUsView = new app.contactUsView();
       contactUsView.render();
       $(".homeIndexContent").hide();
     },

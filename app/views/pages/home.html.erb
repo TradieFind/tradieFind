@@ -306,14 +306,10 @@
        <h2>Thank You For Contacting Us</h2>
          <div class="row">
            <div class="col-md-6">
-       <p>
-         <% if current_user? %>
-          <%= current_user.first_name + " " +current_user.last_name %>, your query has
-          been lodged. We will get back to you as soon as possible.
-          <% end %>
-       </p>
-        <%= link_to "Back Home", root_path %>
-       </div>
+              <p> Your query has been lodged with us. </p>
+              <p> We will get back to you as soon as possible. </p>
+              <%= link_to 'Go Back Home', root_path  %>
+           </div>
      </script>
 
      <script type="text/template" id='faqViewTemplate'>
