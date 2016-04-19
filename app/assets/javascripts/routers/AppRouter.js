@@ -5,10 +5,12 @@ app.AppRouter = Backbone.Router.extend({
       '': 'home',
       'reservation/:id': 'showReservation',
       'confirmation': 'showConfirmed',
+      'user': 'showUser',
       'user/:id': 'showUser',
       'review/:id': 'showReview',
       'reviewinput/:id': 'reviewInput',
       'quotes': 'showQuotes',
+      'addquote': 'addQuote',
       'contactUs': 'contactUs',
       'edituser': 'editUser',
       'faq': "faq"
@@ -36,9 +38,12 @@ app.AppRouter = Backbone.Router.extend({
     },
 
     showUser: function(id) {
-      var user = app.users.get(app.user_id);
+      if (!id){
+        id = app.current_user;
+      }
+      var user = app.users.get(id);
       var userView = new app.UserView({model: user});
-      app.user_id = id;
+
       userView.render();
       $(".homeIndexContent").hide();
     },
@@ -77,6 +82,16 @@ app.AppRouter = Backbone.Router.extend({
     contactUs: function() {
       var contactUsView = new app.contactUsView();
       contactUsView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    addQuote: function(id) {
+      if (!id) {
+        id = app.current_user
+      }
+      var user = app.users.get(id);
+      var addQuoteView = new app.AddQuoteView();
+      addQuoteView.render();
       $(".homeIndexContent").hide();
     },
 

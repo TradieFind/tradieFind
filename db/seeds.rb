@@ -84,10 +84,12 @@
 #   t.float :lon
 
 User.destroy_all()
-Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
-Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken",address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
-Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
-Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Iwan = User.create(first_name: 'Iwan', last_name: "Sawa", email: "iwan@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", trade: "Mechanic", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Anthony = User.create(first_name: 'Anthony', last_name: "Germana", email: "anthony@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", trade: "Mechanic", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken",address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
 
 
 
