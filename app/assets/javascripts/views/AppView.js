@@ -35,8 +35,8 @@ app.AppView = Backbone.View.extend({
     var thisUser = app.users.where({id: app.current_user});
     //var thisUser = app.users(app.current_user)
     console.log(thisUser);
-    console.log(thisUser[0].attributes.lon);
     console.log(thisUser[0].attributes.lat);
+    console.log(thisUser[0].attributes.lon);
     console.log(thisUser[0].attributes.email);
 
     //console.log(trade);
