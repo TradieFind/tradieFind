@@ -35,7 +35,6 @@ app.AppView = Backbone.View.extend({
     var thisUser = app.users.where({id: app.current_user});
     //var thisUser = app.users(app.current_user)
     console.log(thisUser);
-    debugger;
     console.log(thisUser[0].attributes.lat);
     console.log(thisUser[0].attributes.lon);
     console.log(thisUser[0].attributes.email);
@@ -48,10 +47,4 @@ app.AppView = Backbone.View.extend({
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
   },
-
-  // Function associated with the search click that
-  // logs the values entered initially and prevents the
-  // page from being refreshed.
-
-
 });
