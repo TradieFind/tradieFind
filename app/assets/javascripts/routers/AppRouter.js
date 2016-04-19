@@ -12,6 +12,7 @@ app.AppRouter = Backbone.Router.extend({
       'quotes': 'showQuotes',
       'addquote': 'addQuote',
       'contactUs': 'contactUs',
+      'thankyou': 'thankYou',
       'edituser': 'editUser',
       'faq': "faq"
     },
@@ -80,8 +81,14 @@ app.AppRouter = Backbone.Router.extend({
     },
 
     contactUs: function() {
-      var contactUsView = new app.contactUsView();
+      var contactUsView = new app.ContactUsView();
       contactUsView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    thankYou: function() {
+      var thankYouView = new app.ThankYouView();
+      thankYouView.render();
       $(".homeIndexContent").hide();
     },
 
