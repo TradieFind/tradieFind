@@ -1,25 +1,44 @@
 function googDistance(lat1, lon1, lat2, lon2) {
+  var xyz = googDistanceCallback(lat1, lon1, lat2, lon2);
+  $.when(xyz).then(function() {xyz = distanceIs});
+  console.log("C "+xyz);
+  return xyz;
+};
 
-  var origin1 = {lat: lat1, lng: lon1};
-  var destinationA = {lat: lat2, lng: lon2};
-  var service = new google.maps.DistanceMatrixService;
-	var distanceResults = [];
-  service.getDistanceMatrix({
-    origins: origin1,
-    destinations: destinationA,
-    travelMode: google.maps.TravelMode.DRIVING,
-    unitSystem: google.maps.UnitSystem.METRIC,
-    API_KEY: "AIzaSyB32mEDd7-dhwbIOHSh8E5TlioKl403o7k",
-    avoidHighways: false,
-    avoidTolls: false
-  }, function(response, status) {
-    if (status !== google.maps.DistanceMatrixStatus.OK) {
-      alert('Error was: ' + status);
-    } else {
-        for (var j = 0; j < results.length; j++) {
-          distanceResults.push(results[j].distance.text);
+
+function googDistanceCallback(lat1, lon1, lat2, lon2) {
+  var origin1 = new google.maps.LatLng(lat1, lon1);
+  var destination1 = new google.maps.LatLng(lat2, lon2);
+  // var distanceResults = -1;
+  var service = new google.maps.DistanceMatrixService();
+  dfd =$.Deferred(service.getDistanceMatrix(
+    { origins: [origin1],
+      destinations: [destination1],
+      travelMode: google.maps.TravelMode.DRIVING
+    },
+    function(response, status) {
+      if (status !== google.maps.DistanceMatrixStatus.OK) {
+        alert('Error was: ' + status);
+      } else {
+        for (var i = 0; i < response.originAddresses.length; i++) {
+          var results = response.rows[i].elements;
+          for (var j = 0; j < results.length; j++) {
+            distanceResults = results[j].distance.value;
+            console.log("A " + distanceResults);
+            distanceIs = distanceResults;
+            console.log(distanceIs);
+
+
+
+          }
         }
-				return distanceResults[0];
+      }
     }
-  });
-}
+  ));
+  // dfd.resolve(function(){
+  //   console.log("B: " + distanceResults);
+  //   return distanceResults;
+  // });
+};
+
+var distanceIs = 0;
