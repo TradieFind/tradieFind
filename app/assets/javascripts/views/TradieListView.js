@@ -12,7 +12,6 @@ app.TradieListView = Backbone.View.extend({
   },
 
  render: function() {
-
    var appViewTemplate = $('#reviewViewTemplate').html();
    this.$el.after(appViewTemplate);
    var tradieByTrade = app.users.where({trade: this.options.inTrade});
@@ -24,14 +23,14 @@ app.TradieListView = Backbone.View.extend({
                       parseFloat(self.options.customer_Lon),
                       parseFloat(t.attributes.lat),
                       parseFloat(t.attributes.lon), "K" );
-
+          console.log(distToCustomer);            
      if (distToCustomer < parseFloat(self.options.radius)) {
        tradieSimpleDist.push(t);
      };
    });
 
   //  var addData = this.$el.find('#reviewListOfTradies');
-
+  console.log(tradieSimpleDist);
    //Render the tradies within the radius
    var tag_count = 0;
    _(tradieSimpleDist).each(function(t){
