@@ -4,6 +4,22 @@ app.ViewReservationView = Backbone.View.extend({
 
   tagName: 'tr',
 
+  events:{
+      'click  .view-quotes-list': 'clickReservation',
+  },
+
+  clickReservation: function(e){
+      console.log(e.currentTarget.attributes["reservation-id"].value);
+      var reservationID = parseInt(e.currentTarget.attributes["reservation-id"].value);
+      // var quotesViewTemplate = $('#quotesViewTemplate').html();
+      // this.$el.append(quotesViewTemplate);
+      var quotesList = app.quotes.where({reservation_id:reservationID});
+      console.log(quotesList);
+      var myQuoteView = new app.myQuoteView(model: quotesList);;
+      myQuoteView.render();
+
+  },
+
   render: function(){
 
     var userID = this.model.get("user_id");
@@ -18,9 +34,12 @@ app.ViewReservationView = Backbone.View.extend({
         td += this.model.get("trade_name");
         td += "</td><td>";
         td += this.model.get("job_status");
+        td += "</td><td class ='view-quotes-list' reservation-id='"+this.model.attributes.id+"'>";
+        td += "View Quotes";
         td += "</td>";
 
-        console.log("Model Id of my Reservation" + this.model.get('id'));
+
+
 
 
       this.$el.html(td);

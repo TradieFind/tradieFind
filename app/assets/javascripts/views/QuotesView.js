@@ -30,20 +30,3 @@ app.QuotesView = Backbone.View.extend({
   }
 
 });
-
-
-// confirmSeat: function() {
-//      if ($(".selected").length > 0) {
-//          clearInterval(checkForReservation);
-//          var flight_id = this.model.attributes.id;
-//          var seat = $(".selected").eq(0).attr("id");
-//          var reservation = app.reservations.where({user_id: app.current_user.id, seat: seat, flight_id: flight_id });
-//          app.router.navigate('reservations/' + reservation[0].id, true);
-//
-//        // var userID = @current_user.id;
-//
-//      } else {
-//          alert("Please select a seat.");
-//          return;
-//      }
-//  }

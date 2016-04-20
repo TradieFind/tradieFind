@@ -15,6 +15,7 @@
 <div class="jumbotron">
   <div class="container">
     <div id="main"></div>
+    <div  id="sub"></div>
     <div class="tradieList"></div>
     <div class="userProfile"></div>
   </div>
@@ -191,11 +192,11 @@
 
 
 <!-- Added for dev only not the final form -->
- <script type="text/template" id='quotesViewTemplate'>
+ <!-- <script type="text/template" id='quotesViewTemplate-OLD'>
    <h1>Quotes view (dev)</h1>
    <ul id="quoteData"></ul>
    <p><%= link_to 'Go Back Home', root_path  %></p>
- </script>
+ </script> -->
 
 
 
@@ -368,4 +369,22 @@
              <th>Status</th>
            </tr>
          </table>
+       </script>
+
+
+
+       <script id="quotesViewTemplate" type="text/template">
+            <div class="row">
+            <h3>Quotes For Reservation</h3>
+            <table class="table table-bordered" id="quotes">
+              <tr>
+                <th>Tradie</th>
+                <th>Comments</th>
+                <th>Quote Value</th>
+                <th>Start Time</th>
+                <th>Estimated Duration</th>
+              </tr>
+            </table>
+            </div>
+
        </script>
