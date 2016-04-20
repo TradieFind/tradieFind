@@ -3,29 +3,31 @@ var app = app || {};
 app.TradieListView = Backbone.View.extend({
  el: "#main",
 
- events: {
+  events: {
   //  'click #searchButton' : 'searchForFlights',
   //  'keypress textarea' : 'checkForEnterSearchFlights',
    'click li.book_link' : 'makeReservation',
    'click td.tradie_link' : 'showTradie'
- },
+  },
 
- initialize: function(options) {
+  initialize: function(options) {
       this.options = options;
       this.render();
   },
 
- render: function() {
-   //var appViewTemplate = $('#reviewViewTemplate').html();
-   //this.$el.after(appViewTemplate);
-   this.$('#reviewViewTemplate').remove();
-   var appViewTemplate = $('#TradieListViewListAllTemplate').html();
-   this.$el.append(appViewTemplate);
-   var tradieByTrade = app.users.where({trade: this.options.inTrade});
+
+
+  render: function() {
+    //var appViewTemplate = $('#reviewViewTemplate').html();
+    //this.$el.after(appViewTemplate);
+    this.$('#reviewViewTemplate').remove();
+    var appViewTemplate = $('#TradieListViewListAllTemplate').html();
+    this.$el.append(appViewTemplate);
+    var tradieByTrade = app.users.where({trade: this.options.inTrade});
        console.log(app.users);
-   var tradieSimpleDist = []
-   var self = this;
-   _(tradieByTrade).each(function(t){
+    var tradieSimpleDist = []
+    var self = this;
+    _(tradieByTrade).each(function(t){
 
      distToCustomer = distanceSimple(parseFloat(self.options.customer_Lat),
                       parseFloat(self.options.customer_Lon),
@@ -34,11 +36,11 @@ app.TradieListView = Backbone.View.extend({
      if (distToCustomer < parseFloat(self.options.radius)) {
        tradieSimpleDist.push(t);
      };
-   });
+    });
 
-   //Render the tradies within the radius
-   var tag_count = 0;
-   _(tradieSimpleDist).each(function(t){
+    //Render the tradies within the radius
+    var tag_count = 0;
+    _(tradieSimpleDist).each(function(t){
       //need to calculate average rating
       var reviews_t = app.reviews.where({reviewee_id: t.attributes.id});
       if (reviews_t) {
@@ -48,7 +50,7 @@ app.TradieListView = Backbone.View.extend({
            denom = denom + 1;
            rating_t += r.attributes.rating;
         });
-        rating_t = Number((rating_t / denom).toFixed(1));
+         rating_t = Number((rating_t / denom).toFixed(1));
       };
       //render each tradie to the table '#reviewListOfTradies'
        var strHTML = "<tr><td>" + t.attributes.first_name + " " + t.attributes.last_name + "</td>"
@@ -72,8 +74,9 @@ app.TradieListView = Backbone.View.extend({
                     tag_ref );
       tag_count = tag_count + 1;
      });
-
  },  //END render
+
+
 
   showTradie: function(passingTD) {
     var tradieID =  parseInt(passingTD.currentTarget.attributes[1].value);
@@ -86,231 +89,31 @@ app.TradieListView = Backbone.View.extend({
             + "<li>" + t.attributes.company_name + "</li>"
             + "<li>1000 </li>" //get Jobs completed
             + "<li>"  +  "</li>"  // get Ratings
-            + "<li>" + "</li>"
+            + "<li >Additional Instructions</li>" + "<input id='Add_info' type='text' />"
             + "<li class='book_link' data-r='" + tradieID + "'>Click to Book</li>" ; // GoogleDist//
     $('#TradieListViewDetails').append(strHTML);
   }, //END showTradie
 
-  makeReservation: function(passingLi) {
 
-    console.log("Make a Res");
+
+  makeReservation: function(passingLi) {
     var newRes = new app.Reservation();
-    // var newRes = app.reservations.new;
-        //  if (resStatus  != "_NO_RESULT_") {
-           var tradieID =  parseInt(passingLi.currentTarget.attributes[1].value);
-           var cust = app.users.findWhere({id: app.current_user});
-           var addressOfCustomer = cust.attributes.address_one+", "+cust.attributes.address_two;
-           var t = app.users.findWhere({id: tradieID});
-           var tradeType = t.attributes.trade;
-           newRes.set({
-             user_id: app.current_user,
-             location: addressOfCustomer,
-             trade_name: tradeType,
-             request_time:  Date("Fri Mar 25 2015 09:56:24"),
-             comments: "wear clothes",
-             job_status: "booked"
-           });
-           newRes.save();
-           passingLi.toElement.textContent = "BOOKED";
-           passingLi.toElement.style.pointerEvents = "none"
-        //  } else
-        //  {
-        //    alert("Sorry this seat has been booked");
-        //    x.toElement.style.pointerEvents = "none"
-        //    console.log("XXXXXXXXXX  " +resStatus);
-        //    x.toElement.textContent = app.users.returnUserName(resStatus);
-        //  }
+    var tradieID =  parseInt(passingLi.currentTarget.attributes[1].value);
+    var cust = app.users.findWhere({id: app.current_user});
+    var addressOfCustomer = cust.attributes.address_one+", "+cust.attributes.address_two;
+    var t = app.users.findWhere({id: tradieID});
+    var tradeType = t.attributes.trade;
+    var commentsTxt = $('#Add_info').val();
+    newRes.set({
+     user_id: app.current_user,
+     location: addressOfCustomer,
+     trade_name: tradeType,
+     request_time:  Date("Fri Mar 25 2015 09:56:24"),
+     comments: commentsTxt,
+     job_status: "booked"
+    });
+    newRes.save();
+    passingLi.toElement.textContent = "BOOKED";
+    passingLi.toElement.style.pointerEvents = "none"
   } //END makeReservations
 });
-//
-//
-//
-//  var app = app || {};
-//
-//  app.ReservationsView  = Backbone.View.extend({
-//
-//    el: ".main",
-//
-//    events: {
-//      'click #searchButton' : 'searchForFlights',
-//      'keypress textarea' : 'checkForEnterSearchFlights',
-//      'change #searchFrom' : 'loadDestinations',
-//      'click td' : 'testFn'
-//    },
-//
-//    initialize: function () {
-//      console.log("INIT app.ReservationsView ");
-//    },
-//
-//    testFn: function(x) {
-//      var row = x.currentTarget.attributes[0].value;
-//      var col = x.currentTarget.attributes[1].value;
-//      var flightId = x.currentTarget.attributes[2].value;
-//      var currentUserId = 99;
-//      var resName = app.users.returnUserName(currentUserId);
-//      var newRes = new app.Reservation();
-//      var resStatus = app.reservations.alreadyTaken3(row,col,flightId);
-//      if (resStatus  != "_NO_RESULT_") {
-//
-//        newRes.set({
-//          user_id: currentUserId,
-//          flight_id: flightId,
-//          row: row,
-//          col: col
-//        });
-//        newRes.save();
-//        x.toElement.textContent = resName;
-//        x.toElement.style.pointerEvents = "none"
-//      } else
-//      {
-//        alert("Sorry this seat has been booked");
-//        x.toElement.style.pointerEvents = "none"
-//        console.log("XXXXXXXXXX  " +resStatus);
-//        x.toElement.textContent = app.users.returnUserName(resStatus);
-//      }
-//    },
-//
-//    renderReservations : function (flightId) {
-//
-//      app.users.returnUserName(1);
-//      var strRowColHTML ='<table class="reservation_content_table">';
-//      this.$("#reservationContentTable").remove();
-//      var appViewTemplate = $("#reservationContentTemplate").html();
-//      this.$el.append(appViewTemplate);
-//      var x =this.$el;
-//      // app.flights.fetch().done(function() {
-//        var flight = app.flights.get(flightId).attributes;
-//
-//        var plane  = app.aeroplanes.get(flight["aeroplane_id"]).attributes;
-//        var columns = plane.columns;
-//        var rows = plane.rows;
-//        if (rows > 0) {
-//          for (var i = 0; i <= rows; i++) {
-//            if (columns > 0) {
-//              //add <TD> elements for each column
-//              for (var j = 0; j <= columns; j++) {
-//                if (i===0) { //Head of each column will be labled A, B, C...
-//                  if (j===0) {
-//                    strRowColHTML += "<tr><td style='pointer-events: none; cursor: default;'>LOO";
-//                  }
-//                  else {
-//                    strRowColHTML += "</td><td style='pointer-events: none; cursor: default;'>"+String.fromCharCode((64+j));
-//                  }
-//                }
-//                else {
-//                  if (j===0) {
-//                    strRowColHTML += "<tr><td style='pointer-events: none; cursor: default;'>"+i;
-//                  }
-//                  else {
-//                      var ResID = app.reservations.alreadyTaken2(i,j,flightId);
-//                      var tmpName = app.users.returnUserName(ResID);
-//                      if (ResID != "_NO_RESULT_") {
-//                        strRowColHTML +=
-//                          "</td><td data-r='" + i +"' data-c='" + j+ "' data-f='"
-//                          + flightId + "' style='pointer-events: none; cursor: default;'>"+tmpName;
-//                      }
-//                      else {
-//                        strRowColHTML +=
-//                              "</td><td data-r='" + i +"' data-c='" + j+ "' data-f='"
-//                              + flightId + "'>"+String.fromCharCode(745);
-//                      }
-//                  }
-//                }
-//              }
-//              strRowColHTML += "</tr>";
-//            }
-//          }
-//          strRowColHTML += "</tr></table>";
-//        }
-//        // strRowColHTML += "";
-//        var addRows = x.find("#planeRowContent");
-//        x.append(strRowColHTML);
-//      // });
-//    },
-//
-//    loadDestinations: function() {
-//      //Clear destinations drop-down
-//      var select = document.getElementById("searchTo");
-//      var length = select.options.length;
-//      for (i = 0; i < length; i++) {
-//        select.options[i] = null;
-//      }
-//      //Populate departure drop-down
-//      var airports = [];
-//      varOrigin = $('#searchFrom').val();
-//      this.collection.each(function(f) {
-//        if (varOrigin === f.attributes.origin) {
-//          airports.push(f.attributes.destination);
-//        }
-//      });
-//      //Populate destination drop-down
-//      var $searchTo = $('#searchTo');
-//      airports.forEach(function(airport) {
-//        var $option = $('<option/>').text(airport).val(airport);
-//        $searchTo.append($option);
-//      });
-//    },
-//
-//    //Listen for ENTER keypress
-//    checkForEnterSearchFlights: function (event) {
-//      app.ENTER_KEY = 13;
-//      if (event.which === app.ENTER_KEY && !event.shiftKey) {
-//        event.preventDefault();
-//        this.searchForFlights();
-//      }
-//    },
-//
-//    //Create a new aeroplane from data entered on screen
-//    searchForFlights: function () {
-//      this.$("#searchContentTable").remove();
-//      var appViewTemplate = $("#searchContentTemplate").html();
-//      this.$el.append(appViewTemplate);
-//      var fromAirport = this.$el.find("#searchFrom").val();
-//      var toAirport = this.$el.find("#searchTo").val();
-//      var searchResults = "";
-//      var x =this.$el;
-//      this.collection.each(function(f) {
-//        if (f.attributes.origin === fromAirport
-//          && f.attributes.destination === toAirport) {
-//          var plane = app.aeroplanes.get(f.attributes.aeroplane_id ).attributes;
-//          var planeName = plane.name;
-//          var searchResults = "<td>" + f.attributes.date + "</td><td><a href='#flights/" + f.attributes.id + "'>" + f.attributes.id + "</a></td><td>" + f.attributes.origin + "/" + f.attributes.destination + "</td><td>" + planeName+ "</td>";
-//          $('#searchContentTable').append(searchResults);
-//        }
-//      });
-//    }
-//  });
-//
-//    // var name = this.model.attributes.first_name + " " + this.model.attributes.last_name;
-//    // var company_name = this.model.attributes.company_name;
-//    // // revRating = this.model.attributes.reviews
-//    // // var rating = revRating.rating
-//    // // var avail = this.model.attributes.available
-//    // var tradie_id = this.model.attributes.user_id;
-//    //
-// //     this.$el.empty();
-// //     this.$el.remove();
-// //
-// //     this.$el.prepend("This tradie");
-// //       this.$el.text(name + "        " + company_name + "        " + rating + "        ");
-// //       this.$el.append('<span id="available-' + tradie_id + '"></span>');
-// // ///////////////////
-// //     this.$el.appendTo('#tradie-list');
-// //
-// // // If we want the number of tradies near them that are returned in search results
-// //     if (users.trade !== "customer"){
-// //       app.users.fetch().done(function(){
-// //         var numTradies = 0;
-// //         for (var i = 0; i < app.users.models.length; i++) {
-// //           if (app.users.models[i].attributes.id === user_id) {
-// //             numTradies += 1;
-// //           }
-// //         }
-// //
-// //       });
-// //     };
-//
-//
-//
-//
-// });
