@@ -31,6 +31,7 @@ app.ReservationListView = Backbone.View.extend({
         for (var i = 0; i < app.users.models.length; i++) {
           if (app.users.models[i].attributes.id === user_id) {
             numReservations += 1;
+            console.log(this);
           }
         }
       });
