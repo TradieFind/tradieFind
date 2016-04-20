@@ -17,11 +17,21 @@ app.AppRouter = Backbone.Router.extend({
       'edituser': 'editUser',
       'policy': 'policy',
       'archive': 'archive',
-      'faq': "faq"
+      'faq': "faq",
+      'reservations/:id': 'showReservations'
+    },
+    
+showReservations:function(id){
+    //var reservations = app.reservations.get({"user_id": 1});
+    //var reservations = app.reservations.where({"user_id": app.current_user});
+    //console.log(reservations);
+    var viewReservationsView = new app.ViewReservationsView({model: app.reservations});
+    viewReservationsView.render();
     },
 
     home: function() {
-      var appView = new app.AppView();
+      var trades = app.trades;
+      var appView = new app.AppView({model: trades});
       appView.render();
       $(".homeIndexContent").show();
     },

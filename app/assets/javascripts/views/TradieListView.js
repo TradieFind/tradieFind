@@ -16,6 +16,8 @@ app.TradieListView = Backbone.View.extend({
   },
 
  render: function() {
+   //var appViewTemplate = $('#reviewViewTemplate').html();
+   //this.$el.after(appViewTemplate);
    this.$('#reviewViewTemplate').remove();
    var appViewTemplate = $('#TradieListViewListAllTemplate').html();
    this.$el.append(appViewTemplate);
