@@ -25,7 +25,7 @@ app.AppView = Backbone.View.extend({
   createSearch: function(event) {
     event.preventDefault();
     if (this.addressType === 'currentAddress'){
-       findCurrentLoc();
+       this.createHash();
     }else if(this.addressType === 'homeAddress'){
       this.createHash();
     }else{
@@ -36,16 +36,20 @@ app.AppView = Backbone.View.extend({
   createHash: function(){
     var radius = $('#distance').val();
     var inTrade= $('#tradeOptions option:selected').val();
+
     var thisUser = app.users.where({id: app.current_user});
-    // if () {
-    //   var customer_Lat = thisUser[0].attributes.lat;
-    //   var customer_Lon = thisUser[0].attributes.lon;
-    // }
-    // else {
+    if (this.addressType === 'homeAddress') {
       var customer_Lat = thisUser[0].attributes.lat;
       var customer_Lon = thisUser[0].attributes.lon;
-    // }
-    console.log(inTrade);
+    }
+    else if (this.addressType === 'currentAddress') {
+      cLocData = JSON.parse(localStorage.getItem( 'currentLoc'));
+      var customer_Lat = cLocData.lat;
+      var customer_Lon = cLocData.lon;
+    }
+    else {
+      alert("please choose an address");
+    }
 
     //var tradieListViewOld = app.TradieListView.render(customer_Lat, customer_Lon, inTrade, radius );
     var tradieListView =new  app.TradieListView({"customer_Lat":customer_Lat,
