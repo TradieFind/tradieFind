@@ -26,7 +26,7 @@ app.UserView = Backbone.View.extend({
 		var userViewHTML = _.template( userViewTemplate );
     this.$el.html(userViewHTML(this.model.toJSON() ));
 
-    this.$el.appendTo("#main");
+    this.$el.appendTo(".jumbotron");
   },
 
   getInContact: function(e){
