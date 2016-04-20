@@ -79,6 +79,20 @@
          <% end %>
  </script>
 
+<script id="reviewViewTemplate" type="text/template">
+  <h2>Your Reviews</h2>
+  <table class="table table-bordered" id="reviewList">
+    <tr>
+      <th>Name</th>
+      <th>Comment</th>
+      <th>Date Completed</th>
+      <th>Rating</th>
+    </tr>
+  </table>
+<br>
+<%= link_to "Go Back Home", root_path %>
+
+</script>
 
  <script id="reviewInputViewTemplate" type="text/template">
    <textarea id="reviewContent" placeholder="Write a review"></textarea>
@@ -162,20 +176,26 @@
    <p>Rating: </p>
  <button id="cancel-reservation">Cancel Reservation</button>
  <button id="confirm-reservation">Confirm Reservation</button>
+ <%= link_to 'Go Back Home', root_path  %>
  </script>
 
  <script type="text/template" id='reservationListViewTemplate'>
-   <table id="reservationList">
+
+   <h2>You Reservations</h2>
+   <table class="table table-bordered" id="resList">
      <tr>
        <th>Name</th>
        <th>Company</th>
        <th>Jobs status</th>
        <th>Distance to you</th>
-       <th></th>
+       <th>
+      </th>
      </tr>
-
- <button id="cancel-reservation">Cancel Reservation</button>
- <button id="confirm-reservation">Confirm Reservation</button>
+   </table>
+   <button id="cancel-reservation">Cancel Reservation</button>
+   <button id="confirm-reservation">Confirm Reservation</button>
+   <br>
+   <%= link_to 'Go Back Home', root_path  %>
  </script>
 
 
@@ -330,6 +350,8 @@
 <p>
   <iframe width="480" height="300" src="https://www.youtube.com/embed/C0Dsfup0SKk?controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
 </p>
+<br>
+<%= link_to "Back Home", root_path %>
 </div>
   </script>
 
@@ -357,7 +379,7 @@
                similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
                 aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
              </p>
-             <%= link_to 'Back Home', root_path %>
+             <%= link_to 'Go Back Home', root_path %>
        </script>
 
        <script id="ViewReservationViewTemplate" type="text/template">
@@ -387,5 +409,5 @@
               </tr>
             </table>
             </div>
-
+<%= link_to 'Go Back Home', root_path  %>
        </script>
