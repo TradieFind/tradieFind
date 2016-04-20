@@ -46,8 +46,6 @@ function findCurrentLoc() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      console.log(position.coords.latitude);
-      console.log(position.coords.longitude);
       var LatLon ="LAT: " + position.coords.latitude + " LON: " +position.coords.longitude;
 
       var currentLoc = {};
@@ -56,7 +54,6 @@ function findCurrentLoc() {
       currentLoc.userid = app.current_user;
       currentLoc.address1 = '244 George street';
       currentLoc.address2 = 'Sydney';
-      console.log(currentLoc);
       localStorage.setItem( 'currentLoc', JSON.stringify(currentLoc) );
 
 
