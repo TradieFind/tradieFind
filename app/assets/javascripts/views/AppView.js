@@ -18,7 +18,7 @@ app.AppView = Backbone.View.extend({
   createSearch: function(event) {
     event.preventDefault();
     if (this.addressType === 'currentAddress'){
-       alert("feature in development")
+       findCurrentLoc();
     }else if(this.addressType === 'homeAddress'){
       this.createHash();
     }else{
