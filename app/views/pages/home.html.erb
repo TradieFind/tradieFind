@@ -1,340 +1,360 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 
 <script>
-     var app = app || {};
-     <% if current_user  %>
-       app.current_user = <%= current_user.id %>
-    <% end %>
-
+  var app = app || {};
+  <% if current_user  %>
+  app.current_user = <%= current_user.id %> <% end %>
 </script>
-
 
 <div class="jumbotron">
   <div class="container">
     <div id="main"></div>
     <div class="tradieList"></div>
-    <div class ="userProfile"></div>
+    <div class="userProfile"></div>
   </div>
 </div>
 
-     <script type="text/template" id='appViewTemplate'>
-       <!-- Search function to find tradies nearby certain areas on certain dates -->
-        <h1 class="brand-display">TradieFind</h1>
-       <p>Need a tradie fast?</p>
-       <p>You've Come To The Right Place!</p>
-       <p>
-         <%if logged_in? %>
-         <form id="homeSearchForm" role="search">
-           <div class="form-group">
-             <div class="row">
-             <div class="col-sm-offset-2 control-label col-sm-4">
-               <label  class="search-label">Find Me:</label>
-             </div>
-             <div class="col-sm-4">
-                 <select  id="tradeOptions" class="form-control">
-                  </select>
-             </div>
-             </div>
-           </div>
+<script type="text/template" id='appViewTemplate'>
+  <!-- Search function to find tradies nearby certain areas on certain dates -->
+  <h1 class="brand-display">TradieFind</h1>
+  <p>Need a tradie fast?</p>
+  <p>You've Come To The Right Place!</p>
+  <p>
+    <%if logged_in? %>
+    <form id="homeSearchForm" role="search">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 control-label col-sm-4">
+            <label class="search-label">Find Me:</label>
+          </div>
+          <div class="col-sm-4">
+            <select id="tradeOptions" class="form-control"></select>
+          </div>
+        </div>
+      </div>
 
-           <div class="form-group">
-           <div class="row">
-             <div class="col-sm-offset-2 control-label col-sm-4">
-               <label class="search-label" for="comment">Within: </label>
-             </div>
-               <div class="col-sm-4">
-                 <select class="form-control" id="distance" placeholder="Location">
-                   <option value="5">5 km</option>
-                   <option value="10">10 km</option>
-                   <option value="15">15 km</option>
-                   <option value="20">20 km</option>
-                   <option value="25">25 km</option>
-                   <option value="30">30 km</option>
-                 </select>
-               </div>
-             </div>
-           </div>
-           <div class="form-group">
-             <div class="row">
-               <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
-               <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
-               </div>
-           </div>
-               <div class="form-group">
-                   <div class="row">
-                 <div class="col-xs-offset-3  col-xs-6  ">
-                   <button id="homeSearchSubmit" type="button" class="btn btn-default  ">Search</button>
-               </div>
-               </div>
-             </div>
-             </form>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 control-label col-sm-4">
+            <label class="search-label" for="comment">Within:
+            </label>
+          </div>
+          <div class="col-sm-4">
+            <select class="form-control" id="distance" placeholder="Location">
+              <option value="5">5 km</option>
+              <option value="10">10 km</option>
+              <option value="15">15 km</option>
+              <option value="20">20 km</option>
+              <option value="25">25 km</option>
+              <option value="30">30 km</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <label class="radio-inline"><input id="currentAddress" type="radio" name="optradio">My Current Address</label>
+          <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-offset-3  col-xs-6  ">
+            <button id="homeSearchSubmit" type="button" class="btn btn-default  ">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
 
-           <% else %>
-             <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
-             <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
-             <% end %>
+  <% else %>
+    <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
+    <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
+    <% end %>
 
+  </script>
 
-     </script>
+  <script type="text/template" id='reviewViewTemplate'>
+    <!-- Search function to find tradies nearby certain areas on certain dates -->
+    <p>Full name:
+    </p>
+    <p>Trade:
+    </p>
+    <p>Company name:
+    </p>
+    <p>Jobs completed:
+    </p>
+    <p>Ratings:
+    </p>
+    <p>Comments:
+    </p>
+  </script>
 
-     <script type="text/template" id='reviewViewTemplate'>
-       <!-- Search function to find tradies nearby certain areas on certain dates -->
-       <p>Full name: </p>
-       <p>Trade: </p>
-       <p>Company name: </p>
-       <p>Jobs completed: </p>
-       <p>Ratings: </p>
-       <p>Comments: </p>
-     </script>
+  <script id="reviewInputViewTemplate" type="text/template">
 
-     <script id="reviewInputViewTemplate" type="text/template">
+    <textarea id="reviewContent" placeholder="Write a review"></textarea>
+    <button>Submit</button>
 
-       <textarea id="reviewContent" placeholder="Write a review"></textarea>
-       <button>Submit</button>
+  </script>
 
-     </script>
+  <script type="text/template" id='userViewTemplate'>
+    <!-- View their own profile and show their current and past reservations-->
+    <h2>{{= first_name }}'s profile</h2>
+    <p>Full Name:
+      {{= first_name }}
+      {{= last_name }}</p>
+    <p>Email:
+      {{= email }}</p>
+    <p>Address:
+      {{= address_one }},
+      {{= address_two }}</p>
+    <% if current_user.trade != "customer" %>
+    <!--using rails to include more field if  user is not  a customer  -->
+    <p>Company:
+      {{= company_name }}</p>
+    <p>Trade:
+      {{= trade }}</p>
+    <p>
+      Rate:{{= rate }}</p>
+    <p>
+      Contact:
+      {{= phone_no }}</p>
+    <p>Qualifications:
+      {{= qualifications }}</p>
+    <button>View Quotes</button>
+    <% elsif %>
+    <button>View Reservations</button>
+    <% end %>
 
-     <script type="text/template" id='userViewTemplate'>
-       <!-- View their own profile and show their current and past reservations-->
-         <h1>User Profile</h1>
-       <h2>{{= first_name }}'s profile</h2>
-       <p>First Name: {{= first_name }}</p>
-       <p>Last Name:{{= last_name }}</p>
-       <p>Email: {{= email }}</p>
-       <p>Address: {{= address_one }}</p>
-       <p>
-         {{ if (company_name !== ""){ }}
-           Company:{{= company_name }}
-         {{ } }}
-       </p>
-       <p>
-         {{ if (trade !== "") { }}
-           Trade:{{= trade }}
-         {{ } }}
-       </p>
-       <p>
-         {{ if (rate !== ""){ }}
-           Rate:{{= rate }}
-           {{ } }}
-       </p>
-       <p>
-         {{ if (phone_no !== "") { }}
-           Contact:{{= phone_no }}
-         {{ } }}
-       </p>
-       <p>
-         {{ if (qualifications !== "") { }}
-           Qualifications:{{= qualifications }}
-         {{ } }}
-       </p>
+    <%= link_to "Edit", "#edituser" %>
+    <%= link_to "Back Home", "" %>
+  </script>
 
-     <%= link_to "Edit", "#edituser" %>
-     <%= link_to "Back Home", "" %>
-     </script>
+  <script type="text/template" id='editUserViewTemplate'>
+    <h1>Edit Profile</h1>
 
-     <script type="text/template" id='editUserViewTemplate'>
-       <h1>Edit Profile</h1>
+    <div class="col-md-6">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="Name3" class="col-sm-2 control-label">Name:
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName3" placeholder="First Name">
+          </div>
+        </div>
 
-       <div  class= "col-md-6">
-            <form class="form-horizontal">
+        <div class="form-group">
+          <label for="inputName3" class="col-sm-2 control-label">Name:
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputEmail3" placeholder="Last Name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputAddress3" class="col-sm-2 control-label">Address:
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputAddress3" placeholder="Address #1">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputAddress3" class="col-sm-2 control-label">Address:
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputAddress3" placeholder="Address #2">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputCompany3" class="col-sm-2 control-label">Company:
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputCompany3" placeholder="Company Name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputTrade3" class="col-sm-2 control-label">Trade:
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputTrade3" placeholder="Trade">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputRate3" class="col-sm-2 control-label">Rate/hr:
+          </label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="inputRate3" placeholder="Enter hourly rate">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputQualicfications3" class="col-sm-2 control-label">qualifications:
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" rows="8"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputComment3" class="col-sm-2 control-label">Email:
+          </label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
               <div class="form-group">
-                <label for="Name3" class="col-sm-2 control-label">Name: </label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputName3" placeholder="First Name">
+                <div class="col-sm-offset-1 control-label col-sm-2">
+                  <button id="show-tradie-form" type="button" class="btn btn-default">I'm a tradie</button>
                 </div>
               </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
-       <div class="form-group">
-         <label for="inputName3" class="col-sm-2 control-label">Name: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="inputEmail3" placeholder="Last Name">
-         </div>
-       </div>
+  </script>
 
-       <div class="form-group">
-         <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="inputAddress3" placeholder="Address #1">
-         </div>
-       </div>
+  <script type="text/template" id='reservationViewTemplate'>
 
-       <div class="form-group">
-         <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="inputAddress3" placeholder="Address #2">
-         </div>
-       </div>
+    <p>Name:
+    </p>
+    <p>Company Name:
+    </p>
+    <p>Phone Number:
+    </p>
+    <p>Price:
+    </p>
+    <p>Rating:
+    </p>
 
-       <div class="form-group">
-         <label for="inputCompany3" class="col-sm-2 control-label">Company: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="inputCompany3" placeholder="Company Name">
-         </div>
-       </div>
+    <button id="cancel-reservation">Cancel Reservation</button>
+    <button id="confirm-reservation">Confirm Reservation</button>
 
-       <div class="form-group">
-         <label for="inputTrade3" class="col-sm-2 control-label">Trade: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="inputTrade3" placeholder="Trade">
-         </div>
-       </div>
+  </script>
 
-       <div class="form-group">
-         <label for="inputRate3" class="col-sm-2 control-label">Rate/hr: </label>
-         <div class="col-sm-10">
-           <input type="number" class="form-control" id="inputRate3" placeholder="Enter hourly rate">
-         </div>
-       </div>
+  <script type="text/template" id='confirmationViewTemplate'>
 
-       <div class="form-group">
-         <label for="inputQualicfications3" class="col-sm-2 control-label">qualifications: </label>
-         <div class="col-sm-10">
-           <textarea class="form-control" rows="8"></textarea>
-         </div>
-       </div>
+    <h2>Thank You
+      <%%= app.current_user.name %%>. The "tradie" has been notified of your request.</h2>
+    <p>Name:
+    </p>
+    <p>Company Name:
+    </p>
+    <p>Phone Number:
+    </p>
+    <p>Price:
+    </p>
+    <p>Rating:
+    </p>
 
-       <div class="form-group">
-         <label for="inputComment3" class="col-sm-2 control-label">Email: </label>
-         <div class="col-sm-10">
-           <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-       </div>
-       <div class="form-group">
-         <div class="col-sm-offset-2 col-sm-10">
-           <div class="form-group">
-             <div class="col-sm-offset-1 control-label col-sm-2">
-             <button id="show-tradie-form" type="button" class="btn btn-default">I'm a tradie</button>
-           </div>
-           </div>
-         </div>
-       </div>
-     </form>
-     </div>
-     </div>
+    <p><%= link_to 'Go Back Home', root_path  %></p>
 
+  </script>
 
+  <!-- Added for dev only not the final form -->
+  <script type="text/template" id='quotesViewTemplate'>
+    <h1>Quotes view (dev)</h1>
+    <ul id="quoteData"></ul>
 
-     </script>
+    <p><%= link_to 'Go Back Home', root_path  %></p>
 
-     <script type="text/template" id='reservationViewTemplate'>
+  </script>
 
-       <p>Name: </p>
-       <p>Company Name: </p>
-       <p>Phone Number: </p>
-       <p>Price: </p>
-       <p>Rating: </p>
+  <script type="text/template" id="contactUsViewTemplate">
+    <h2>Contact Us</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          If you have a question or would like more information, we'd love to hear from you. Simply contact us through the methods below or complete the enquiry form and we'll get back to you as soon as possible.
+        </p>
+        <p>Our Office</p>
+        <p>
+          Unit 1/999 Joel Turnbull Drive, Butterfly Park
+        </p>
+        <p>
+          Phone: 1300 000 000
+        </p>
+        <p>
+          Fax: (00) 0000 0000
+        </p>
+      </div>
 
-     <button id="cancel-reservation">Cancel Reservation</button>
-     <button id="confirm-reservation">Confirm Reservation</button>
+      <div class="col-md-6">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="Name3" class="col-sm-2 control-label">Name:
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputName3" placeholder="Name">
+            </div>
+          </div>
 
-     </script>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Email:
+            </label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
+          </div>
 
-     <script type="text/template" id='confirmationViewTemplate'>
+          <div class="form-group">
+            <label for="inputComment3" class="col-sm-2 control-label">Comment:
+            </label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="8"></textarea>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger">Send</button>
+              </div>
+            </div>
 
-         <h2>Thank You <%%= app.current_user.name %%>. The "tradie" has been notified of your request.</h2>
-         <p>Name: </p>
-         <p>Company Name: </p>
-         <p>Phone Number: </p>
-         <p>Price: </p>
-         <p>Rating: </p>
-
-         <p><%= link_to 'Go Back Home', root_path  %></p>
-
-     </script>
-
-<!-- Added for dev only not the final form -->
-     <script type="text/template" id='quotesViewTemplate'>
-       <h1>Quotes view (dev)</h1>
-       <ul id="quoteData"></ul>
-
-       <p><%= link_to 'Go Back Home', root_path  %></p>
-
-     </script>
-
-     <script type="text/template" id="contactUsViewTemplate">
-       <h2>Contact Us</h2>
-         <div class="row">
-           <div class="col-md-6">
-       <p>
-          If you have a question or would like more information, we'd love to hear from you.
-          Simply contact us through the methods below or complete the enquiry form and we'll get back
-          to you as soon as possible.
-       </p>
-       <p>Our Office</p>
-       <p> Unit 1/999 Joel Turnbull Drive, Butterfly Park </p>
-       <p> Phone: 1300 000 000 </p>
-       <p> Fax: (00) 0000 0000 </p>
-       </div>
-
-  <div  class= "col-md-6">
-       <form class="form-horizontal">
-         <div class="form-group">
-           <label for="Name3" class="col-sm-2 control-label">Name: </label>
-           <div class="col-sm-10">
-             <input type="text" class="form-control" id="inputName3" placeholder="Name">
-           </div>
-         </div>
-
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email: </label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="inputComment3" class="col-sm-2 control-label">Comment: </label>
-    <div class="col-sm-10">
-      <textarea class="form-control" rows="8"></textarea>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-danger">Send</button>
-    </div>
-  </div>
+  <!-- <%= render 'form' %> -->
 
-</form>
-</div>
-</div>
-</div>
-</div>
+  <%= link_to 'Back Home', root_path %>
+</script>
 
-       <!-- <%= render 'form' %> -->
+<script type="text/template" id='faqViewTemplate'>
 
+  <p>Why did the panda chase the butterfly?</p>
+  <p>
+    Lorem ipsum they met, consectetur adipisicing about elit. Sed quae ipsum similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
+  </p>
+  <p>How do I know the tradesman is trustworthy?</p>
+  <p>
+    You can check the reviews and ratings that they have recieved from past jobs that they have completed.
+  </p>
+  <p>How do I make payments?</p>
+  <p>
+    You can pay them through our secure payment system located in the "somewhere". Once there, you can follow the prompts and your payment will be processed.
+  </p>
+  <p>Lorem this Lorem that</p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quae ipsum similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
+  </p>
 
+</script>
 
-
-
-
-
-
-
-
-       <%= link_to 'Back Home', root_path %>
-     </script>
-
-     <script type="text/template" id='faqViewTemplate'>
-
-         <p>Why did the panda chase the butterfly?</p>
-         <p>
-           Lorem ipsum they met, consectetur adipisicing about elit. Sed quae ipsum
-           similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
-            aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
-          </p>
-         <p>How do I know the tradesman is trustworthy?</p>
-         <p>
-           You can check the reviews and ratings that they have recieved from past
-           jobs that they have completed.
-          </p>
-          <p>How do I make payments?</p>
-          <p>
-            You can pay them through our secure payment system located in the "somewhere".
-            Once there, you can follow the prompts and your payment will be processed.
-           </p>
-           <p>Lorem this Lorem that</p>
-           <p>
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quae ipsum
-             similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
-              aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
-           </p>
-
-     </script>
+<script id="ViewReservationViewTemplate" type="text/template">
+  <h2>My Reservation List</h2>
+  <table class="table table-bordered" id="reservations">
+    <tr>
+      <th>User</th>
+      <th>Comments</th>
+      <th>Location</th>
+      <th>Trade Type</th>
+      <th>Status</th>
+    </tr>
+  </table>
+</script>

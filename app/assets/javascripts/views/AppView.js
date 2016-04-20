@@ -40,8 +40,17 @@ app.AppView = Backbone.View.extend({
                                 "radius": radius } );
   },
 
+  renderTradeList:function(){
+
+  this.model.each(function(model){
+      var tradeView = new app.TradeView({model: model});
+     tradeView.render();
+  });
+},
+
   render: function() {
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
-  },
+    this.renderTradeList();
+  }
 });
