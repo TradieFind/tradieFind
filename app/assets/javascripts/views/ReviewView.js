@@ -5,9 +5,15 @@ app.ReviewView = Backbone.View.extend({
 	el: '#main',
 
   render: function() {
-		$(document).scrollTop(0);
+
+		this.$el.empty();
+		this.$el.remove();
+
     var reviewViewTemplate = $('#reviewViewTemplate').html();
 		var reviewViewHTML = _.template( reviewViewTemplate );
-    this.$el.html(reviewViewHTML(this.model.toJSON() ));
+    this.$el.html(reviewViewHTML(this.model ));
+
+
+		this.$el.appendTo(".jumbotron");
   }
 });

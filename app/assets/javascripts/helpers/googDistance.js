@@ -1,9 +1,3 @@
-// function googDistance(lat1, lon1, lat2, lon2) {
-//   var xyz = googDistanceCallback(lat1, lon1, lat2, lon2);
-//   $.when(xyz).then(function() {xyz = distanceIs});
-//   console.log("C "+xyz);
-//   return xyz;
-// };
 
 function googDistance(lat1, lon1, lat2, lon2, tag_ref) {
   var origin1 = new google.maps.LatLng(lat1, lon1);
@@ -30,10 +24,61 @@ function googDistance(lat1, lon1, lat2, lon2, tag_ref) {
       }
     }
   ));
-  // dfd.resolve(function(){
-  //   console.log("B: " + distanceResults);
-  //   return distanceResults;
+
+};  //END googDistance
+
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see the error "The Geolocation service
+// failed.", it means you probably did not give permission for the browser to
+// locate you.
+
+function findCurrentLoc() {
+  // var map = new google.maps.Map(document.getElementById('map'), {
+  //   center: {lat: -34.397, lng: 150.644},
+  //   zoom: 6
   // });
+  // var infoWindow = new google.maps.InfoWindow({map: map});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      console.log(position.coords.latitude);
+      console.log(position.coords.longitude);
+      var LatLon ="LAT: " + position.coords.latitude + " LON: " +position.coords.longitude;
+
+      var currentLoc = {};
+      currentLoc.lat = position.coords.latitude;
+      currentLoc.lon = position.coords.longitude;
+      currentLoc.userid = app.current_user;
+      currentLoc.address1 = '244 George street';
+      currentLoc.address2 = 'Sydney';
+      console.log(currentLoc);
+      localStorage.setItem( 'currentLoc', JSON.stringify(currentLoc) );
+
+
+      $('#cust_location_label').text(LatLon);
+      // infoWindow.setPosition(pos);
+      // infoWindow.setContent('Location found.');
+      // map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 };
 
-var distanceIs = 0;
+
+// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+function handleLocationError() {
+  // infoWindow.setPosition(pos);
+  // infoWindow.setContent(browserHasGeolocation ?
+  //                       'Error: The Geolocation service failed.' :
+  //                       'Error: Your browser doesn\'t support geolocation.');
+  $('cust_location_label').val() = 'Error: The Geolocation service failed.';
+};

@@ -1,3 +1,4 @@
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1W_PZDArK46FW21IKVhhA2mzM1SfFVSI">
@@ -62,6 +63,7 @@
          <div class="row">
            <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
            <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
+           <p id="cust_location_label">1</p>
            </div>
        </div>
            <div class="form-group">
@@ -78,6 +80,20 @@
          <% end %>
  </script>
 
+<script id="reviewViewTemplate" type="text/template">
+  <h2>Your Reviews</h2>
+  <table class="table table-bordered" id="reviewList">
+    <tr>
+      <th>Name</th>
+      <th>Comment</th>
+      <th>Date Completed</th>
+      <th>Rating</th>
+    </tr>
+  </table>
+<br>
+<%= link_to "Go Back Home", root_path %>
+
+</script>
 
  <script id="reviewInputViewTemplate" type="text/template">
    <textarea id="reviewContent" placeholder="Write a review"></textarea>
@@ -126,28 +142,89 @@
  <script type="text/template" id='editUserViewTemplate'>
         <form>
           <h1>Edit User Profile</h1>
-          <h2>First Name</h2>
-         <label for="first_name">First Name:</label>
-         <input type="text" value="{{= first_name }}" id="first_name">
-         <label for="last_name">Last Name:</label>
-         <input type="text" value="{{= last_name }}" id="last_name">
-         <label for="email">email:</label>
-         <input type="text" value="{{= email }}" id="email">
-         <label for="company_name">Company Name:</label>
-         <input type="text" value="{{= company_name }}" id="company_name">
-         <label for="trade">Trade:</label>
-         <input type="text" value="{{= trade }}" id="trade">
-         <label for="rate">Rate/hr:</label>
-         <input type="text" value="{{= rate }}" id="rate">
-         <label for="phone_no">Phone Number:</label>
-         <input type="text" value="{{= phone_no }}" id="phone_no">
-         <label for="qualifications">qualifications:</label>
-         <input type="text-area" value="{{= qualifications }}" id="qualifications">
-         <label for="address_one">address one:</label>
-         <input type="text" value="{{= address_one }}" id="address_one">
-         <label for="address_two">address two:</label>
-         <input type="text" value="{{= address_two }}" id="address_two">
-         <button>Save</button>
+
+
+          <div class="form-group row">
+        <label for="first_name" class="col-sm-2 form-control-label">First Name:</label>
+          <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= first_name }}" id="first_name">
+         </div>
+         </div>
+
+
+          <div class="form-group row">
+         <label for="last_name" class="col-sm-2 form-control-label">Last Name:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= last_name }}" id="last_name">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="email" class="col-sm-2 form-control-label">Email:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= email }}" id="email">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="company_name" class="col-sm-2 form-control-label">Company:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= company_name }}" id="company_name">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="trade" class="col-sm-2 form-control-label">Trade:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= trade }}" id="trade">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="rate" class="col-sm-2 form-control-label">Rate/Hr:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= rate }}" id="rate">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="phone_no" class="col-sm-2 form-control-label">Phone Number:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= phone_no }}" id="phone_no">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="qualifications" class="col-sm-2 form-control-label">Qualifications:</label>
+         <div class="col-sm-10">
+         <input type="text-area" class="form-control" value="{{= qualifications }}" id="qualifications">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="address_one" class="col-sm-2 form-control-label">Unit/House #:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= address_one }}" id="address_one">
+       </div>
+       </div>
+
+
+          <div class="form-group row">
+         <label for="address_two" class="col-sm-2 form-control-label">Suburb:</label>
+         <div class="col-sm-10">
+         <input type="text" class="form-control" value="{{= address_two }}" id="address_two">
+       </div>
+       </div>
+
+         <button id="saveEditUser" class="btn btn-info">Save</button>
+
         </form>
       </script>
 
@@ -161,20 +238,26 @@
    <p>Rating: </p>
  <button id="cancel-reservation">Cancel Reservation</button>
  <button id="confirm-reservation">Confirm Reservation</button>
+ <%= link_to 'Go Back Home', root_path  %>
  </script>
 
  <script type="text/template" id='reservationListViewTemplate'>
-   <table id="reservationList">
+
+   <h2>You Reservations</h2>
+   <table class="table table-bordered" id="resList">
      <tr>
        <th>Name</th>
        <th>Company</th>
        <th>Jobs status</th>
        <th>Distance to you</th>
-       <th></th>
+       <th>
+      </th>
      </tr>
-
- <button id="cancel-reservation">Cancel Reservation</button>
- <button id="confirm-reservation">Confirm Reservation</button>
+   </table>
+   <button id="cancel-reservation">Cancel Reservation</button>
+   <button id="confirm-reservation">Confirm Reservation</button>
+   <br>
+   <%= link_to 'Go Back Home', root_path  %>
  </script>
 
 
@@ -329,6 +412,8 @@
 <p>
   <iframe width="480" height="300" src="https://www.youtube.com/embed/C0Dsfup0SKk?controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
 </p>
+<br>
+<%= link_to "Back Home", root_path %>
 </div>
   </script>
 
@@ -356,7 +441,7 @@
                similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
                 aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
              </p>
-             <%= link_to 'Back Home', root_path %>
+             <%= link_to 'Go Back Home', root_path %>
        </script>
 
        <script id="ViewReservationViewTemplate" type="text/template">
@@ -386,5 +471,5 @@
               </tr>
             </table>
             </div>
-
+<%= link_to 'Go Back Home', root_path  %>
        </script>

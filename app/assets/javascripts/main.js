@@ -33,6 +33,8 @@ $(document).ready(function() {
   $.when(trUsers, trQuote, trTrade, trRes).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
+    localStorage.setItem( 'currentLoc', "" );
+
 
   });
 

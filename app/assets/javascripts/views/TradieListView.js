@@ -16,8 +16,9 @@ app.TradieListView = Backbone.View.extend({
   },
 
 
-
   render: function() {
+    console.log( localStorage.getItem( 'currentLoc' )  );
+
     //var appViewTemplate = $('#reviewViewTemplate').html();
     //this.$el.after(appViewTemplate);
     this.$('#reviewViewTemplate').remove();
@@ -105,12 +106,12 @@ app.TradieListView = Backbone.View.extend({
     var tradeType = t.attributes.trade;
     var commentsTxt = $('#Add_info').val();
     newRes.set({
-     user_id: app.current_user,
-     location: addressOfCustomer,
-     trade_name: tradeType,
-     request_time:  Date("Fri Mar 25 2015 09:56:24"),
-     comments: commentsTxt,
-     job_status: "booked"
+      user_id: app.current_user,
+      location: addressOfCustomer,
+      trade_name: tradeType,
+      request_time:  Date("Fri Mar 25 2015 09:56:24"),
+      comments: commentsTxt,
+      job_status: "booked"
     });
     newRes.save();
     passingLi.toElement.textContent = "BOOKED";
