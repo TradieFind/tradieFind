@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root :to => "pages#home"
 
   resources :users, :only => [:new, :create, :index, :update, :home]
-  resources :reviews, :only => [:new, :create, :index, :update, :home]
+  resources :reviews
   resources :reservations
   resources :quotes
+  resources :trades
 
   get '/users' => "users#index"
   get '/users/edit' => "users#edit", :as => 'edit_user'

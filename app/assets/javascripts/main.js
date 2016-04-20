@@ -19,7 +19,7 @@ $(document).ready(function() {
   var trQuote = app.quotes.fetch();
 
   app.reviews = new app.Reviews();
-  var trReview = app.reviews.fetch();
+  var trReview = app.reviews.fetch({remove:false});
 
   // app.trades = new app.Trades();
   // var trTrade = app.trades.fetch();
@@ -32,7 +32,7 @@ $(document).ready(function() {
   $.when(trUsers, trRes, trQuote, trReview).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
-
+    console.log(trReview);
     app.trades = new app.Trades();
     var trTrade = app.trades.fetch();
 

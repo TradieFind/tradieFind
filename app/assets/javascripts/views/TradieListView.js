@@ -16,6 +16,8 @@ app.TradieListView = Backbone.View.extend({
    var appViewTemplate = $('#reviewViewTemplate').html();
    this.$el.after(appViewTemplate);
    var tradieByTrade = app.users.where({trade: this.options.inTrade});
+  //  console.log(app.users.where({trade: this.options.inTrade}));
+  //  console.log(app.users);
    var tradieSimpleDist = []
    var self = this;
    _(tradieByTrade).each(function(t){
@@ -30,17 +32,46 @@ app.TradieListView = Backbone.View.extend({
      };
    });
 
+   var u = app.users;
+   var r = app.reservations;
+   var q = app.quotes;
+   var rv = app.reviews;
+   var t = app.trades;
+  //  console.log(u);
+  //  console.log(r);
+  //  console.log(q);
+   console.log(rv);
+  //  console.log(t);
+   
+
   //  var addData = this.$el.find('#reviewListOfTradies');
 
    //Render the tradies within the radius
    var tag_count = 0;
    _(tradieSimpleDist).each(function(t){
+      // console.log("id: " + t.attributes.id);
+      // console.log(app.reviews);
+      //need to calculate average rating
+      var reviews_t = _.where(app.reviews,{reviewee_id: t.attributes.id});
+      console.log(reviews_t );
+      if (reviews_t) {
+        var rating_t = 0;
+        var denom = 0;
+         _(reviews_t).each(function(r){
+           denom = denom + 1;
+           console.log("denom count: "+denom);
+           rating_t += r.attributes.rating;
+        });
+        console.log("d: "+ denom);
+        console.log("rat " + rating_t);
+        rating_t = rating_t / denom;
+      };
        var strHTML = "<tr><td>" + t.attributes.first_name + " " + t.attributes.last_name + "</td>"
                + "<td>" + t.attributes.company_name+ "</td>"
                +"<td>1000 </td>" //get Jobs completed
-               +"<td>4.2</td>"  // get Ratings
-               +"<td>He's a  Chump </td>"  // Comments//
+               +"<td>" + rating_t +  "</td>"  // get Ratings
                +"<td id='goog_ref_" + tag_count + "'></td></tr>"  // GoogleDist//
+      // console.log(app.reviews.where({reviewee_id: t.attributes.id}).rating );
       $('#reviewListOfTradies').append(strHTML);
       var tag_ref = "goog_ref_"+tag_count;
       googDistance( parseFloat(self.options.customer_Lat),
