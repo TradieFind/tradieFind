@@ -19,6 +19,9 @@ $(document).ready(function() {
   var trRes = app.reservations.fetch();
 
 
+  app.reviews = new app.Reviews();
+  var trReview = app.reviews.fetch({remove:false});
+
    app.trades = new app.Trades();
    var trTrade = app.trades.fetch();
 

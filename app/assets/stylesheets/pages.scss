@@ -3,6 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+body{
+  box-sizing: border-box;
+  // background-color: #A1887F !important;
+  background: linear-gradient(
+    to right,
+    #ff9e2c 0%,
+    #ff9e2c 50%,
+    #A1887F 50%,
+    #A1887F 100%
+  );
+  font-family: 'PT Sans Narrow', sans-serif !important;
+}
 .jumbotron{
   text-align: center;
 }

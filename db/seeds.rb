@@ -84,10 +84,12 @@
 #   t.float :lon
 
 User.destroy_all()
-Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
-Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken",address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
-Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
-Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", address_two: "Kirribilli", lat: -33.843522, lon: 151.214241)
+Iwan = User.create(first_name: 'Iwan', last_name: "Sawa", email: "iwan@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", trade: "Mechanic", address_two: "Kirribilli", lat: -33.842139, lon: 151.214534, company_name: "Bulkwaste" )
+Anthony = User.create(first_name: 'Anthony', last_name: "Germana", email: "anthony@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly", trade: "Mechanic", address_two: "Kirribilli", lat: -33.841896, lon: 151.228447, company_name: "Dodge Bros")
+Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.839046, lon: 151.203734, company_name: "FixQuick")
+Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken",address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.857539, lon: 151.205146, company_name: "Spanners")
+Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "Carpenter", address_two: "Kirribilli", lat: -33.787418, lon: 151.126622, company_name: "Tow for Cash")
+Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.824748, lon: 151.240248, company_name: "ZippyFix")
 
 
 
@@ -95,7 +97,16 @@ Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.c
 Review.destroy_all()
 review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
 review2 = Review.create(reviewer_id: 2, reviewee_id: 2, comment: "Not Bad", rating: 3)
-review3 = Review.create(reviewer_id: 3, reviewee_id: 3, comment: "Great", rating: 5)
+review4 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 5)
+review5 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 2)
+review6 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Super", rating: 3)
+review7 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Dingo", rating: 1)
+review8 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Yawn", rating: 4)
+review9 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Muppet", rating: 0)
+
+
+
+
 
 Reservation.destroy_all()
 reservation1 = Reservation.create(user_id: 1, location: "Milsons Point", trade_name: "Mechanic", request_time: "1202", comments: "Alright", job_status: "Pending")

@@ -1,47 +1,68 @@
 var app = app || {};
 
 app.TradieListView = Backbone.View.extend({
- el: ".main",
+ el: "#main",
  events: {
    'click': 'showTradie'
  },
 
  initialize: function(options) {
       this.options = options;
-      _.bindAll(this, 'render');
+      this.render();
   },
 
  render: function() {
    var appViewTemplate = $('#reviewViewTemplate').html();
-   this.$el.html(appViewTemplate);
+   this.$el.after(appViewTemplate);
    var tradieByTrade = app.users.where({trade: this.options.inTrade});
-   // var googDist = googDistance( -33.872232, 151.210164,-33.886666, 151.219605);
    var tradieSimpleDist = []
+   var self = this;
    _(tradieByTrade).each(function(t){
-     distToCustomer = distanceSimple(this.options.customer_Lat,this.customer_Lon, t.lat, t.lon, "K" );
-     if (distToCustomer < this.options.radius) {
+
+     distToCustomer = distanceSimple(parseFloat(self.options.customer_Lat),
+                      parseFloat(self.options.customer_Lon),
+                      parseFloat(t.attributes.lat),
+                      parseFloat(t.attributes.lon), "K" );
+     if (distToCustomer < parseFloat(self.options.radius)) {
        tradieSimpleDist.push(t);
      };
    });
-   var addData = this.$el.find('#reviewListOfTradies');
 
    //Render the tradies within the radius
+   var tag_count = 0;
    _(tradieSimpleDist).each(function(t){
-       strHTML = "<li><p>Full name: " + t.first_name + " " + t.last_name + "</p>"
-               + "<p>Trade: " + t.trade + "</p>"
-               +"<p>Company name: </p>"+ t.company_name+ "</p>"
-               +"<p>Jobs completed: </p>10"+ "</p>" //get Jobs completed
-               +"<p>Ratings: </p>4.2</p>"  // get Ratings
-               +"<p>Comments: He's a  Chump </p>"  // Comments//
-               +"<p>Distance to you: " + " </p>"  // GoogleDist//
-       addData.after(strHTML);
+      //need to calculate average rating
+      var reviews_t = app.reviews.where({reviewee_id: t.attributes.id});
+      if (reviews_t) {
+        var rating_t = 0;
+        var denom = 0;
+         _(reviews_t).each(function(r){
+           denom = denom + 1;
+           rating_t += r.attributes.rating;
+        });
+        rating_t = Number((rating_t / denom).toFixed(1));
+      };
+      //render each tradie to the table '#reviewListOfTradies'
+       var strHTML = "<tr><td>" + t.attributes.first_name + " " + t.attributes.last_name + "</td>"
+               + "<td>" + t.attributes.company_name+ "</td>"
+               +"<td>1000 </td>" //get Jobs completed
+               +"<td>" + rating_t +  "</td>"  // get Ratings
+               +"<td id='goog_ref_" + tag_count + "'></td></tr>"  // GoogleDist//
+      $('#reviewListOfTradies').append(strHTML);
+      var tag_ref = "goog_ref_"+tag_count;
+      googDistance( parseFloat(self.options.customer_Lat),
+                    parseFloat(self.options.customer_Lon),
+                    parseFloat(t.attributes.lat),
+                    parseFloat(t.attributes.lon),
+                    tag_ref );
+      tag_count = tag_count + 1;
      });
 
  },  //END render
 
- showTradie: function() {
-   app.router.navigate('users/' + this.model.get("id"), true);
- }
+ // showTradie: function() {
+ //   app.router.navigate('users/' + this.model.get("id"), true);
+ // }
 
 
    // var name = this.model.attributes.first_name + " " + this.model.attributes.last_name;

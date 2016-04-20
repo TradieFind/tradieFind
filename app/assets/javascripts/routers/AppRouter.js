@@ -4,26 +4,29 @@ app.AppRouter = Backbone.Router.extend({
     routes: {
       '': 'home',
       'reservation/:id': 'showReservation',
+      'reservationlist/:id': 'showResList',
       'confirmation': 'showConfirmed',
       'user': 'showUser',
       'user/:id': 'showUser',
       'review/:id': 'showReview',
       'reviewinput/:id': 'reviewInput',
       'quotes': 'showQuotes',
+      'addquote': 'addQuote',
       'contactUs': 'contactUs',
+      'thankyou': 'thankYou',
       'edituser': 'editUser',
+      'policy': 'policy',
+      'archive': 'archive',
       'faq': "faq",
       'reservations/:id': 'showReservations'
     },
-
-
-    showReservations:function(id){
-        //var reservations = app.reservations.get({"user_id": 1});
-        //var reservations = app.reservations.where({"user_id": app.current_user});
-        //console.log(reservations);
-        var viewReservationsView = new app.ViewReservationsView({model: app.reservations});
-        viewReservationsView.render();
-
+    
+showReservations:function(id){
+    //var reservations = app.reservations.get({"user_id": 1});
+    //var reservations = app.reservations.where({"user_id": app.current_user});
+    //console.log(reservations);
+    var viewReservationsView = new app.ViewReservationsView({model: app.reservations});
+    viewReservationsView.render();
     },
 
     home: function() {
@@ -38,6 +41,14 @@ app.AppRouter = Backbone.Router.extend({
       var reservationView = new app.ReservationView({model: reservation});
       app.reservation_id = id;
       reservationView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    showResList: function(id) {
+      var resList = app.reservations.get(id);
+      var resListView = new app.ResListView({ model: reservation });
+      app.reservation_id = id;
+      resListView.render();
       $(".homeIndexContent").hide();
     },
 
@@ -93,6 +104,34 @@ app.AppRouter = Backbone.Router.extend({
     contactUs: function() {
       var contactUsView = new app.contactUsView();
       contactUsView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    thankYou: function() {
+      var thankYouView = new app.ThankYouView();
+      thankYouView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    addQuote: function(id) {
+      if (!id) {
+        id = app.current_user
+      }
+      var user = app.users.get(id);
+      var addQuoteView = new app.AddQuoteView();
+      addQuoteView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    policy: function() {
+      var policyView = new app.PolicyView();
+      policyView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    archive: function() {
+      var archiveView = new app.ArchiveView();
+      archiveView.render();
       $(".homeIndexContent").hide();
     },
 
