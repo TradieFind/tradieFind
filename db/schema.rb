@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20160420071338) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "quote_id"
     t.text     "location"
     t.text     "trade_name"
     t.datetime "request_time"

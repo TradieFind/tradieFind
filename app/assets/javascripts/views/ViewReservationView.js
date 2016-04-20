@@ -4,20 +4,23 @@ app.ViewReservationView = Backbone.View.extend({
 
   tagName: 'tr',
 
+  className: 'sub',
+
   events:{
       'click  .view-quotes-list': 'clickReservation',
   },
 
   clickReservation: function(e){
+    $(e.target.parentNode).addClass('success');
       console.log(e.currentTarget.attributes["reservation-id"].value);
       var reservationID = parseInt(e.currentTarget.attributes["reservation-id"].value);
+      app.reservationID = reservationID;
       // var quotesViewTemplate = $('#quotesViewTemplate').html();
       // this.$el.append(quotesViewTemplate);
       var quotesList = app.quotes.where({reservation_id:reservationID});
       console.log(quotesList);
+      var myQuoteView = new app.MyQuotesView({model: quotesList});
       myQuoteView.render();
-      var myQuoteView = new app.myQuoteView({model: quotesList});
-      //myQuoteView.render();
 
   },
 

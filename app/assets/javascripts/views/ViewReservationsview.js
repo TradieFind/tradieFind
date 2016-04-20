@@ -6,6 +6,7 @@ app.ViewReservationsView = Backbone.View.extend({
 
   el: '#main',
 
+
   render: function(){
     var ReservationsTemplate = $('#ViewReservationViewTemplate').html();
     this.$el.html(ReservationsTemplate);
@@ -15,4 +16,3 @@ app.ViewReservationsView = Backbone.View.extend({
     });
     }
 });
- 
