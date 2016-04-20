@@ -122,78 +122,34 @@
  <%= link_to "Back Home", "" %>
  </script>
 
-
-
  <script type="text/template" id='editUserViewTemplate'>
-   <h1>Edit Profile</h1>
-   <div  class= "col-md-6">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="Name3" class="col-sm-2 control-label">Name: </label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="eu_firstName" placeholder="First Name">
-            </div>
-          </div>
-   <div class="form-group">
-     <label for="inputName3" class="col-sm-2 control-label">Name: </label>
-     <div class="col-sm-10">
-       <input type="text" class="form-control" id="eu_lastName" placeholder="Last Name">
-     </div>
-   </div>
-   <div class="form-group">
-     <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
-     <div class="col-sm-10">
-       <input type="text" class="form-control" id="eu_addressOne" placeholder="Address #1">
-     </div>
-   </div>
-   <div class="form-group">
-     <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
-     <div class="col-sm-10">
-       <input type="text" class="form-control" id="eu_addressTwo" placeholder="Address #2">
-     </div>
-   </div>
-   <div class="form-group">
-     <label for="inputCompany3" class="col-sm-2 control-label">Company: </label>
-     <div class="col-sm-10">
-       <input type="text" class="form-control" id="eu_companyName" placeholder="Company Name">
-     </div>
-   </div>
-   <div class="form-group">
-     <label for="inputTrade3" class="col-sm-2 control-label">Trade: </label>
-     <div class="col-sm-10">
-       <input type="text" class="form-control" id="eu_tradeName" placeholder="Trade">
-     </div>
-   </div>
-   <div class="form-group">
-     <label for="inputRate3" class="col-sm-2 control-label">Rate/hr: </label>
-     <div class="col-sm-10">
-       <input type="number" class="form-control" id="eu_hourlyRate" placeholder="Enter hourly rate">
-     </div>
-   </div>
-   <div class="form-group">
-     <label for="inputQualicfications3" class="col-sm-2 control-label">qualifications: </label>
-     <div class="col-sm-10">
-       <textarea class="form-control" id = "eu_qualifications" rows="8"></textarea>
-     </div>
-   </div>
-   <div class="form-group">
-     <label for="inputComment3" class="col-sm-2 control-label">Email: </label>
-     <div class="col-sm-10">
-       <input type="email" class="form-control" id="eu_email" placeholder="Email">
-   </div>
-   <div class="form-group">
-     <div class="col-sm-offset-2 col-sm-10">
-       <div class="form-group">
-         <div class="col-sm-offset-1 control-label col-sm-2">
-         <button id="show-tradie-form" type="button" class="btn btn-default">I'm a tradie</button>
-       </div>
-       </div>
-     </div>
-   </div>
- </form>
- </div>
- </div>
- </script>
+        <form>
+          <h1>Edit User Profile</h1>
+          <h2>First Name</h2>
+         <label for="first_name">First Name:</label>
+         <input type="text" value="{{= first_name }}" id="first_name">
+         <label for="last_name">Last Name:</label>
+         <input type="text" value="{{= last_name }}" id="last_name">
+         <label for="email">email:</label>
+         <input type="text" value="{{= email }}" id="email">
+         <label for="company_name">Company Name:</label>
+         <input type="text" value="{{= company_name }}" id="company_name">
+         <label for="trade">Trade:</label>
+         <input type="text" value="{{= trade }}" id="trade">
+         <label for="rate">Rate/hr:</label>
+         <input type="text" value="{{= rate }}" id="rate">
+         <label for="phone_no">Phone Number:</label>
+         <input type="text" value="{{= phone_no }}" id="phone_no">
+         <label for="qualifications">qualifications:</label>
+         <input type="text-area" value="{{= qualifications }}" id="qualifications">
+         <label for="address_one">address one:</label>
+         <input type="text" value="{{= address_one }}" id="address_one">
+         <label for="address_two">address two:</label>
+         <input type="text" value="{{= address_two }}" id="address_two">
+         <button>Save</button>
+        </form>
+      </script>
+
 
 <!--  -->
  <script type="text/template" id='reservationViewTemplate'>
