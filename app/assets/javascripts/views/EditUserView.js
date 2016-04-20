@@ -11,9 +11,10 @@ $(document).ready(function(){
     render: function(){
       var editUserViewTemplate = $('#editUserViewTemplate').html();
       var editUserViewHTML = _.template( editUserViewTemplate );
-      this.$el.html(editUserViewHTML);
-      var thisUser = app.users.where({id: app.current_user});
-      first_name: thisUser.attributes.eu_firstName.html();
+      console.log('rendering', this.model.toJSON())
+      this.$el.html(editUserViewHTML(this.model.toJSON()));
+      // var thisUser = app.users.where({id: app.current_user});
+      // eu_firstName = thisUser.$el.attributes.first_name.html();
       // var thisUser = app.users.where({id: app.current_user});
       //  first_name: thisUser.attributes.eu_firstName
     }

@@ -20,7 +20,7 @@ app.AppRouter = Backbone.Router.extend({
       'faq': "faq",
       'reservations/:id': 'showReservations'
     },
-    
+
 showReservations:function(id){
     //var reservations = app.reservations.get({"user_id": 1});
     //var reservations = app.reservations.where({"user_id": app.current_user});
@@ -71,12 +71,14 @@ showReservations:function(id){
     },
 
     editUser: function(id) {
-      var user = app.users.get(app.user_id);
+    var user = app.users.get(app.current_user);
+    user.fetch().done(function () {
       var editUserView = new app.EditUserView({ model: user });
       app.user_id = id;
       editUserView.render();
       $(".homeIndexContent").hide();
-    },
+    })
+  },
 
     reviewInput: function() {
       var user = app.users.get(app.user_id);
