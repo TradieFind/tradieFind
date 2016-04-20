@@ -109,9 +109,9 @@ review9 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Muppet", ratin
 
 
 Reservation.destroy_all()
-reservation1 = Reservation.create(user_id: 1, location: "Milsons Point", trade_name: "Mechanic", request_time: "1202", comments: "Alright", job_status: "Pending")
-reservation2 = Reservation.create(user_id: 2, location: "Gordon", trade_name: "Carpenter", request_time: "1100", comments: "Crappy", job_status: "Completed")
-reservation3 = Reservation.create(user_id: 3, location: "Strathfield", trade_name: "Grave Digger", request_time: "0800", comments: "Not Bad", job_status: "Pending")
+reservation1 = Reservation.create(user_id: 1, location: "Milsons Point", trade_name: "Mechanic", request_time: "1202", comments: "Fix engine", job_status: "Pending")
+reservation2 = Reservation.create(user_id: 2, location: "Gordon", trade_name: "Carpenter", request_time: "1100", comments: "Leaky roof", job_status: "Completed")
+reservation3 = Reservation.create(user_id: 3, location: "Strathfield", trade_name: "Grave Digger", request_time: "0800", comments: "Bury wife", job_status: "Pending")
 
 Quote.destroy_all()
 quote1 = Quote.create(reservation_id: 1, user_id: 1, quote_value: "$3.00", start_time: "1100", estimated_duration: "3 Hours", comment: "Aight")
