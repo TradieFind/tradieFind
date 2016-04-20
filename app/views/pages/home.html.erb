@@ -84,8 +84,8 @@
 
  <script type="text/template" id='userViewTemplate'>
    <!-- View their own profile and show their current and past reservations-->
-     <h1>User Profile</h1>
-   <h2>{{= first_name }}'s profile</h2>
+     <h1>{{= first_name }}'s Profile</h1>
+  <div></div>
    <p>First Name: {{= first_name }}</p>
    <p>Last Name:{{= last_name }}</p>
    <p>Email: {{= email }}</p>
@@ -101,12 +101,12 @@
      {{ } }}
    </p>
    <p>
-     {{ if (rate !== ""){ }}
+     {{ if (rate !== null) { }}
        Rate:{{= rate }}
-       {{ } }}
+     {{ } }}
    </p>
    <p>
-     {{ if (phone_no !== "") { }}
+     {{ if (phone_no !== null) { }}
        Contact:{{= phone_no }}
      {{ } }}
    </p>
@@ -115,7 +115,8 @@
        Qualifications:{{= qualifications }}
      {{ } }}
    </p>
- <%= link_to "Edit", "#edituser" %>
+ <%= link_to "Edit", "#edituser" %><br>
+
  <%= link_to "Back Home", "" %>
  </script>
 
@@ -192,7 +193,7 @@
  </div>
  </script>
 
-
+<!--  -->
  <script type="text/template" id='reservationViewTemplate'>
    <p>Name: </p>
    <p>Company Name: </p>
@@ -203,8 +204,22 @@
  <button id="confirm-reservation">Confirm Reservation</button>
  </script>
 
+ <script type="text/template" id='reservationListViewTemplate'>
+   <table id="reservationList">
+     <tr>
+       <th>Name</th>
+       <th>Company</th>
+       <th>Jobs status</th>
+       <th>Distance to you</th>
+       <th></th>
+     </tr>
+
+ <button id="cancel-reservation">Cancel Reservation</button>
+ <button id="confirm-reservation">Confirm Reservation</button>
+ </script>
 
 
+<!--  -->
  <script type="text/template" id='confirmationViewTemplate'>
      <h2>Thank You <%%= app.current_user.name %%>. The "tradie" has been notified of your request.</h2>
      <p>Name: </p>
@@ -225,36 +240,72 @@
  </script>
 
 
-<script type="text/template" id="contactUsViewTemplate">
-       <h2>Contact Us</h2>
-         <div class="row">
-           <div class="col-md-6">
-       <p>
-          If you have a question or would like more information, we'd love to hear from you.
-          Simply contact us through the methods below or complete the enquiry form and we'll get back
-          to you as soon as possible.
-       </p>
-       <p>Our Office</p>
-       <p> Unit 1/999 Joel Turnbull Drive, Butterfly Park </p>
-       <p> Phone: 1300 000 000 </p>
-       <p> Fax: (00) 0000 0000 </p>
-       </div>
-  <div  class= "col-md-6">
-       <form class="form-horizontal">
-         <div class="form-group">
-           <label for="Name3" class="col-sm-2 control-label">Name: </label>
-           <div class="col-sm-10">
-             <input type="text" class="form-control" id="inputName3" placeholder="Name">
-           </div>
-         </div>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email: </label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-    </div>
-  </div>
-  <div class
-</script>
+
+
+ <script type="text/template" id="contactUsViewTemplate">
+      <h2>Contact Us</h2>
+        <div class="row">
+          <div class="col-md-6">
+      <p>
+         If you have a question or would like more information, we'd love to hear from you.
+         Simply contact us through the methods below or complete the enquiry form and we'll get back
+         to you as soon as possible.
+      </p>
+      <p>Our Office</p>
+      <p> Unit 1/999 Joel Turnbull Drive, Butterfly Park </p>
+      <p> Phone: 1300 000 000 </p>
+      <p> Fax: (00) 0000 0000 </p>
+      </div>
+
+ <div  class= "col-md-6">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="Name3" class="col-sm-2 control-label">Name: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName3" placeholder="Name">
+          </div>
+        </div>
+
+ <div class="form-group">
+   <label for="inputEmail3" class="col-sm-2 control-label">Email: </label>
+   <div class="col-sm-10">
+     <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+   </div>
+ </div>
+
+ <div class="form-group">
+   <label for="inputComment3" class="col-sm-2 control-label">Comment: </label>
+   <div class="col-sm-10">
+     <textarea class="form-control" rows="8"></textarea>
+ </div>
+ <div class="form-group">
+   <div class="col-sm-offset-2 col-sm-10">
+     <button type="submit" class="btn btn-danger">Send</button>
+   </div>
+ </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+      <!-- <%= render 'form' %> -->
+
+
+      <%= link_to 'Back Home', root_path %>
+    </script>
+
+    <script type="text/template" id="thankYouViewTemplate">
+          <h2>Thank You For Contacting Us</h2>
+            <div class="row">
+              <div class="col-md-6">
+                 <p> Your query has been lodged with us. </p>
+                 <p> We will get back to you as soon as possible. </p>
+                 <%= link_to 'Go Back Home', root_path  %>
+              </div>
+            </div>
+        </script>
 
   <script type="text/template" id="TradieListViewListAllTemplate">
        <h4>Tradesmen near you</h4>
@@ -270,8 +321,79 @@
        </table>
   </script>
 
+
   <script type="text/template" id="TradieListViewInfo">
        <h4>Profile</h4>
        <ul id="TradieListViewDetails">
        </ul>
   </script>
+
+  <script type="text/template" id="policyViewTemplate">
+    <h1>Terms and Conditions: User Agreement</h1>
+    <br>
+    <p>Below are the terms and conditions of use for TradieFind. This Agreement describes the terms and conditions applicable to your use of our services available under the domain and sub-domains. If you do not agree to be bound by the terms and conditions of this Agreement, do not use or access our services.</p>
+    <br>
+    <h3>Services & User Eligibility</h3>
+    <p>TradieFind provides a link for businesses and consumers. It allows tradespeople and the general public to request and provide quotes for goods and services. Builders, tradespeople and suppliers registered with TradieFind can provide quotes for goods and services requested by any person accessing this site. This site is for any person over the age of 18 and our services are available only to those who can form legally binding contracts under applicable law.</p>
+    <br>
+    <h3>Provide Accurate Information</h3>
+    <p>
+      You agree to provide true, accurate and complete information as prompted by the registration and/or job request forms. Whenever you submit any information to the site (including but not limited to submitting a request for services, applying to register your services), you agree to provide true, accurate and complete information. TradieFind reserves the right to discard your request/s upon the discovery that the information you provided or submitted is not complete or accurate.</p>
+    <br>
+    <h3>Disclaimer of Liability</h3>
+    <p>
+      We are not liable to you or anyone else for any loss you incur in connection with use of this site or any linked site. To the extent permitted by applicable law, all representations, warranties, other terms and liability are excluded. In particular, we make no representation or warranty as to the reliability, accuracy or relevance of any of the information on this site (including information contained in requests for quotes or quotes submitted), or the merchantability or fitness for purpose of any of the service providers and their services offered through this site. As we are not involved in the dealings between users and service providers, we are unable to guarantee the quality of the goods or services provided, the accuracy or veracity of the dealings, or the ability of a party to provide or pay for (as the case may be) requested goods or services, and we exclude liability for any loss incurred in relation to these. All workmanship is the service providers responsibility and TradieFind will not be held liable or become involved in any litigation arising from any service provider responding to any job lead. You use this site and other linked sites at your own risk. We endeavor to provide a convenient and functional site, but we do not guarantee that it will be error free or that the site or the server that operates it are free of viruses or other harmful components. We urge you to keep backup copies of material you use with the site. Without limiting the foregoing, everything on the site (including but not limited to, third party applications and site content) is provided to you “AS IS” and “AS AVAILABLE” without warranty or condition of any kind, either express or implied, including, but not limited to, any implied warranties or conditions of title, merchantability, fitness for a particular purpose, or non-infringement. TradieFind makes no warranty any goods or services purchased or obtained through the site or any transactions entered into through the site. No advice or information, whether oral or written, obtained by user from TradieFind or through the site shall create any warranty not expressly made herein.
+    </p>
+    <br>
+    <%= link_to 'Back Home', root_path %>
+  </script>
+
+  <script type="text/template" id="archiveViewTemplate">
+    <div class="wrap">
+
+<h2>Archive of Past Jobs</h2>
+
+<br>
+<h3>Completed on 10/04/2016</h3>
+<p>
+  <iframe width="480" height="300" src="https://www.youtube.com/embed/HzR29XWG-nc?controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+</p>
+<br>
+<h3>Completed on 16/03/2016</h3>
+<p>
+  <iframe width="480" height="300" src="https://www.youtube.com/embed/cSeOJZ13XVo?controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+</p>
+<br>
+<h3>Completed on 01/03/2016</h3>
+<p>
+  <iframe width="480" height="300" src="https://www.youtube.com/embed/C0Dsfup0SKk?controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+</p>
+</div>
+  </script>
+
+  <script type="text/template" id='faqViewTemplate'>
+
+           <p>Why did the panda chase the butterfly?</p>
+           <p>
+             Lorem ipsum they met, consectetur adipisicing about elit. Sed quae ipsum
+             similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
+              aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
+            </p>
+           <p>How do I know the tradesman is trustworthy?</p>
+           <p>
+             You can check the reviews and ratings that they have recieved from past
+             jobs that they have completed.
+            </p>
+            <p>How do I make payments?</p>
+            <p>
+              You can pay them through our secure payment system located in the "somewhere".
+              Once there, you can follow the prompts and your payment will be processed.
+             </p>
+             <p>Lorem this Lorem that</p>
+             <p>
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quae ipsum
+               similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
+                aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
+             </p>
+             <%= link_to 'Back Home', root_path %>
+       </script>

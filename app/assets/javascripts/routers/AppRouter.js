@@ -4,6 +4,7 @@ app.AppRouter = Backbone.Router.extend({
     routes: {
       '': 'home',
       'reservation/:id': 'showReservation',
+      'reservationlist/:id': 'showResList',
       'confirmation': 'showConfirmed',
       'user': 'showUser',
       'user/:id': 'showUser',
@@ -14,6 +15,8 @@ app.AppRouter = Backbone.Router.extend({
       'contactUs': 'contactUs',
       'thankyou': 'thankYou',
       'edituser': 'editUser',
+      'policy': 'policy',
+      'archive': 'archive',
       'faq': "faq"
     },
 
@@ -28,6 +31,14 @@ app.AppRouter = Backbone.Router.extend({
       var reservationView = new app.ReservationView({model: reservation});
       app.reservation_id = id;
       reservationView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    showResList: function(id) {
+      var resList = app.reservations.get(id);
+      var resListView = new app.ResListView({ model: reservation });
+      app.reservation_id = id;
+      resListView.render();
       $(".homeIndexContent").hide();
     },
 
@@ -99,6 +110,18 @@ app.AppRouter = Backbone.Router.extend({
       var user = app.users.get(id);
       var addQuoteView = new app.AddQuoteView();
       addQuoteView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    policy: function() {
+      var policyView = new app.PolicyView();
+      policyView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    archive: function() {
+      var archiveView = new app.ArchiveView();
+      archiveView.render();
       $(".homeIndexContent").hide();
     },
 
