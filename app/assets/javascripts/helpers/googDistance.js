@@ -50,6 +50,16 @@ function findCurrentLoc() {
       console.log(position.coords.longitude);
       var LatLon ="LAT: " + position.coords.latitude + " LON: " +position.coords.longitude;
 
+      var currentLoc = {};
+      currentLoc.lat = position.coords.latitude;
+      currentLoc.lon = position.coords.longitude;
+      currentLoc.userid = app.current_user;
+      currentLoc.address1 = '244 George street';
+      currentLoc.address2 = 'Sydney';
+      console.log(currentLoc);
+      localStorage.setItem( 'currentLoc', JSON.stringify(currentLoc) );
+
+
       $('#cust_location_label').text(LatLon);
       // infoWindow.setPosition(pos);
       // infoWindow.setContent('Location found.');
