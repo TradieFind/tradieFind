@@ -15,7 +15,7 @@ app.ViewReservationView = Backbone.View.extend({
       // this.$el.append(quotesViewTemplate);
       var quotesList = app.quotes.where({reservation_id:reservationID});
       console.log(quotesList);
-      var myQuoteView = new app.myQuoteView(model: quotesList);;
+      // var myQuoteView = new app.myQuoteView(model: quotesList);;
       myQuoteView.render();
 
   },
