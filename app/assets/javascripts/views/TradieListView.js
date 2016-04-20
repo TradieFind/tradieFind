@@ -6,10 +6,8 @@ app.TradieListView = Backbone.View.extend({
  events: {
   //  'click #searchButton' : 'searchForFlights',
   //  'keypress textarea' : 'checkForEnterSearchFlights',
-  //  'change #searchFrom' : 'loadDestinations',
+   'click li.book_link' : 'makeReservation',
    'click td.tradie_link' : 'showTradie'
-
-
  },
 
  initialize: function(options) {
@@ -78,28 +76,52 @@ app.TradieListView = Backbone.View.extend({
  },  //END render
 
   showTradie: function(passingTD) {
-    console.log(passingTD.currentTarget.attributes[1].value);
     var tradieID =  parseInt(passingTD.currentTarget.attributes[1].value);
     var appViewTemplate = $("#TradieListViewInfo").html();
     this.$el.append(appViewTemplate);
 
     var t = app.users.findWhere({id: tradieID});
-    console.log(t);
-
-    console.log(t);
     var strHTML
             = "<li>Name:" + t.attributes.first_name + " " + t.attributes.last_name + "</li>"
             + "<li>" + t.attributes.company_name + "</li>"
             + "<li>1000 </li>" //get Jobs completed
             + "<li>"  +  "</li>"  // get Ratings
-            + "<li>" + "'></li>"
-            + "<li class='book_link' data-r='" + t.tradieID + "'>Click to Book</li>" ; // GoogleDist//
+            + "<li>" + "</li>"
+            + "<li class='book_link' data-r='" + tradieID + "'>Click to Book</li>" ; // GoogleDist//
     $('#TradieListViewDetails').append(strHTML);
-  }
-});
-//
+  }, //END showTradie
 
-//
+  makeReservation: function(passingLi) {
+
+    console.log("Make a Res");
+    var newRes = new app.Reservation();
+    // var newRes = app.reservations.new;
+        //  if (resStatus  != "_NO_RESULT_") {
+           var tradieID =  parseInt(passingLi.currentTarget.attributes[1].value);
+           var cust = app.users.findWhere({id: app.current_user});
+           var addressOfCustomer = cust.attributes.address_one+", "+cust.attributes.address_two;
+           var t = app.users.findWhere({id: tradieID});
+           var tradeType = t.attributes.trade;
+           newRes.set({
+             user_id: app.current_user,
+             location: addressOfCustomer,
+             trade_name: tradeType,
+             request_time:  Date("Fri Mar 25 2015 09:56:24"),
+             comments: "wear clothes",
+             job_status: "booked"
+           });
+           newRes.save();
+           passingLi.toElement.textContent = "BOOKED";
+           passingLi.toElement.style.pointerEvents = "none"
+        //  } else
+        //  {
+        //    alert("Sorry this seat has been booked");
+        //    x.toElement.style.pointerEvents = "none"
+        //    console.log("XXXXXXXXXX  " +resStatus);
+        //    x.toElement.textContent = app.users.returnUserName(resStatus);
+        //  }
+  } //END makeReservations
+});
 //
 //
 //
