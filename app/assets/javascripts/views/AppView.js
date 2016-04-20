@@ -36,7 +36,6 @@ app.AppView = Backbone.View.extend({
   createHash: function(){
     var radius = $('#distance').val();
     var inTrade= $('#tradeOptions option:selected').val();
-
     var thisUser = app.users.where({id: app.current_user});
     if (this.addressType === 'homeAddress') {
       var customer_Lat = thisUser[0].attributes.lat;
@@ -50,7 +49,6 @@ app.AppView = Backbone.View.extend({
     else {
       alert("please choose an address");
     }
-
     //var tradieListViewOld = app.TradieListView.render(customer_Lat, customer_Lon, inTrade, radius );
     var tradieListView =new  app.TradieListView({"customer_Lat":customer_Lat,
                                "customer_Lon":customer_Lon,
