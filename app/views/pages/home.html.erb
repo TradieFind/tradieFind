@@ -101,12 +101,12 @@
      {{ } }}
    </p>
    <p>
-     {{ if (rate !== ""){ }}
+     {{ if (rate !== null) { }}
        Rate:{{= rate }}
-       {{ } }}
+     {{ } }}
    </p>
    <p>
-     {{ if (phone_no !== "") { }}
+     {{ if (phone_no !== null) { }}
        Contact:{{= phone_no }}
      {{ } }}
    </p>
@@ -328,5 +328,5 @@
                similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
                 aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
              </p>
-
+             <%= link_to 'Back Home', root_path %>
        </script>
