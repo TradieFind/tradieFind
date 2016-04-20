@@ -37,14 +37,14 @@ app.AppView = Backbone.View.extend({
     var radius = $('#distance').val();
     var inTrade= $('#tradeOptions option:selected').val();
     var thisUser = app.users.where({id: app.current_user});
-    if () {
+    // if () {
       var customer_Lat = thisUser[0].attributes.lat;
       var customer_Lon = thisUser[0].attributes.lon;
-    }
-    else {
-      var customer_Lat = thisUser[0].attributes.lat;
-      var customer_Lon = thisUser[0].attributes.lon;
-    }
+    // }
+    // else {
+    //   var customer_Lat = thisUser[0].attributes.lat;
+    //   var customer_Lon = thisUser[0].attributes.lon;
+    // }
     console.log(inTrade);
 
     //var tradieListViewOld = app.TradieListView.render(customer_Lat, customer_Lon, inTrade, radius );
