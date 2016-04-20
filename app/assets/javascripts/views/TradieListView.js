@@ -12,6 +12,7 @@ app.TradieListView = Backbone.View.extend({
   },
 
  render: function() {
+   
    var appViewTemplate = $('#reviewViewTemplate').html();
    this.$el.after(appViewTemplate);
    var tradieByTrade = app.users.where({trade: this.options.inTrade});

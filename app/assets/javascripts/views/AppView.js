@@ -32,6 +32,7 @@ app.AppView = Backbone.View.extend({
     var thisUser = app.users.where({id: app.current_user});
     var customer_Lat = thisUser[0].attributes.lat;
     var customer_Lon = thisUser[0].attributes.lon;
+    console.log(inTrade);
 
     //var tradieListViewOld = app.TradieListView.render(customer_Lat, customer_Lon, inTrade, radius );
     var tradieListView =new  app.TradieListView({"customer_Lat":customer_Lat,
