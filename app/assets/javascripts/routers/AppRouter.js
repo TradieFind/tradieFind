@@ -4,11 +4,11 @@ app.AppRouter = Backbone.Router.extend({
     routes: {
       '': 'home',
       'reservation/:id': 'showReservation',
-      'reservationlist/:id': 'showResList',
+      'reservationlist': 'showResList',
       'confirmation': 'showConfirmed',
       'user': 'showUser',
       'user/:id': 'showUser',
-      'review/:id': 'showReview',
+      'reviews': 'showReview',
       'reviewinput/:id': 'reviewInput',
       'quotes': 'showQuotes',
       'addquote': 'addQuote',
@@ -21,7 +21,7 @@ app.AppRouter = Backbone.Router.extend({
       'reservations/:id': 'showReservations'
     },
 
-showReservations:function(id){
+    showReservations:function(id){
     //var reservations = app.reservations.get({"user_id": 1});
     //var reservations = app.reservations.where({"user_id": app.current_user});
     //console.log(reservations);
@@ -45,9 +45,12 @@ showReservations:function(id){
     },
 
     showResList: function(id) {
-      var resList = app.reservations.get(id);
-      var resListView = new app.ResListView({ model: reservation });
-      app.reservation_id = id;
+      if (!id){
+        id = app.current_user;
+      }
+      var resList = app.reservations.models;
+
+      var resListView = new app.ReservationListView();
       resListView.render();
       $(".homeIndexContent").hide();
     },
