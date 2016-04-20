@@ -2,12 +2,15 @@
 <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1W_PZDArK46FW21IKVhhA2mzM1SfFVSI">
 </script>
+
+
 <script>
      var app = app || {};
      <% if current_user  %>
        app.current_user = <%= current_user.id %>
     <% end %>
 </script>
+
 <div class="jumbotron">
   <div class="container">
     <div id="main"></div>
@@ -15,196 +18,214 @@
     <div class ="userProfile"></div>
   </div>
 </div>
-     <script type="text/template" id='appViewTemplate'>
-       <!-- Search function to find tradies nearby certain areas on certain dates -->
-        <h1 class="brand-display">TradieFind</h1>
-       <p>Need a tradie fast?</p>
-       <p>You've Come To The Right Place!</p>
-       <p>
-         <%if logged_in? %>
-         <form id="homeSearchForm" role="search">
+
+ <script type="text/template" id='appViewTemplate'>
+   <!-- Search function to find tradies nearby certain areas on certain dates -->
+    <h1 class="brand-display">TradieFind</h1>
+   <p>Need a tradie fast?</p>
+   <p>You've Come To The Right Place!</p>
+   <p>
+     <%if logged_in? %>
+     <form id="homeSearchForm" role="search">
+       <div class="form-group">
+         <div class="row">
+         <div class="col-sm-offset-2 control-label col-sm-4">
+           <label  class="search-label">Find Me:</label>
+         </div>
+         <div class="col-sm-4">
+             <select  id="tradeOptions" class="form-control">
+              </select>
+         </div>
+         </div>
+       </div>
+       <div class="form-group">
+       <div class="row">
+         <div class="col-sm-offset-2 control-label col-sm-4">
+           <label class="search-label" for="comment">Within: </label>
+         </div>
+           <div class="col-sm-4">
+             <select class="form-control" id="distance" placeholder="Location">
+               <option value="5">5 km</option>
+               <option value="10">10 km</option>
+               <option value="15">15 km</option>
+               <option value="20">20 km</option>
+               <option value="25">25 km</option>
+               <option value="30">30 km</option>
+             </select>
+           </div>
+         </div>
+       </div>
+       <div class="form-group">
+         <div class="row">
+           <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
+           <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
+           </div>
+       </div>
            <div class="form-group">
-             <div class="row">
-             <div class="col-sm-offset-2 control-label col-sm-4">
-               <label  class="search-label">Find Me:</label>
-             </div>
-             <div class="col-sm-4">
-                 <select  id="tradeOptions" class="form-control">
-                  </select>
-             </div>
-             </div>
-           </div>
-           <div class="form-group">
-           <div class="row">
-             <div class="col-sm-offset-2 control-label col-sm-4">
-               <label class="search-label" for="comment">Within: </label>
-             </div>
-               <div class="col-sm-4">
-                 <select class="form-control" id="distance" placeholder="Location">
-                   <option value="5">5 km</option>
-                   <option value="10">10 km</option>
-                   <option value="15">15 km</option>
-                   <option value="20">20 km</option>
-                   <option value="25">25 km</option>
-                   <option value="30">30 km</option>
-                 </select>
-               </div>
-             </div>
-           </div>
-           <div class="form-group">
-             <div class="row">
-               <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
-               <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
-               </div>
-           </div>
-               <div class="form-group">
-                   <div class="row">
-                 <div class="col-xs-offset-3  col-xs-6  ">
-                   <button id="homeSearchSubmit" type="button" class="btn btn-info  ">Search</button>
-               </div>
-               </div>
-             </div>
-             </form>
-           <% else %>
-             <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
-             <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
-             <% end %>
-     </script>
-     <script id="reviewInputViewTemplate" type="text/template">
-       <textarea id="reviewContent" placeholder="Write a review"></textarea>
-       <button>Submit</button>
-     </script>
-     <script type="text/template" id='userViewTemplate'>
-       <!-- View their own profile and show their current and past reservations-->
-         <h1>User Profile</h1>
-       <h2>{{= first_name }}'s profile</h2>
-       <p>First Name: {{= first_name }}</p>
-       <p>Last Name:{{= last_name }}</p>
-       <p>Email: {{= email }}</p>
-       <p>Address: {{= address_one }}</p>
-       <p>
-         {{ if (company_name !== ""){ }}
-           Company:{{= company_name }}
-         {{ } }}
-       </p>
-       <p>
-         {{ if (trade !== "") { }}
-           Trade:{{= trade }}
-         {{ } }}
-       </p>
-       <p>
-         {{ if (rate !== ""){ }}
-           Rate:{{= rate }}
-           {{ } }}
-       </p>
-       <p>
-         {{ if (phone_no !== "") { }}
-           Contact:{{= phone_no }}
-         {{ } }}
-       </p>
-       <p>
-         {{ if (qualifications !== "") { }}
-           Qualifications:{{= qualifications }}
-         {{ } }}
-       </p>
-     <%= link_to "Edit", "#edituser" %>
-     <%= link_to "Back Home", "" %>
-     </script>
-     <script type="text/template" id='editUserViewTemplate'>
-       <h1>Edit Profile</h1>
-       <div  class= "col-md-6">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label for="Name3" class="col-sm-2 control-label">Name: </label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="eu_firstName" placeholder="First Name">
-                </div>
-              </div>
-       <div class="form-group">
-         <label for="inputName3" class="col-sm-2 control-label">Name: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="eu_lastName" placeholder="Last Name">
-         </div>
-       </div>
-       <div class="form-group">
-         <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="eu_addressOne" placeholder="Address #1">
-         </div>
-       </div>
-       <div class="form-group">
-         <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="eu_addressTwo" placeholder="Address #2">
-         </div>
-       </div>
-       <div class="form-group">
-         <label for="inputCompany3" class="col-sm-2 control-label">Company: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="eu_companyName" placeholder="Company Name">
-         </div>
-       </div>
-       <div class="form-group">
-         <label for="inputTrade3" class="col-sm-2 control-label">Trade: </label>
-         <div class="col-sm-10">
-           <input type="text" class="form-control" id="eu_tradeName" placeholder="Trade">
-         </div>
-       </div>
-       <div class="form-group">
-         <label for="inputRate3" class="col-sm-2 control-label">Rate/hr: </label>
-         <div class="col-sm-10">
-           <input type="number" class="form-control" id="eu_hourlyRate" placeholder="Enter hourly rate">
-         </div>
-       </div>
-       <div class="form-group">
-         <label for="inputQualicfications3" class="col-sm-2 control-label">qualifications: </label>
-         <div class="col-sm-10">
-           <textarea class="form-control" id = "eu_qualifications" rows="8"></textarea>
-         </div>
-       </div>
-       <div class="form-group">
-         <label for="inputComment3" class="col-sm-2 control-label">Email: </label>
-         <div class="col-sm-10">
-           <input type="email" class="form-control" id="eu_email" placeholder="Email">
-       </div>
-       <div class="form-group">
-         <div class="col-sm-offset-2 col-sm-10">
-           <div class="form-group">
-             <div class="col-sm-offset-1 control-label col-sm-2">
-             <button id="show-tradie-form" type="button" class="btn btn-default">I'm a tradie</button>
+               <div class="row">
+             <div class="col-xs-offset-3  col-xs-6  ">
+               <button id="homeSearchSubmit" type="button" class="btn btn-info  ">Search</button>
            </div>
            </div>
          </div>
-       </div>
-     </form>
+         </form>
+       <% else %>
+         <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
+         <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
+         <% end %>
+ </script>
+
+
+ <script id="reviewInputViewTemplate" type="text/template">
+   <textarea id="reviewContent" placeholder="Write a review"></textarea>
+   <button>Submit</button>
+ </script>
+
+
+ <script type="text/template" id='userViewTemplate'>
+   <!-- View their own profile and show their current and past reservations-->
+     <h1>User Profile</h1>
+   <h2>{{= first_name }}'s profile</h2>
+   <p>First Name: {{= first_name }}</p>
+   <p>Last Name:{{= last_name }}</p>
+   <p>Email: {{= email }}</p>
+   <p>Address: {{= address_one }}</p>
+   <p>
+     {{ if (company_name !== ""){ }}
+       Company:{{= company_name }}
+     {{ } }}
+   </p>
+   <p>
+     {{ if (trade !== "") { }}
+       Trade:{{= trade }}
+     {{ } }}
+   </p>
+   <p>
+     {{ if (rate !== ""){ }}
+       Rate:{{= rate }}
+       {{ } }}
+   </p>
+   <p>
+     {{ if (phone_no !== "") { }}
+       Contact:{{= phone_no }}
+     {{ } }}
+   </p>
+   <p>
+     {{ if (qualifications !== "") { }}
+       Qualifications:{{= qualifications }}
+     {{ } }}
+   </p>
+ <%= link_to "Edit", "#edituser" %>
+ <%= link_to "Back Home", "" %>
+ </script>
+
+
+
+ <script type="text/template" id='editUserViewTemplate'>
+   <h1>Edit Profile</h1>
+   <div  class= "col-md-6">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="Name3" class="col-sm-2 control-label">Name: </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="eu_firstName" placeholder="First Name">
+            </div>
+          </div>
+   <div class="form-group">
+     <label for="inputName3" class="col-sm-2 control-label">Name: </label>
+     <div class="col-sm-10">
+       <input type="text" class="form-control" id="eu_lastName" placeholder="Last Name">
      </div>
+   </div>
+   <div class="form-group">
+     <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
+     <div class="col-sm-10">
+       <input type="text" class="form-control" id="eu_addressOne" placeholder="Address #1">
      </div>
-     </script>
-     <script type="text/template" id='reservationViewTemplate'>
-       <p>Name: </p>
-       <p>Company Name: </p>
-       <p>Phone Number: </p>
-       <p>Price: </p>
-       <p>Rating: </p>
-     <button id="cancel-reservation">Cancel Reservation</button>
-     <button id="confirm-reservation">Confirm Reservation</button>
-     </script>
-     <script type="text/template" id='confirmationViewTemplate'>
-         <h2>Thank You <%%= app.current_user.name %%>. The "tradie" has been notified of your request.</h2>
-         <p>Name: </p>
-         <p>Company Name: </p>
-         <p>Phone Number: </p>
-         <p>Price: </p>
-         <p>Rating: </p>
-         <p><%= link_to 'Go Back Home', root_path  %></p>
-     </script>
+   </div>
+   <div class="form-group">
+     <label for="inputAddress3" class="col-sm-2 control-label">Address: </label>
+     <div class="col-sm-10">
+       <input type="text" class="form-control" id="eu_addressTwo" placeholder="Address #2">
+     </div>
+   </div>
+   <div class="form-group">
+     <label for="inputCompany3" class="col-sm-2 control-label">Company: </label>
+     <div class="col-sm-10">
+       <input type="text" class="form-control" id="eu_companyName" placeholder="Company Name">
+     </div>
+   </div>
+   <div class="form-group">
+     <label for="inputTrade3" class="col-sm-2 control-label">Trade: </label>
+     <div class="col-sm-10">
+       <input type="text" class="form-control" id="eu_tradeName" placeholder="Trade">
+     </div>
+   </div>
+   <div class="form-group">
+     <label for="inputRate3" class="col-sm-2 control-label">Rate/hr: </label>
+     <div class="col-sm-10">
+       <input type="number" class="form-control" id="eu_hourlyRate" placeholder="Enter hourly rate">
+     </div>
+   </div>
+   <div class="form-group">
+     <label for="inputQualicfications3" class="col-sm-2 control-label">qualifications: </label>
+     <div class="col-sm-10">
+       <textarea class="form-control" id = "eu_qualifications" rows="8"></textarea>
+     </div>
+   </div>
+   <div class="form-group">
+     <label for="inputComment3" class="col-sm-2 control-label">Email: </label>
+     <div class="col-sm-10">
+       <input type="email" class="form-control" id="eu_email" placeholder="Email">
+   </div>
+   <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-10">
+       <div class="form-group">
+         <div class="col-sm-offset-1 control-label col-sm-2">
+         <button id="show-tradie-form" type="button" class="btn btn-default">I'm a tradie</button>
+       </div>
+       </div>
+     </div>
+   </div>
+ </form>
+ </div>
+ </div>
+ </script>
+
+
+ <script type="text/template" id='reservationViewTemplate'>
+   <p>Name: </p>
+   <p>Company Name: </p>
+   <p>Phone Number: </p>
+   <p>Price: </p>
+   <p>Rating: </p>
+ <button id="cancel-reservation">Cancel Reservation</button>
+ <button id="confirm-reservation">Confirm Reservation</button>
+ </script>
+
+
+
+ <script type="text/template" id='confirmationViewTemplate'>
+     <h2>Thank You <%%= app.current_user.name %%>. The "tradie" has been notified of your request.</h2>
+     <p>Name: </p>
+     <p>Company Name: </p>
+     <p>Phone Number: </p>
+     <p>Price: </p>
+     <p>Rating: </p>
+     <p><%= link_to 'Go Back Home', root_path  %></p>
+ </script>
+
+
+
 <!-- Added for dev only not the final form -->
-     <script type="text/template" id='quotesViewTemplate'>
-       <h1>Quotes view (dev)</h1>
-       <ul id="quoteData"></ul>
-       <p><%= link_to 'Go Back Home', root_path  %></p>
-     </script>
-     <script type="text/template" id="contactUsViewTemplate">
+ <script type="text/template" id='quotesViewTemplate'>
+   <h1>Quotes view (dev)</h1>
+   <ul id="quoteData"></ul>
+   <p><%= link_to 'Go Back Home', root_path  %></p>
+ </script>
+
+
+<script type="text/template" id="contactUsViewTemplate">
        <h2>Contact Us</h2>
          <div class="row">
            <div class="col-md-6">
@@ -233,7 +254,7 @@
     </div>
   </div>
   <div class
-
+</script>
 
   <script type="text/template" id="reviewViewTemplate">
        <h4>Tradesmen near you</h4>

@@ -83,9 +83,9 @@ app.TradieListView = Backbone.View.extend({
 
  },  //END render
 
- showTradie: function() {
-   app.router.navigate('users/' + this.model.get("id"), true);
- }
+ // showTradie: function() {
+ //   app.router.navigate('users/' + this.model.get("id"), true);
+ // }
 
 
    // var name = this.model.attributes.first_name + " " + this.model.attributes.last_name;
