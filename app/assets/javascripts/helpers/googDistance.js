@@ -22,10 +22,9 @@ function googDistance(lat1, lon1, lat2, lon2, tag_ref) {
           var results = response.rows[i].elements;
           for (var j = 0; j < results.length; j++) {
             distanceResults = results[j].distance.value;
-            console.log("A " + distanceResults);
-            distanceIs = distanceResults;
+            distanceResults = distanceResults/1000;
             var tag_value = tag_ref;
-            $('#' + tag_value).text(distanceIs);
+            $('#' + tag_value).text(Number(distanceResults .toFixed(1)));
           }
         }
       }

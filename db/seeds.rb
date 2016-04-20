@@ -97,7 +97,16 @@ Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.c
 Review.destroy_all()
 review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
 review2 = Review.create(reviewer_id: 2, reviewee_id: 2, comment: "Not Bad", rating: 3)
-review3 = Review.create(reviewer_id: 3, reviewee_id: 3, comment: "Great", rating: 5)
+review4 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 5)
+review5 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 2)
+review6 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Super", rating: 3)
+review7 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Dingo", rating: 1)
+review8 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Yawn", rating: 4)
+review9 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Muppet", rating: 0)
+
+
+
+
 
 Reservation.destroy_all()
 reservation1 = Reservation.create(user_id: 1, location: "Milsons Point", trade_name: "Mechanic", request_time: "1202", comments: "Alright", job_status: "Pending")

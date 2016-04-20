@@ -32,7 +32,6 @@ $(document).ready(function() {
   $.when(trUsers, trRes, trQuote, trReview).then( function() {
     app.router = new app.AppRouter();
     Backbone.history.start();
-    console.log(trReview);
     app.trades = new app.Trades();
     var trTrade = app.trades.fetch();
 
