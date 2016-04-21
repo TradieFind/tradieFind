@@ -5,10 +5,10 @@ app.MyQuoteView = Backbone.View.extend({
   tagName: 'tr',
 
   events:{
-      'click  .accept-quote': 'clickAcceptQuote',
-      'click  .decline-quote': 'clickDeclineQuote',
-      'click  .finish-quote': 'clickFinishQuote',
-      'click .completed-quote': 'clickPayButton'
+      'click   td.accept-quote': 'clickAcceptQuote',
+      'click  td.decline-quote': 'clickDeclineQuote',
+      'click  td.finish-quote': 'clickFinishQuote',
+      'click td.completed-quote': 'clickPayButton'
   },
 
   clickPayButton: function(){
@@ -29,7 +29,7 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickDeclineQuote: function(e){
-    console.log(e.target);
+
     var reservation_id = this.model.attributes.reservation_id;
     var reservation = app.reservations.get(reservation_id);
     var reservQuoteId  = reservation.get("quote_id");
@@ -45,6 +45,7 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickFinishQuote:function(e){
+    console.log(e.target);
       var reservation_id = this.model.attributes.reservation_id;
       var reservation = app.reservations.get(reservation_id);
       reservation.set({job_status:"completed"})
@@ -53,6 +54,8 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickAcceptQuote: function(e){
+    // var quoteID =  parseInt(e.currentTarget.attributes[1].value);
+
     var quotesId =  this.model.get('id');
     var reservation_id = this.model.attributes.reservation_id;
     this.model.set({"status":"accepted"});
@@ -76,16 +79,21 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   render: function(){
+    var userId = this.model.get("user_id")
+    var userModel = app.users.findWhere({id: userId});
+    var FName = userModel.get('first_name');
+    var SName = userModel.get('last_name')
+    var username = FName +" "+ SName;
+
+
         var td = "<td>";
-        td += this.model.get("id");
+        td += username;
         td += "</td><td>";
-        td += this.model.get("reservation_id");
-        td += "</td><td>";
-        td += this.model.get("user_id");
-        td += "</td><td>";
-        td += this.model.get("comment");
+        td += this.model.get("quote_value");
         td += "</td><td>";
         td += this.model.get("estimated_duration");
+        td += "</td><td>";
+        td += this.model.get("comment");
       //
         var reservation_id = this.model.attributes.reservation_id;
         var reservation = app.reservations.get(reservation_id);
@@ -98,19 +106,18 @@ app.MyQuoteView = Backbone.View.extend({
         //if(reservQuoteId === thisQuoteId  ){
 
         if(reservStatus === 'booked'){
-         td += "</td><td class ='decline-quote' quote_id='"+this.model.get('id')+"'>";
+         td += "</td><td class ='decline-quote row'  quote_id='"+this.model.get('id')+"'>";
         td += "Decline";
         td += "</td>";
         td += "</td><td class ='finish-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Completed";
        td += "</td>";
      }else if(reservStatus ==='completed'){
-         console.log("2",reservStatus);
        td += "</td><td class ='completed-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Pay";
        td += "</td>";
 
-     }else{
+     }else if(reservStatus ==='pending'){
         td += "</td><td class ='accept-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Accept this Quote";
        td += "</td>";
