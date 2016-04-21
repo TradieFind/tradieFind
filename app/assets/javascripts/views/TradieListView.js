@@ -54,7 +54,10 @@ app.TradieListView = Backbone.View.extend({
       showTradies(parseFloat(t.attributes.lat),parseFloat(t.attributes.lon),t.attributes.company_name);
       //need to calculate average rating
       var reviews_t = app.reviews.where({reviewee_id: t.attributes.id});
-      if (reviews_t) {
+      rating_t = "No reviews";
+      console.log(reviews_t.length);
+      console.log(reviews_t.length > 0);
+      if (reviews_t.length > 0) {
         var rating_t = 0;
         var denom = 0;
          _(reviews_t).each(function(r){
