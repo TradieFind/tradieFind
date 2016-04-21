@@ -36,7 +36,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li id="username">
-              <%if current_user.trade =='customer' %>
+              <%if (current_user.trade =="" || current_user.trade == "customer") %>
                  <i class="fa fa-money" aria-hidden="true"> </i>
                <%else  %>
                  <i class="fa fa-gavel" aria-hidden="true"></i>

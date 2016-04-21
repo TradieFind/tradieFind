@@ -120,7 +120,7 @@ app.AppView = Backbone.View.extend({
     user = app.users.get(app.current_user);
 
     localStorage.setItem( 'currentLoc', "" );
-    if (user === undefined || user.attributes.trade === "customer"){
+    if (user === undefined || user.attributes.trade === "customer" || user.attributes.trade === ""){
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
     this.renderTradeList();
