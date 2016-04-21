@@ -64,6 +64,8 @@
            <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
            <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
            <p id="cust_location_label">1</p>
+           <div id="cust_location_label2">1</div>
+
            </div>
        </div>
            <div class="form-group">
@@ -373,8 +375,6 @@
        </table>
   </script>
 
-
-
   <script type="text/template" id="TradieListViewInfo">
        <h4>Profile</h4>
        <ul id="TradieListViewDetails" style="list-style: none;">
@@ -399,6 +399,20 @@
     </p>
     <br>
     <%= link_to 'Back Home', root_path %>
+  </script>
+
+  <script type="text/template" id="paymentViewTemplate">
+      <h2>Pay Your Invoice</h2>
+      <br>
+      <p>First Name: </p>
+      <p>Last Name: </p>
+      <p>Address: </p>
+      <br>
+      <h4>Please make sure the above details are correct before proceeding with payment</h4>
+      <!-- <button id="processPayment">Proceed</button> -->
+      <button onclick="window.location.href='/charges/new'">Proceed</button>
+      <br>
+      <%= link_to "Go Back Home", root_path %>
   </script>
 
   <script type="text/template" id="archiveViewTemplate">

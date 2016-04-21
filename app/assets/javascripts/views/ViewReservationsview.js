@@ -15,4 +15,3 @@ app.ViewReservationsView = Backbone.View.extend({
     });
     }
 });
- 
