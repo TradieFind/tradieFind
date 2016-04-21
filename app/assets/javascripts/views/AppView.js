@@ -65,8 +65,8 @@ app.AppView = Backbone.View.extend({
 
   renderTradeList:function(){
     this.model.each(function(model){
-        var tradeView = new app.TradeView({model: model});
-       tradeView.render();
+      var tradeView = new app.TradeView({model: model});
+      tradeView.render();
     });
   },
 
@@ -79,6 +79,7 @@ app.AppView = Backbone.View.extend({
     this.$el.html(appViewTemplate);
     this.renderTradeList();
   } else {
+    debugger 
     localStorage.setItem( 'currentLoc', "" );
     var appTradieViewTemplate = $('#appTradieViewTemplate').html();
     this.$el.html(appTradieViewTemplate);
