@@ -488,13 +488,16 @@
   <script type="text/template" id="paymentViewTemplate">
       <h2>Pay Your Invoice</h2>
       <br>
-      <p>First Name: </p>
-      <p>Last Name: </p>
-      <p>Address: </p>
+      <p>First Name: <%= current_user.first_name %></p>
+      <p>Last Name: <%= current_user.last_name %></p>
+      <p>Address: <%= current_user.address_one %></p>
+      <p>Suburb: <%= current_user.address_two %></p>
       <br>
       <h4>Please make sure the above details are correct before proceeding with payment</h4>
       <!-- <button id="processPayment">Proceed</button> -->
+      <br>
       <button onclick="window.location.href='/charges/new'">Proceed</button>
+      <br>
       <br>
       <%= link_to "Go Back Home", root_path %>
   </script>
