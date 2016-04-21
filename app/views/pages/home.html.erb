@@ -193,8 +193,8 @@
    <!-- View their own profile and show their current and past reservations-->
      <h1>{{= first_name }}'s Profile</h1>
   <div></div>
-
-
+    <% if logged_in? %>
+   <p><%= image_tag current_user.avatar_url(:display) %></p>
    <p>First Name: {{= first_name }}</p>
    <p>Last Name:{{= last_name }}</p>
    <p>Email: {{= email }}</p>
@@ -224,6 +224,7 @@
        Qualifications:{{= qualifications }}
      {{ } }}
    </p>
+   <% end %>
  <%= link_to "Edit", "#edituser" %><br>
 
  <%= link_to "Back Home", "" %>
@@ -231,21 +232,22 @@
 
      <script type="text/template" id='editUserViewTemplate'>
        <div  class= "col-md-6" id = "editUserForm">
-            <form class="form-horizontal">
+            <form method="post" action="/users/{{= id }}" class="form-horizontal" enctype="multipart/form-data" method="post">
+              <input type="hidden" name="_method" value="patch">
               <h1>Edit User Profile</h1>
 
 
           <div class="form-group row">
             <label for="last_name" class="col-sm-2 form-control-label">Image:</label>
             <div class="col-sm-10">
-            <input id="fileInput" type="file" name="fileInput">
+            <input id="fileInput" type="file" name="user[avatar]">
             </div>
             </div>
 
           <div class="form-group row">
         <label for="first_name" class="col-sm-2 form-control-label">First Name:</label>
           <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= first_name }}" id="first_name">
+         <input type="text" class="form-control" value="{{= first_name }}" id="first_name" name="user[first_name]">
          </div>
          </div>
 
@@ -253,7 +255,7 @@
           <div class="form-group row">
          <label for="last_name" class="col-sm-2 form-control-label">Last Name:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= last_name }}" id="last_name">
+         <input type="text" class="form-control" value="{{= last_name }}" id="last_name" name="user[last_name]">
        </div>
        </div>
 
@@ -261,7 +263,7 @@
           <div class="form-group row">
          <label for="email" class="col-sm-2 form-control-label">Email:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= email }}" id="email">
+         <input type="text" class="form-control" value="{{= email }}" id="email"  name="user[email]">
        </div>
        </div>
 
@@ -269,7 +271,7 @@
           <div class="form-group row">
          <label for="company_name" class="col-sm-2 form-control-label">Company:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= company_name }}" id="company_name">
+         <input type="text" class="form-control" value="{{= company_name }}" id="company_name"  name="user[company]">
        </div>
        </div>
 
@@ -277,7 +279,7 @@
           <div class="form-group row">
          <label for="trade" class="col-sm-2 form-control-label">Trade:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= trade }}" id="trade">
+         <input type="text" class="form-control" value="{{= trade }}" id="trade"  name="user[trade]">
        </div>
        </div>
 
@@ -285,7 +287,7 @@
           <div class="form-group row">
          <label for="rate" class="col-sm-2 form-control-label">Rate/Hr:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= rate }}" id="rate">
+         <input type="text" class="form-control" value="{{= rate }}" id="rate"  name="user[rate]">
        </div>
        </div>
 
@@ -293,7 +295,7 @@
           <div class="form-group row">
          <label for="phone_no" class="col-sm-2 form-control-label">Phone Number:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= phone_no }}" id="phone_no">
+         <input type="text" class="form-control" value="{{= phone_no }}" id="phone_no"  name="user[phone_no]">
        </div>
        </div>
 
@@ -301,7 +303,7 @@
           <div class="form-group row">
          <label for="qualifications" class="col-sm-2 form-control-label">Qualifications:</label>
          <div class="col-sm-10">
-         <input type="text-area" class="form-control" value="{{= qualifications }}" id="qualifications">
+         <input type="text-area" class="form-control" value="{{= qualifications }}" id="qualifications" name="user[qualifications]">
        </div>
        </div>
 
@@ -309,7 +311,7 @@
           <div class="form-group row">
          <label for="address_one" class="col-sm-2 form-control-label">Unit/House #:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= address_one }}" id="address_one">
+         <input type="text" class="form-control" value="{{= address_one }}" id="address_one"  name="user[address_one]">
        </div>
        </div>
 
@@ -317,7 +319,7 @@
           <div class="form-group row">
          <label for="address_two" class="col-sm-2 form-control-label">Suburb:</label>
          <div class="col-sm-10">
-         <input type="text" class="form-control" value="{{= address_two }}" id="address_two">
+         <input type="text" class="form-control" value="{{= address_two }}" id="address_two" name="user[address_two]">
        </div>
        </div>
 
@@ -387,15 +389,15 @@
       <h2>Contact Us</h2>
         <div class="row">
           <div class="col-md-6">
-      <p>
+      <h5>
          If you have a question or would like more information, we'd love to hear from you.
          Simply contact us through the methods below or complete the enquiry form and we'll get back
          to you as soon as possible.
-      </p>
-      <p>Our Office</p>
-      <p> Unit 1/999 Joel Turnbull Drive, Butterfly Park </p>
-      <p> Phone: 1300 000 000 </p>
-      <p> Fax: (00) 0000 0000 </p>
+      </h5>
+      <h5>Our Office</h5>
+      <h5> Unit 1/999 Joel Turnbull Drive, Butterfly Park </h5>
+      <h5> Phone: 1300 000 000 </h5>
+      <h5> Fax: (00) 0000 0000 </h5>
       </div>
 
  <div  class= "col-md-6">
@@ -417,7 +419,7 @@
  <div class="form-group">
    <label for="inputComment3" class="col-sm-2 control-label">Comment: </label>
    <div class="col-sm-10">
-     <textarea class="form-control" rows="8"></textarea>
+     <textarea class="form-control" rows="5"></textarea>
  </div>
  <div class="form-group">
    <div class="col-sm-offset-2 col-sm-10">
@@ -563,9 +565,9 @@
          <h2>My Reservation List</h2>
          <table class="table table-bordered" id="reservations">
            <tr>
-             <th>Comments</th>
-             <th>Location</th>
-             <th>Trade Type</th>
+             <th>id</th>
+             <th>user_id</th>
+             <th>quote_id</th>
              <th>Status</th>
            </tr>
          </table>
@@ -576,9 +578,9 @@
             <h3>Quotes For Reservation</h3>
             <table class="table table-bordered" id="quotes">
               <tr>
-                <th>Tradie</th>
-                <th>Comments</th>
-                <th>Quote Value</th>
+                <th>Id</th>
+                <th>Reservation</th>
+                <th>user_id</th>
                 <th>Start Time</th>
                 <th>Estimated Duration</th>
               </tr>

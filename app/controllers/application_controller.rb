@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
     helper_method :current_user, :logged_in?  # this enables these methods to be available in all view and controller
 
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
 
 
 def current_user
