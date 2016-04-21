@@ -22,12 +22,12 @@ class UsersController < ApplicationController
 
     def create
       @user = User.new user_params
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
-    else
-      render :new
-    end
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_path
+      else
+        render :new
+      end
     end
 
     def edit
@@ -35,9 +35,10 @@ class UsersController < ApplicationController
     end
 
     def update
-      user = @current_user
+      user = @current_user || User.find(params[:id])
       user.update user_params
-      redirect_to root_path
+      render :json => user
+      #redirect_to root_path
     end
 
 
@@ -49,7 +50,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :company_name, :trade, :rate, :phone_no, :qualifications, :address_one, :address_two, :lat, :lon)
+      params.require(:user).permit(:id, :first_name, :last_name, :email, :password,
+       :password_confirmation, :company_name, :trade, :rate, :phone_no,
+        :qualifications, :address_one, :address_two, :lat, :lon)
+        # params.require(:team).permit(:name,:captain,:season,:year,:active,player_ids: [])
+
     end
 
     def authorise

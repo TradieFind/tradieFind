@@ -25,7 +25,6 @@ app.ViewReservationView = Backbone.View.extend({
   },
 
   render: function(){
-
     var userID = this.model.get("user_id");
     if( userID === app.current_user){
         var td = "<td>";

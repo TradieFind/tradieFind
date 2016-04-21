@@ -64,6 +64,8 @@
            <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
            <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
            <p id="cust_location_label">1</p>
+           <div id="cust_location_label2">1</div>
+
            </div>
        </div>
            <div class="form-group">
@@ -139,10 +141,18 @@
  <%= link_to "Back Home", "" %>
  </script>
 
- <script type="text/template" id='editUserViewTemplate'>
-        <form>
-          <h1>Edit User Profile</h1>
+     <script type="text/template" id='editUserViewTemplate'>
+       <div  class= "col-md-6" id = "editUserForm">
+            <form class="form-horizontal">
+              <h1>Edit User Profile</h1>
 
+
+          <div class="form-group row">
+            <label for="last_name" class="col-sm-2 form-control-label">Image:</label>
+            <div class="col-sm-10">
+            <input id="fileInput" type="file" name="fileInput">
+            </div>
+            </div>
 
           <div class="form-group row">
         <label for="first_name" class="col-sm-2 form-control-label">First Name:</label>
@@ -226,6 +236,7 @@
          <button id="saveEditUser" class="btn btn-info">Save</button>
 
         </form>
+        </div>
       </script>
 
 
@@ -364,8 +375,6 @@
        </table>
   </script>
 
-
-
   <script type="text/template" id="TradieListViewInfo">
     <span type="text/template" id="TradieListViewDetails">
     </span>
@@ -389,6 +398,20 @@
     </p>
     <br>
     <%= link_to 'Back Home', root_path %>
+  </script>
+
+  <script type="text/template" id="paymentViewTemplate">
+      <h2>Pay Your Invoice</h2>
+      <br>
+      <p>First Name: </p>
+      <p>Last Name: </p>
+      <p>Address: </p>
+      <br>
+      <h4>Please make sure the above details are correct before proceeding with payment</h4>
+      <!-- <button id="processPayment">Proceed</button> -->
+      <button onclick="window.location.href='/charges/new'">Proceed</button>
+      <br>
+      <%= link_to "Go Back Home", root_path %>
   </script>
 
   <script type="text/template" id="archiveViewTemplate">
@@ -455,8 +478,6 @@
          </table>
        </script>
 
-
-
        <script id="quotesViewTemplate" type="text/template">
             <div class="row">
             <h3>Quotes For Reservation</h3>
@@ -470,5 +491,5 @@
               </tr>
             </table>
             </div>
-<%= link_to 'Go Back Home', root_path  %>
+            <%= link_to 'Go Back Home', root_path  %>
        </script>

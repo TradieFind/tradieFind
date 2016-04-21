@@ -17,6 +17,7 @@ app.AppRouter = Backbone.Router.extend({
       'edituser': 'editUser',
       'policy': 'policy',
       'archive': 'archive',
+      'payment': 'payment',
       'faq': "faq",
       'reservations/:id': 'showReservations'
     },
@@ -137,6 +138,12 @@ app.AppRouter = Backbone.Router.extend({
     archive: function() {
       var archiveView = new app.ArchiveView();
       archiveView.render();
+      $(".homeIndexContent").hide();
+    },
+
+    payment: function() {
+      var paymentView = new app.PaymentView();
+      paymentView.render();
       $(".homeIndexContent").hide();
     },
 

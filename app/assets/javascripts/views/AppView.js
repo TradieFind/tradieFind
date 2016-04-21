@@ -12,9 +12,14 @@ app.AppView = Backbone.View.extend({
   },
 
   checkbox_CA_Clicked:function(e){
-    $('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw margin-bottom"></i>');
 
+    //$('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw margin-bottom"></i>');
+
+
+    $('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw margin-bottom"></i><span>Looking for your current Location</span>');
     findCurrentLoc();
+
+    // getPlaceNearby();
     this.addressType = e.target.id;
   },
 
@@ -25,7 +30,7 @@ app.AppView = Backbone.View.extend({
   createSearch: function(event) {
     event.preventDefault();
     if (this.addressType === 'currentAddress'){
-       findCurrentLoc();
+       this.createHash();
     }else if(this.addressType === 'homeAddress'){
       this.createHash();
     }else{
@@ -37,11 +42,18 @@ app.AppView = Backbone.View.extend({
     var radius = $('#distance').val();
     var inTrade= $('#tradeOptions option:selected').val();
     var thisUser = app.users.where({id: app.current_user});
-    // if () {
+    if (this.addressType === 'homeAddress') {
       var customer_Lat = thisUser[0].attributes.lat;
       var customer_Lon = thisUser[0].attributes.lon;
-    console.log(inTrade);
-
+    }
+    else if (this.addressType === 'currentAddress') {
+      cLocData = JSON.parse(localStorage.getItem( 'currentLoc'));
+      var customer_Lat = cLocData.lat;
+      var customer_Lon = cLocData.lon;
+    }
+    else {
+      alert("please choose an address");
+    }
     //var tradieListViewOld = app.TradieListView.render(customer_Lat, customer_Lon, inTrade, radius );
     var tradieListView =new  app.TradieListView({"customer_Lat":customer_Lat,
                                "customer_Lon":customer_Lon,
