@@ -89,6 +89,7 @@ app.AppView = Backbone.View.extend({
 
   createTDHash: function(){
 
+    this.$el.unbind('#JobViewTable');
     this.$el.remove('#JobViewTable');
     var appViewTemplate = $('#JobViewTable').html();
     this.$el.append(appViewTemplate);
