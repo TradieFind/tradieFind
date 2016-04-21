@@ -98,7 +98,7 @@ Chris = User.create(first_name: 'Chris', last_name: "Cooper", email: "chris@gmai
 Bill = User.create(first_name: 'Bill', last_name: "Cruickshank", email: "bill@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790788, lon: 151.284442, company_name: "Bill & Co.")
 Dale = User.create(first_name: 'Dale', last_name: "Someguy", email: "dale@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.768521, lon: 151.271023, company_name: "Dale & Co.")
 Daniel = User.create(first_name: 'Daniel', last_name: "Someguy", email: "daniel@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790135, lon: 151.278855, company_name: "Daniel & Co.")
-
+Pogo = User.create(first_name: 'Pogo', last_name: "thedog", email: "pogo@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "1 emu street",trade: "customer", address_two: "Perth", lat: -31.9635, lon: 115.9570, company_name: "yada")
 
 Review.destroy_all()
 review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
@@ -127,6 +127,7 @@ reservation12 = Reservation.create(user_id: 12, location: "Hornsby", trade_name:
 reservation13 = Reservation.create(user_id: 13, location: "Hornsby", trade_name: "Locksmith", request_time: "1202", comments: "Close door", job_status: "Pending")
 reservation14 = Reservation.create(user_id: 14, location: "Lane Cove", trade_name: "Carpenter", request_time: "1202", comments: "Cut some more wood", job_status: "Completed")
 reservation15 = Reservation.create(user_id: 15, location: "Hornsby", trade_name: "Carpenter", request_time: "1202", comments: "Make a chair", job_status: "Pending")
+
 
 
 Quote.destroy_all()
