@@ -139,11 +139,18 @@
  <%= link_to "Back Home", "" %>
  </script>
 
- <script type="text/template" id='editUserViewTemplate'>
-   <div  class= "col-md-6" id = "editUserForm">
-        <form class="form-horizontal">
-          <h1>Edit User Profile</h1>
+     <script type="text/template" id='editUserViewTemplate'>
+       <div  class= "col-md-6" id = "editUserForm">
+            <form class="form-horizontal">
+              <h1>Edit User Profile</h1>
 
+
+          <div class="form-group row">
+            <label for="last_name" class="col-sm-2 form-control-label">Image:</label>
+            <div class="col-sm-10">
+            <input id="fileInput" type="file" name="fileInput">
+            </div>
+            </div>
 
           <div class="form-group row">
         <label for="first_name" class="col-sm-2 form-control-label">First Name:</label>
