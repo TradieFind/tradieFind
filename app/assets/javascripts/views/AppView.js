@@ -12,7 +12,7 @@ app.AppView = Backbone.View.extend({
   },
 
   checkbox_CA_Clicked:function(e){
-    $('#cust_location_label').text("Looking for your current Location");
+    $('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw margin-bottom"></i>');
 
     findCurrentLoc();
     this.addressType = e.target.id;

@@ -80,19 +80,26 @@ app.TradieListView = Backbone.View.extend({
 
 
   showTradie: function(passingTD) {
+    
     var tradieID =  parseInt(passingTD.currentTarget.attributes[1].value);
     var appViewTemplate = $("#TradieListViewInfo").html();
     this.$el.append(appViewTemplate);
 
     var t = app.users.findWhere({id: tradieID});
     var strHTML
-            = "<li>Name:" + t.attributes.first_name + " " + t.attributes.last_name + "</li>"
+            =
+             "<div class='well well-lg' >"
+            + "<h4>Profile</h4>"
+            + "<ul style='list-style: none;'>"
+            + "<li>Name: " + t.attributes.first_name + " " + t.attributes.last_name + "</li>"
             + "<li>" + t.attributes.company_name + "</li>"
-            + "<li>1000 </li>" //get Jobs completed
+            + "<li> 1000 </li>" //get Jobs completed
             + "<li>"  +  "</li>"  // get Ratings
             + "<li >Additional Instructions</li>" + "<input id='Add_info' type='text' />"
-            + "<li class='book_link' data-r='" + tradieID + "'>Click to Book</li>" ; // GoogleDist//
-    $('#TradieListViewDetails').append(strHTML);
+            + "<li class='book_link' data-r='" + tradieID + "'><button class='btn btn-default'>Click to Book</button></li>"
+            + "</ul>"
+            + "</div>"; // GoogleDist//
+    $('#TradieListViewDetails').html(strHTML);
   }, //END showTradie
 
 
