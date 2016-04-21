@@ -20,10 +20,11 @@ events: {
   thankYou: function(event) {
     event.stopImmediatePropagation();
 
-    if ($("#inputname3").val() !== "" && $("#inputemail3").val() !== ""){
+    if ($("#inputName3").val() !== "" && $("#inputEmail3").val() !== ""){
       app.router.navigate('#thankyou', true);
     } else {
       alert("Please fill out all the fields");
+      event.preventDefault();
     }
   }
 
