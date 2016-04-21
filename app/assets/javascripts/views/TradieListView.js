@@ -24,12 +24,20 @@ app.TradieListView = Backbone.View.extend({
     this.$('#reviewViewTemplate').remove();
     var appViewTemplate = $('#TradieListViewListAllTemplate').html();
     this.$el.append(appViewTemplate);
+    console.log(this.options.inTrade);
+    console.log(this.options.radius);
     var tradieByTrade = app.users.where({trade: this.options.inTrade});
-       console.log(app.users);
+
+
+
+
+    console.log(tradieByTrade);
     var tradieSimpleDist = []
     var self = this;
+    asdf=0;
     _(tradieByTrade).each(function(t){
-
+    asdf=asdf+1;
+    console.log(asdf);
      distToCustomer = distanceSimple(parseFloat(self.options.customer_Lat),
                       parseFloat(self.options.customer_Lon),
                       parseFloat(t.attributes.lat),
