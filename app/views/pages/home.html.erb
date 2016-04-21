@@ -189,7 +189,7 @@
      <h1>{{= first_name }}'s Profile</h1>
   <div></div>
     <% if logged_in? %>
-   <p><%= image_tag current_user.avatar_url(:display) %></p>
+   <p class="avatar"><%= image_tag current_user.avatar_url(:display) %></p>
    <p>First Name: {{= first_name }}</p>
    <p>Last Name:{{= last_name }}</p>
    <p>Email: {{= email }}</p>
@@ -418,7 +418,7 @@
  </div>
  <div class="form-group">
    <div class="col-sm-offset-2 col-sm-10">
-     <button type="submit" class="btn btn-danger">Send</button>
+     <button type="submit" id="cusubmit" class="btn btn-danger">Send</button>
    </div>
  </div>
 
