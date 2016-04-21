@@ -90,15 +90,15 @@ Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.co
 Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken",address_one: "580 George street",trade: "customer", address_two: "Sydney", lat: -33.868647, lon: 151.207008, company_name: "none")
 Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "Carpenter", address_two: "Kirribilli", lat: -33.787418, lon: 151.126622, company_name: "Tow for Cash")
 Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.824748, lon: 151.240248, company_name: "ZippyFix")
-Tamara = User.create(first_name: 'Tamara', last_name: "Correy", email: "tamara@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Locksmith", address_two: "Perth", lat: 31.9535, lon: 115.8570, company_name: "Door Breaker")
+Tamara = User.create(first_name: 'Tamara', last_name: "Correy", email: "tamara@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Locksmith", address_two: "Perth", lat: -31.9535, lon: 115.8570, company_name: "Door Breaker")
 Karen = User.create(first_name: 'Karen', last_name: "Correy", email: "karen@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.862525, lon: 151.070357, company_name: "Karen & Co.")
 Trevor = User.create(first_name: 'Trevor', last_name: "Correy", email: "trevor@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.862483, lon: 151.207149, company_name: "Trevor & Co.")
 Dave = User.create(first_name: 'Dave', last_name: "Smith", email: "dave@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Mechanic", address_two: "Sydney", lat: -33.87, lon: 151.206, company_name: "Dave & Co.")
 Chris = User.create(first_name: 'Chris', last_name: "Cooper", email: "chris@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Locksmith", address_two: "Sydney", lat: -33.790538, lon: 151.282919, company_name: "Chris & Co.")
 Bill = User.create(first_name: 'Bill', last_name: "Cruickshank", email: "bill@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790788, lon: 151.284442, company_name: "Bill & Co.")
 Dale = User.create(first_name: 'Dale', last_name: "Someguy", email: "dale@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.768521, lon: 151.271023, company_name: "Dale & Co.")
-Daniel = User.create(first_name: 'Daniel', last_name: "Someguy", email: "daniel@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Customer", address_two: "Sydney", lat: -33.790135, lon: 151.278855, company_name: "Daniel & Co.")
-
+Daniel = User.create(first_name: 'Daniel', last_name: "Someguy", email: "daniel@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790135, lon: 151.278855, company_name: "Daniel & Co.")
+Pogo = User.create(first_name: 'Pogo', last_name: "thedog", email: "pogo@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "1 emu street",trade: "customer", address_two: "Perth", lat: -31.9635, lon: 115.9570, company_name: "yada")
 
 
 
@@ -136,4 +136,4 @@ quote3 = Quote.create(reservation_id: 3, user_id: 3, quote_value: "$200.00", sta
 Trade.destroy_all()
 trade1 = Trade.create(name: "Mechanic")
 trade2 = Trade.create(name: "Carpenter")
-trade3 = Trade.create(name: "Lock Smith")
+trade3 = Trade.create(name: "Locksmith")
