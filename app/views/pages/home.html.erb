@@ -437,11 +437,13 @@
     <script type="text/template" id="thankYouViewTemplate">
           <h2>Thank You For Contacting Us</h2>
             <div class="row">
-              <div class="col-md-6">
-                 <p> Your query has been lodged with us. </p>
+
+                <br>
+                 <p> Your query has been lodged. </p>
                  <p> We will get back to you as soon as possible. </p>
+                 <br>
                  <%= link_to 'Go Back Home', root_path  %>
-              </div>
+
             </div>
         </script>
 
@@ -488,6 +490,7 @@
   <script type="text/template" id="paymentViewTemplate">
       <h2>Pay Your Invoice</h2>
       <br>
+      <% if logged_in?  %>
       <p>First Name: <%= current_user.first_name %></p>
       <p>Last Name: <%= current_user.last_name %></p>
       <p>Address: <%= current_user.address_one %></p>
@@ -499,6 +502,7 @@
       <button onclick="window.location.href='/charges/new'">Proceed</button>
       <br>
       <br>
+      <% end %>
       <%= link_to "Go Back Home", root_path %>
   </script>
 
