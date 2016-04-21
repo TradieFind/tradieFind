@@ -6,6 +6,17 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.cache_classes = false
+
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_host_name => "s3-#{Rails.application.secrets[:REGION]}.amazonaws.com",
+      :s3_credentials => {
+        :bucket => Rails.application.secrets[:BUCKET_NAME],
+        :access_key_id => Rails.application.secrets[:AWS_ACCESS_KEY_ID],
+        :secret_access_key => Rails.application.secrets[:AWS_SECRET_ACCESS_KEY]
+      }
+    }
   # Do not eager load code on boot.
   config.eager_load = false
 

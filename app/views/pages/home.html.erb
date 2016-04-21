@@ -82,11 +82,70 @@
          <% end %>
  </script>
 
+ <script type="text/template" id='appTradieViewTemplate'>
+   <!-- Search function to find tradies nearby certain areas on certain dates -->
+    <h1 class="brand-display">Find a Job</h1>
+   <p>Need a job in your area?</p>
+   <p>You've Come To The Right Place!</p>
+   <p>
+     <%if logged_in? %>
+     <form id="homeSearchForm" role="search">
+       <div class="form-group">
+         <div class="row">
+         <div class="col-sm-offset-2 control-label col-sm-4">
+           <label  class="search-label">Find Me:</label>
+         </div>
+         <div class="col-sm-4">
+             <select  id="reservationOptions" class="form-control">
+              </select>
+         </div>
+         </div>
+       </div>
+       <div class="form-group">
+       <div class="row">
+         <div class="col-sm-offset-2 control-label col-sm-4">
+           <label class="search-label" for="comment">Within: </label>
+         </div>
+           <div class="col-sm-4">
+             <select class="form-control" id="distance" placeholder="Location">
+               <option value="5">5 km</option>
+               <option value="10">10 km</option>
+               <option value="15">15 km</option>
+               <option value="20">20 km</option>
+               <option value="25">25 km</option>
+               <option value="30">30 km</option>
+             </select>
+           </div>
+         </div>
+       </div>
+       <div class="form-group">
+         <div class="row">
+           <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
+           <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
+           <p id="cust_location_label">1</p>
+           <div id="cust_location_label2">1</div>
+
+           </div>
+       </div>
+           <div class="form-group">
+               <div class="row">
+             <div class="col-xs-offset-3  col-xs-6  ">
+               <button id="homeSearchSubmit" type="button" class="btn btn-info  ">Search</button>
+           </div>
+           </div>
+         </div>
+         </form>
+       <% else %>
+         <%= link_to "log in", login_path, class: "btn btn-default btn-lg" %>
+         <%= link_to "Sign up", new_user_path, class:"btn btn-default btn-lg" %>
+         <% end %>
+ </script>
+
 <script id="reviewViewTemplate" type="text/template">
   <h2>Your Reviews</h2>
   <table class="table table-bordered" id="reviewList">
     <tr>
-      <th>Name</th>
+      <th>Tradesman Name</th>
       <th>Comment</th>
       <th>Date Completed</th>
       <th>Rating</th>
@@ -98,8 +157,32 @@
 </script>
 
  <script id="reviewInputViewTemplate" type="text/template">
-   <textarea id="reviewContent" placeholder="Write a review"></textarea>
-   <button>Submit</button>
+   <h2>Write a Review</h2>
+
+
+   <div class="form-group">
+     <label for="inputEmail3" class="col-sm-2 control-label">Rating: </label>
+       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+         <div class="btn-group" role="group" aria-label="First group">
+            <button type="button" class="btn btn-secondary">1</button>
+            <button type="button" class="btn btn-secondary">2</button>
+            <button type="button" class="btn btn-secondary">3</button>
+            <button type="button" class="btn btn-secondary">4</button>
+            <button type="button" class="btn btn-secondary">5</button>
+          </div>
+        </div>
+   </div>
+
+   <div class="form-group">
+     <label for="inputComment3" class="col-sm-2 control-label">Comment: </label>
+     <div class="col-sm-10">
+       <textarea class="form-control" rows="8"></textarea>
+   </div>
+   <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-10">
+       <button type="submit" class="btn btn-danger">Submit Review</button>
+     </div>
+   </div>
  </script>
 
 
@@ -107,6 +190,8 @@
    <!-- View their own profile and show their current and past reservations-->
      <h1>{{= first_name }}'s Profile</h1>
   <div></div>
+
+  <p><img tag="{{= avatar_file_name}}" alt="Pat's hectic photo"></p>
    <p>First Name: {{= first_name }}</p>
    <p>Last Name:{{= last_name }}</p>
    <p>Email: {{= email }}</p>
@@ -117,7 +202,7 @@
      {{ } }}
    </p>
    <p>
-     {{ if (trade !== "") { }}
+     {{ if (trade !== "customer") { }}
        Trade:{{= trade }}
      {{ } }}
    </p>

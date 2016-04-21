@@ -19,6 +19,9 @@ $(document).ready(function(){
        user.set({first_name: userFirstNameFromHTML});
 
 
+    var userImageFromHTML = this.$el.find("#fileInput").val();
+     user.set({avatar_file_name: userImageFromHTML});
+
     var userLastNameFromHTML = this.$el.find("#last_name").val();
       user.set({last_name: userLastNameFromHTML});
 
@@ -56,6 +59,8 @@ $(document).ready(function(){
       console.log(userAddressTwoHTML);
       console.log(userAddressOneHTML);
       user.save();
+
+      app.router.navigate("#user", true)
 
 
   },
