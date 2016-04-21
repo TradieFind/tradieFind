@@ -3,7 +3,7 @@
 <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1W_PZDArK46FW21IKVhhA2mzM1SfFVSI&libraries=places">
 </script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
 
      var app = app || {};
@@ -63,7 +63,9 @@
          <div class="row">
            <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
            <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
+           <br>
            <p id="cust_location_label"></p>
+           <br>
            <p id="cust_location_label2"></p>
 
            <div id="mappy">
@@ -161,11 +163,11 @@
      <label for="inputEmail3" class="col-sm-2 control-label">Rating: </label>
        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
          <div class="btn-group" role="group" aria-label="First group">
-            <button type="button" class="btn btn-secondary">1</button>
-            <button type="button" class="btn btn-secondary">2</button>
-            <button type="button" class="btn btn-secondary">3</button>
-            <button type="button" class="btn btn-secondary">4</button>
-            <button type="button" class="btn btn-secondary">5</button>
+            <button type="button" id="1" class="btn btn-secondary">1</button>
+            <button type="button" id="2" class="btn btn-secondary">2</button>
+            <button type="button" id="3" class="btn btn-secondary">3</button>
+            <button type="button" id="4" class="btn btn-secondary">4</button>
+            <button type="button" id="5" class="btn btn-secondary">5</button>
           </div>
         </div>
    </div>
@@ -435,13 +437,13 @@
 
     <script type="text/template" id="thankYouViewTemplate">
           <h2>Thank You For Contacting Us</h2>
-            <div class="row">
-              <div class="col-md-6">
-                 <p> Your query has been lodged with us. </p>
+          <br>
+                 <p> Your query has been lodged. </p>
                  <p> We will get back to you as soon as possible. </p>
+                 <br>
+                 <br>
                  <%= link_to 'Go Back Home', root_path  %>
-              </div>
-            </div>
+
         </script>
 
 
@@ -482,7 +484,7 @@
   </script>
 
   <script type="text/template" id="policyViewTemplate">
-    <h1>Terms and Conditions: User Agreement</h1>
+    <h2>Terms and Conditions: User Agreement</h2>
     <br>
     <p>Below are the terms and conditions of use for TradieFind. This Agreement describes the terms and conditions applicable to your use of our services available under the domain and sub-domains. If you do not agree to be bound by the terms and conditions of this Agreement, do not use or access our services.</p>
     <br>
@@ -547,28 +549,34 @@
 
   <script type="text/template" id='faqViewTemplate'>
 
-           <p>Why did the panda chase the butterfly?</p>
+           <h2>Frequently Asked Questions</h2>
+           <br>
+           <h3>Why did the panda chase the butterfly?</h3>
            <p>
              Lorem ipsum they met, consectetur adipisicing about elit. Sed quae ipsum
              similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
               aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
             </p>
-           <p>How do I know the tradesman is trustworthy?</p>
+            <br>
+           <h3>How do I know the tradesman is trustworthy?</h3>
            <p>
              You can check the reviews and ratings that they have recieved from past
              jobs that they have completed.
             </p>
-            <p>How do I make payments?</p>
+            <br>
+            <h3>How do I make payments?</h3>
             <p>
               You can pay them through our secure payment system located in the "somewhere".
               Once there, you can follow the prompts and your payment will be processed.
              </p>
-             <p>Lorem this Lorem that</p>
+             <br>
+             <h3>Lorem this Lorem that</h3>
              <p>
                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quae ipsum
                similique delectus deserunt nam ipsam quisquam eveniet asperiores illo nulla
                 aliquid doloribus possimus corrupti quas voluptatibus vero, nihil et
              </p>
+             <br>
              <%= link_to 'Go Back Home', root_path %>
        </script>
 

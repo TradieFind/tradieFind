@@ -18,6 +18,9 @@ body{
 
 .jumbotron{
   text-align: center;
+  p {
+    font-size: 14px;
+  }
 }
 
 #mappy{
@@ -112,4 +115,8 @@ body{
 .sub-visible{
   visibility: visible;
      position: static;
+}
+
+#cust_location_label{
+  display: none;
 }
