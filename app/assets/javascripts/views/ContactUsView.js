@@ -19,8 +19,8 @@ events: {
 
   thankYou: function(event) {
     event.stopImmediatePropagation();
-    debugger;
-    if ($(".input").val() === ""){
+
+    if ($("#inputname3").val() !== "" && $("#inputemail3").val() !== ""){
       app.router.navigate('#thankyou', true);
     } else {
       alert("Please fill out all the fields");
