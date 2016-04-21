@@ -9,7 +9,7 @@ app.AppRouter = Backbone.Router.extend({
       'user': 'showUser',
       'user/:id': 'showUser',
       'reviews': 'showReview',
-      'reviewinput': 'reviewInput',
+      'reviewinput/:id': 'reviewInput',
       'quotes': 'showQuotes',
       'addquote': 'addQuote',
       'contactUs': 'contactUs',
@@ -84,7 +84,7 @@ app.AppRouter = Backbone.Router.extend({
     })
   },
 
-    reviewInput: function() {
+    reviewInput: function(id) {
       var user = app.users.get(app.current_user);
       var review = user.review;
       var reviewInputView = new app.ReviewInputView({ model: review });

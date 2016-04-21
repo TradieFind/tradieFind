@@ -8,6 +8,8 @@ app.AppView = Backbone.View.extend({
   events: {
     'click #currentAddress':'checkbox_CA_Clicked',
     'click #homeAddress':'checkbox_HA_Clicked',
+    'click #currentTDAddress':'checkbox_TDCA_Clicked',
+    'click #homeTDAddress':'checkbox_TDHA_Clicked',
     'click #homeSearchSubmit':'createSearch'
   },
 
@@ -29,14 +31,32 @@ app.AppView = Backbone.View.extend({
     this.addressType = e.target.id;
   },
 
+  checkbox_TDCA_Clicked:function(e){
+    //$('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw margin-bottom"></i>');
+    $('#cust_ocation_label').html('<i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw margin-bottom"></i><span>Looking for your current Location</span>');
+    findCurrentLoc();
+    // getPlaceNearby();
+    this.addressType = e.target.id;
+  },
+
+  checkbox_TDHA_Clicked:function(e){
+    var thisUser = app.users.where({id: app.current_user});
+    console.log(thisUser[0].attributes.lat);
+    console.log(thisUser[0].attributes.lon);
+    renderMap(thisUser[0].attributes.lat, thisUser[0].attributes.lon,false);
+    $('#cust_ocation_label').text(Number(thisUser[0].attributes.lat.toFixed(3)) + ", " + Number(thisUser[0].attributes.lon.toFixed(3)));
+    $('#cust_ocation_label2').text(thisUser[0].attributes.address_one + ", " + thisUser[0].attributes.address_two);
+    this.addressType = e.target.id;
+  },
+
   createSearch: function(event) {
     event.preventDefault();
-    if (this.addressType === 'currentAddress'){
+    if (user === undefined || user.attributes.trade === "customer")
+    {
        this.createHash();
-    }else if(this.addressType === 'homeAddress'){
-      this.createHash();
-    }else{
-        alert("please choose an address");
+    }
+    else {
+      this.createTDHash();
     }
   },
 
@@ -63,6 +83,31 @@ app.AppView = Backbone.View.extend({
                                 "radius": radius } );
   },
 
+  createTDHash: function(){
+    var radius = $('#distance').val();
+    var thisUser = app.users.where({id: app.current_user});
+    if (this.addressType === 'homeTDAddress') {
+      var td_Lat = thisUser[0].attributes.lat;
+      var td_Lon = thisUser[0].attributes.lon;
+    }
+    else if (this.addressType === 'currentTDAddress') {
+      cLocData = JSON.parse(localStorage.getItem( 'currentLoc'));
+      var td_Lat = cLocData.lat;
+      var td_Lon = cLocData.lon;
+    }
+    else {
+      alert("please choose an address");
+    }
+
+
+    //var tradieListViewOld = app.TradieListView.render(customer_Lat, customer_Lon, inTrade, radius );
+    var JobSearchView  =new  app.JobSearchView({"td_Lat":td_Lat,
+                               "td_Lon":td_Lon,
+                                 "inTrade": thisUser[0].attributes.trade,
+                                "radius": radius } );
+  },
+
+
   renderTradeList:function(){
     this.model.each(function(model){
       var tradeView = new app.TradeView({model: model});
@@ -80,7 +125,7 @@ app.AppView = Backbone.View.extend({
     this.$el.html(appViewTemplate);
     this.renderTradeList();
   } else {
-    debugger
+
     localStorage.setItem( 'currentLoc', "" );
     var appTradieViewTemplate = $('#appTradieViewTemplate').html();
     this.$el.html(appTradieViewTemplate);
