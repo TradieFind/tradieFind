@@ -60,6 +60,8 @@ $(document).ready(function(){
       console.log(userAddressOneHTML);
       user.save();
 
+      app.router.navigate("#user", true)
+
 
   },
 
