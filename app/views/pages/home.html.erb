@@ -191,7 +191,7 @@
      <h1>{{= first_name }}'s Profile</h1>
   <div></div>
 
-  <p><img tag="{{= avatar_file_name}}" alt="Pat's hectic photo"></p>
+
    <p>First Name: {{= first_name }}</p>
    <p>Last Name:{{= last_name }}</p>
    <p>Email: {{= email }}</p>
@@ -437,13 +437,11 @@
     <script type="text/template" id="thankYouViewTemplate">
           <h2>Thank You For Contacting Us</h2>
             <div class="row">
-
-                <br>
-                 <p> Your query has been lodged. </p>
+              <div class="col-md-6">
+                 <p> Your query has been lodged with us. </p>
                  <p> We will get back to you as soon as possible. </p>
-                 <br>
                  <%= link_to 'Go Back Home', root_path  %>
-
+              </div>
             </div>
         </script>
 
@@ -490,7 +488,7 @@
   <script type="text/template" id="paymentViewTemplate">
       <h2>Pay Your Invoice</h2>
       <br>
-      <% if logged_in?  %>
+      <% if logged_in? %>
       <p>First Name: <%= current_user.first_name %></p>
       <p>Last Name: <%= current_user.last_name %></p>
       <p>Address: <%= current_user.address_one %></p>
