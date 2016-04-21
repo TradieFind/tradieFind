@@ -42,6 +42,8 @@ app.TradieListView = Backbone.View.extend({
     //Render the tradies within the radius
     var tag_count = 0;
     _(tradieSimpleDist).each(function(t){
+      //add to Map
+      showTradies(parseFloat(t.attributes.lat),parseFloat(t.attributes.lon),t.attributes.company_name);
       //need to calculate average rating
       var reviews_t = app.reviews.where({reviewee_id: t.attributes.id});
       if (reviews_t) {
@@ -60,11 +62,6 @@ app.TradieListView = Backbone.View.extend({
                + "<td>" + rating_t +  "</td>"  // get Ratings
                + "<td id='goog_ref_" + tag_count + "'></td>"
                + "<td class='tradie_link' data-r='" + t.attributes.id + "'>Click to View</td></tr>" ; // GoogleDist//
-
-              //  strRowColHTML +=
-              //    "</td><td data-r='" + i +"' data-c='" + j+ "' data-f='"
-              //    + flightId + "' style='pointer-events: none; cursor: default;'>"+tmpName;
-
 
       $('#reviewListOfTradies').append(strHTML);
       var tag_ref = "goog_ref_"+tag_count;
