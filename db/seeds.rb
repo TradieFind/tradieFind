@@ -97,18 +97,18 @@ Dave = User.create(first_name: 'Dave', last_name: "Smith", email: "dave@gmail.co
 Chris = User.create(first_name: 'Chris', last_name: "Cooper", email: "chris@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Locksmith", address_two: "Sydney", lat: -33.790538, lon: 151.282919, company_name: "Chris & Co.")
 Bill = User.create(first_name: 'Bill', last_name: "Cruickshank", email: "bill@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790788, lon: 151.284442, company_name: "Bill & Co.")
 Dale = User.create(first_name: 'Dale', last_name: "Someguy", email: "dale@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.768521, lon: 151.271023, company_name: "Dale & Co.")
-Daniel = User.create(first_name: 'Daniel', last_name: "Someguy", email: "daniel@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Customer", address_two: "Sydney", lat: -33.790135, lon: 151.278855, company_name: "Daniel & Co.")
+Daniel = User.create(first_name: 'Daniel', last_name: "Someguy", email: "daniel@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790135, lon: 151.278855, company_name: "Daniel & Co.")
 
 
 Review.destroy_all()
 review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
 review2 = Review.create(reviewer_id: 2, reviewee_id: 2, comment: "Not Bad", rating: 3)
-review4 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 5)
-review5 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 2)
-review6 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Super", rating: 3)
-review7 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Dingo", rating: 1)
-review8 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Yawn", rating: 4)
-review9 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Muppet", rating: 0)
+review4 = Review.create(reviewer_id: 3, reviewee_id: 3, comment: "Great", rating: 5)
+review5 = Review.create(reviewer_id: 4, reviewee_id: 4, comment: "Great", rating: 2)
+review6 = Review.create(reviewer_id: 5, reviewee_id: 5, comment: "Super", rating: 3)
+review7 = Review.create(reviewer_id: 6, reviewee_id: 6, comment: "Dingo", rating: 1)
+review8 = Review.create(reviewer_id: 7, reviewee_id: 7, comment: "Yawn", rating: 4)
+review9 = Review.create(reviewer_id: 8, reviewee_id: 8, comment: "Muppet", rating: 0)
 
 
 Reservation.destroy_all()
