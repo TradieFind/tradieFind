@@ -13,6 +13,7 @@ app.ReviewInputView = Backbone.View.extend({
     var review = new app.Review();
     var userContent = this.$el.find("#main").val();
     var t = app.users.findWhere({id: revieweeID});
+    debugger
     review.set({
       reviewer_id: app.current_user,
       reviewee_id: t,
