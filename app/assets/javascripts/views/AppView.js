@@ -70,9 +70,17 @@ app.AppView = Backbone.View.extend({
 },
 
   render: function() {
+    user = app.users.get(app.current_user);
+    if (user.attributes.trade === "customer"){
     localStorage.setItem( 'currentLoc', "" );
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
     this.renderTradeList();
+  } else {
+    localStorage.setItem( 'currentLoc', "" );
+    var appTradieViewTemplate = $('#appTradieViewTemplate').html();
+    this.$el.html(appTradieViewTemplate);
+    this.renderTradeList();
+  };
   }
 });
