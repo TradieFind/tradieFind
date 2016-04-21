@@ -13,8 +13,9 @@ app.AppView = Backbone.View.extend({
 
   checkbox_CA_Clicked:function(e){
     $('#cust_location_label').text("Looking for your current Location");
-
     findCurrentLoc();
+
+    // getPlaceNearby();
     this.addressType = e.target.id;
   },
 
