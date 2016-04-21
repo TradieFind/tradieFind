@@ -59,13 +59,11 @@ app.ViewReservationView = Backbone.View.extend({
         var td = "<td>";
         // li += this.model.get("user_id");
         // li += "</td><td>";
-        td += this.model.get("id");
-        td += "</td><td>";
-        td += this.model.get("user_id");
-        td += "</td><td>";
-        td += this.model.get("quote_id");
-        td += "</td><td>";
         td += this.model.get("trade_name");
+        td += "</td><td>";
+        td += this.model.get("comments");
+        td += "</td><td>";
+        td += this.model.get("location");
         td += "</td><td>";
         td += this.model.get("job_status");
 
