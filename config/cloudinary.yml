@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dqdgbuke4
+  api_key: '848738461286288'
+  api_secret: ZcH5bw5X5uCxJML_ISKDoBbS5UA
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dqdgbuke4
+  api_key: '848738461286288'
+  api_secret: ZcH5bw5X5uCxJML_ISKDoBbS5UA
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dqdgbuke4
+  api_key: '848738461286288'
+  api_secret: ZcH5bw5X5uCxJML_ISKDoBbS5UA
+  enhance_image_tag: true
+  static_image_support: false
