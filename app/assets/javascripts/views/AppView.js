@@ -125,16 +125,18 @@ app.AppView = Backbone.View.extend({
   },
 
   render: function() {
+    $('#sub').removeClass('set-visible');
     user = app.users.get(app.current_user);
 
     localStorage.setItem( 'currentLoc', "" );
-    if (user === undefined || user.attributes.trade === "customer"){
+    if (user === undefined || user.attributes.trade === "customer" || user.attributes.trade === ""){
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
     var appViewTemplate = $('#TradieListViewListAllTemplate').html();
     this.$el.append(appViewTemplate);
     this.renderTradeList();
   } else {
+
     localStorage.setItem( 'currentLoc', "" );
     var appTradieViewTemplate = $('#appTradieViewTemplate').html();
     this.$el.html(appTradieViewTemplate);

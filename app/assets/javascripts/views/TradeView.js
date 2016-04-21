@@ -6,6 +6,7 @@ app.TradeView = Backbone.View.extend({
   },
   tagName: "option",
   render: function(){
+    $('#sub').removeClass('set-visible');
     var name = this.model.get("name");
     this.$el.text(name);
     this.$el.appendTo('#tradeOptions');

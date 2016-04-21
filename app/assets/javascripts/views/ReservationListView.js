@@ -9,6 +9,7 @@ app.ReservationListView = Backbone.View.extend({
   },
 
   render: function() {
+    $('#sub').removeClass('set-visible');
     // var name = this.model.attributes.first_name + " " + this.model.attributes.last_name;
     // var location = this.model.attributes.location;
     // var trade = this.model.attributes.trade_name;

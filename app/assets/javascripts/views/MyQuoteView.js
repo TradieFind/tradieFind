@@ -7,7 +7,13 @@ app.MyQuoteView = Backbone.View.extend({
   events:{
       'click  .accept-quote': 'clickAcceptQuote',
       'click  .decline-quote': 'clickDeclineQuote',
-      'click  .finish-quote': 'clickFinishQuote'
+      'click  .finish-quote': 'clickFinishQuote',
+      'click .completed-quote': 'clickPayButton'
+  },
+
+  clickPayButton: function(){
+    //app.router.navigate("/charges/new", true);
+    this.redirectTo('http://localhost:3000/charges/new');
   },
 
   fetchViewAgain:function(reservationID){
@@ -28,7 +34,6 @@ app.MyQuoteView = Backbone.View.extend({
     reservation.set({quote_id: 0});// reservation will not have any quote
     reservation.save();
 
-
     this.model.set({"status":"notaccepted"});
     this.model.save();
 
@@ -36,7 +41,6 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickFinishQuote:function(e){
-    console.log(e.target);
       var reservation_id = this.model.attributes.reservation_id;
       var reservation = app.reservations.get(reservation_id);
       reservation.set({job_status:"completed"})
@@ -50,21 +54,18 @@ app.MyQuoteView = Backbone.View.extend({
     this.model.set({"status":"accepted"});
     this.model.save();
 
-    var reservation_id = this.model.attributes.reservation_id;
 
     var reservation = app.reservations.get(reservation_id);
 
     var reservQuoteId  = reservation.get("quote_id");
-    var thisQuoteId = this.model.get('id');
+    var thisQuoteId = quotesId;
     if(reservQuoteId == thisQuoteId  ){
     reservation.set({job_status:"pending"});
     reservation.set({quote_id: 0});
    }else{
-
       reservation.set({job_status:"booked"});
       reservation.set({quote_id:reservation_id});
     }
-    var self = this;
     reservation.save();
 
     this.fetchViewAgain(reservation_id);
@@ -92,14 +93,20 @@ app.MyQuoteView = Backbone.View.extend({
 
         //if(reservQuoteId === thisQuoteId  ){
 
-        if(quoteStatus === 'accepted'){
+        if(reservStatus === 'booked'){
          td += "</td><td class ='decline-quote' quote_id='"+this.model.get('id')+"'>";
         td += "Decline";
         td += "</td>";
         td += "</td><td class ='finish-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Completed";
        td += "</td>";
-      }else{
+     }else if(reservStatus ==='completed'){
+         console.log("2",reservStatus);
+       td += "</td><td class ='completed-quote' quote_id='"+this.model.get('id')+"'>";
+       td += "Pay";
+       td += "</td>";
+
+     }else{
         td += "</td><td class ='accept-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Accept this Quote";
        td += "</td>";

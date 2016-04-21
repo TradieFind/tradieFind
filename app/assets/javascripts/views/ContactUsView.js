@@ -9,7 +9,7 @@ events: {
 },
 
   render: function(){
-
+    $('#sub').removeClass('set-visible');
     var contactUsViewTemplate = $('#contactUsViewTemplate').html();
     var contactUsViewHTML = _.template( contactUsViewTemplate );
 

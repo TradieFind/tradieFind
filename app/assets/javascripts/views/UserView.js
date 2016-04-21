@@ -7,6 +7,7 @@ app.UserView = Backbone.View.extend({
     'click': 'getInContact'
   },
   render: function() {
+    $('#sub').removeClass('set-visible');
     // If we add trade type into the model we can distinguish tradies and general users
     // var full_name = this.model.attributes.first_name + " " + this.model.attributes.last_name;
     // var email = this.model.attributes.email;

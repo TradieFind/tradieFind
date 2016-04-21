@@ -12,7 +12,7 @@ events: {
 
     this.$el.empty();
     this.$el.remove();
-
+    $('#sub').removeClass('set-visible');
     var paymentViewTemplate = $('#paymentViewTemplate').html();
     var paymentViewHTML = _.template( paymentViewTemplate );
 

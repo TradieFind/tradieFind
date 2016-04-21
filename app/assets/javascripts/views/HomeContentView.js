@@ -7,6 +7,7 @@ app.HomeContentView = Backbone.View.extend({
   el: '#homeContent',
 
   render: function() {
+    $('#sub').removeClass('set-visible');
     var homeContentViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
   },

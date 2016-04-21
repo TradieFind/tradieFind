@@ -55,6 +55,37 @@ body{
   margin: 40px;
 }
 
+#amountp {
+  font-style: italic;
+  text-align: center;
+}
+
+.stripe-button {
+  text-align: center;
+}
+
+.contactus {
+  text-align: left;
+}
+
+.btn.btn-danger {
+  margin-top: 10px;
+}
+
+.navbar-default .navbar-brand {
+  color: #03A9F4;
+}
+
+.img1 {
+  border-radius: 3%;
+}
+
+.img2 {
+  border-radius: 3%;
+}
+
+
+
 .homeIndexContent {
   position: relative;
 }
@@ -119,4 +150,9 @@ body{
 
 #cust_location_label{
   display: none;
+}
+
+
+.completed-quote{
+  background-color: #D9EDF7;
 }
