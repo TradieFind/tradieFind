@@ -129,6 +129,7 @@ reservation14 = Reservation.create(user_id: 14, location: "Lane Cove", trade_nam
 reservation15 = Reservation.create(user_id: 15, location: "Hornsby", trade_name: "Carpenter", request_time: "1202", comments: "Make a chair", job_status: "Pending")
 
 
+
 Quote.destroy_all()
 quote1 = Quote.create(reservation_id: 1, user_id: 1, quote_value: "$3.00", start_time: "1100", estimated_duration: "3 Hours", comment: "Aight")
 quote2 = Quote.create(reservation_id: 2, user_id: 2, quote_value: "$30000.00", start_time: "1300", estimated_duration: "5 Hours", comment: "Not Bad")
