@@ -93,6 +93,15 @@ Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.c
 Tamara = User.create(first_name: 'Tamara', last_name: "Correy", email: "tamara@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Locksmith", address_two: "Perth", lat: 31.9535, lon: 115.8570, company_name: "Door Breaker")
 Karen = User.create(first_name: 'Karen', last_name: "Correy", email: "karen@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.862525, lon: 151.070357, company_name: "Karen & Co.")
 Trevor = User.create(first_name: 'Trevor', last_name: "Correy", email: "trevor@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.862483, lon: 151.207149, company_name: "Trevor & Co.")
+Dave = User.create(first_name: 'Dave', last_name: "Smith", email: "dave@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Mechanic", address_two: "Sydney", lat: -33.87, lon: 151.206, company_name: "Dave & Co.")
+Chris = User.create(first_name: 'Chris', last_name: "Cooper", email: "chris@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Locksmith", address_two: "Sydney", lat: -33.790538, lon: 151.282919, company_name: "Chris & Co.")
+Bill = User.create(first_name: 'Bill', last_name: "Cruickshank", email: "bill@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790788, lon: 151.284442, company_name: "Bill & Co.")
+Dale = User.create(first_name: 'Dale', last_name: "Someguy", email: "dale@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.768521, lon: 151.271023, company_name: "Dale & Co.")
+Daniel = User.create(first_name: 'Daniel', last_name: "Someguy", email: "daniel@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Customer", address_two: "Sydney", lat: -33.790135, lon: 151.278855, company_name: "Daniel & Co.")
+
+
+
+
 
 
 
