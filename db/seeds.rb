@@ -103,12 +103,12 @@ Pogo = User.create(first_name: 'Pogo', last_name: "thedog", email: "pogo@gmail.c
 Review.destroy_all()
 review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
 review2 = Review.create(reviewer_id: 2, reviewee_id: 2, comment: "Not Bad", rating: 3)
-review4 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 5)
-review5 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Great", rating: 2)
-review6 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Super", rating: 3)
-review7 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Dingo", rating: 1)
-review8 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Yawn", rating: 4)
-review9 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Muppet", rating: 0)
+review4 = Review.create(reviewer_id: 3, reviewee_id: 3, comment: "Great", rating: 5)
+review5 = Review.create(reviewer_id: 4, reviewee_id: 4, comment: "Great", rating: 2)
+review6 = Review.create(reviewer_id: 5, reviewee_id: 5, comment: "Super", rating: 3)
+review7 = Review.create(reviewer_id: 6, reviewee_id: 6, comment: "Dingo", rating: 1)
+review8 = Review.create(reviewer_id: 7, reviewee_id: 7, comment: "Yawn", rating: 4)
+review9 = Review.create(reviewer_id: 8, reviewee_id: 8, comment: "Muppet", rating: 0)
 
 
 Reservation.destroy_all()

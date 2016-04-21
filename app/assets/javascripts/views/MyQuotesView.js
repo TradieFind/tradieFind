@@ -4,12 +4,15 @@ app.MyQuotesView = Backbone.View.extend({
 
   el: '#sub',
 
+
   render: function() {
-    //var ReservationsTemplate = $('#ViewReservationViewTemplate').html();
-    //this.$el.html(ReservationsTemplate);
+    this.$el.addClass("sub-visible");
+    this.$el.empty();;
     var quotesViewTemplate = $('#quotesViewTemplate').html();
     this.$el.html(quotesViewTemplate);
-    _(this.model).each(function(m){
+      console.log('collection', this.collection);
+      //this.collection.each(function(m){
+     this.collection.each(function(m){
       var myQuoteView = new app.MyQuoteView({model: m});
       myQuoteView.render();
   });
