@@ -5,6 +5,7 @@ app.ThankYouView = Backbone.View.extend({
 	el: '#main',
 
   render: function() {
+		$('#sub').removeClass('set-visible');
 
 		this.$el.empty();
 		this.$el.remove();

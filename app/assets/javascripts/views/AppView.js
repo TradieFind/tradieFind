@@ -71,6 +71,7 @@ app.AppView = Backbone.View.extend({
   },
 
   render: function() {
+    $('#sub').removeClass('set-visible');
     user = app.users.get(app.current_user);
 
     localStorage.setItem( 'currentLoc', "" );
@@ -79,7 +80,7 @@ app.AppView = Backbone.View.extend({
     this.$el.html(appViewTemplate);
     this.renderTradeList();
   } else {
-    debugger 
+    debugger
     localStorage.setItem( 'currentLoc', "" );
     var appTradieViewTemplate = $('#appTradieViewTemplate').html();
     this.$el.html(appTradieViewTemplate);

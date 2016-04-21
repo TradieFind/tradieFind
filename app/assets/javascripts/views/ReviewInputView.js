@@ -30,6 +30,7 @@ app.ReviewInputView = Backbone.View.extend({
   },
 
   render: function(){
+    $('#sub').removeClass('set-visible');
     var reviewInputViewTemplate = $("#reviewInputViewTemplate").html();
     this.$el.html(reviewInputViewTemplate);
   }

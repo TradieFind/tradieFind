@@ -17,6 +17,7 @@ app.TradieListView = Backbone.View.extend({
 
 
   render: function() {
+    $('#sub').removeClass('set-visible');
     console.log( localStorage.getItem( 'currentLoc' )  );
 
     //var appViewTemplate = $('#reviewViewTemplate').html();

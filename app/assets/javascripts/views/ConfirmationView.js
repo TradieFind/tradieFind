@@ -5,6 +5,7 @@ app.ConfirmationView = Backbone.View.extend({
 el: '#main',
 
   render: function() {
+    $('#sub').removeClass('set-visible');
     var confirmationViewTemplate = $('#confirmationViewTemplate').html();
     var confirmationViewHTML = _.template( confirmationViewTemplate );
 

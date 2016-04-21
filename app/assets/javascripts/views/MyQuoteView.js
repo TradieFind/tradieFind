@@ -28,7 +28,6 @@ app.MyQuoteView = Backbone.View.extend({
     reservation.set({quote_id: 0});// reservation will not have any quote
     reservation.save();
 
-
     this.model.set({"status":"notaccepted"});
     this.model.save();
 
@@ -36,7 +35,6 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickFinishQuote:function(e){
-    console.log(e.target);
       var reservation_id = this.model.attributes.reservation_id;
       var reservation = app.reservations.get(reservation_id);
       reservation.set({job_status:"completed"})
@@ -50,21 +48,18 @@ app.MyQuoteView = Backbone.View.extend({
     this.model.set({"status":"accepted"});
     this.model.save();
 
-    var reservation_id = this.model.attributes.reservation_id;
 
     var reservation = app.reservations.get(reservation_id);
 
     var reservQuoteId  = reservation.get("quote_id");
-    var thisQuoteId = this.model.get('id');
+    var thisQuoteId = quotesId;
     if(reservQuoteId == thisQuoteId  ){
     reservation.set({job_status:"pending"});
     reservation.set({quote_id: 0});
    }else{
-
       reservation.set({job_status:"booked"});
       reservation.set({quote_id:reservation_id});
     }
-    var self = this;
     reservation.save();
 
     this.fetchViewAgain(reservation_id);

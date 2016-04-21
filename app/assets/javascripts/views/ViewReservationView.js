@@ -18,8 +18,6 @@ app.ViewReservationView = Backbone.View.extend({
      this.model.set({"quote_id":0});
      this.model.set({"job_status":"pending"});
      this.model.save();
-
-
   },
 
   clickReview:function(e){
@@ -27,10 +25,8 @@ app.ViewReservationView = Backbone.View.extend({
 
      var quote = app.quotes.get(quote_id);
 
-     quoteMaker = quote.get('user_id');
-     console.log(quoteMaker);
-
-     app.router.navigate("#reviewinput", true);
+     revieweeId =  quote.get('user_id');
+     app.router.navigate("#reviewinput/"+revieweeId, true);
   },
 
   clickViewQuotes: function(e){

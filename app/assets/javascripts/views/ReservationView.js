@@ -8,6 +8,7 @@ app.ReservationView = Backbone.View.extend({
 	el: '#main',
 
   render: function() {
+		$('#sub').removeClass('set-visible');
 		$(document).scrollTop(0);
     var reservationViewTemplate = $('#reservationViewTemplate').html();
 		var reservationViewHTML = _.template( reservationViewTemplate );

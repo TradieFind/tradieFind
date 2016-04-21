@@ -5,6 +5,7 @@ app.QuotesView = Backbone.View.extend({
   el: '#main',
 
   render: function() {
+    $('#sub').removeClass('set-visible');
 		$(document).scrollTop(0);
     var appViewTemplate = $("#quotesViewTemplate").html();
     this.$el.html(appViewTemplate);

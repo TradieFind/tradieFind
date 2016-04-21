@@ -63,6 +63,7 @@ $(document).ready(function(){
   },
 
     render: function(){
+      $('#sub').removeClass('set-visible');
       var editUserViewTemplate = $('#editUserViewTemplate').html();
       var editUserViewHTML = _.template( editUserViewTemplate );
       console.log('rendering', this.model.toJSON())

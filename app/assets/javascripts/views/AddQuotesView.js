@@ -24,6 +24,7 @@ app.AddQuoteView = Backbone.View.extend({
   },
 
   render: function(){
+    $('#sub').removeClass('set-visible');
     var addQuoteViewTemplate = $("#addQuoteViewTemplate").html();
     var addQuoteViewHTML = _.template(addQuoteViewTemplate);
     this.$el.html(addQuoteViewHTML);
