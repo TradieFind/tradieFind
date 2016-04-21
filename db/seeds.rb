@@ -90,6 +90,12 @@ Pat = User.create(first_name: 'Pat', last_name: "Obireddy", email: "pat@gmail.co
 Marc = User.create(first_name: 'Marc', last_name: "Underwood", email: "marc@gmail.com", password: "chicken", password_confirmation: "chicken",address_one: "580 George street",trade: "customer", address_two: "Sydney", lat: -33.868647, lon: 151.207008, company_name: "none")
 Jae = User.create(first_name: 'Jae', last_name: "Joshi", email: "praz@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "Carpenter", address_two: "Kirribilli", lat: -33.787418, lon: 151.126622, company_name: "Tow for Cash")
 Kira = User.create(first_name: 'Kira', last_name: "Correy", email: "kira@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly",trade: "customer", address_two: "Kirribilli", lat: -33.824748, lon: 151.240248, company_name: "ZippyFix")
+Tamara = User.create(first_name: 'Tamara', last_name: "Correy", email: "tamara@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Locksmith", address_two: "Perth", lat: 31.9535, lon: 115.8570, company_name: "Door Breaker")
+Karen = User.create(first_name: 'Karen', last_name: "Correy", email: "karen@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.862525, lon: 151.070357, company_name: "Karen & Co.")
+Trevor = User.create(first_name: 'Trevor', last_name: "Correy", email: "trevor@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "Carpenter", address_two: "Sydney", lat: -33.862483, lon: 151.207149, company_name: "Trevor & Co.")
+
+
+
 
 
 
