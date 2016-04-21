@@ -12,18 +12,20 @@ app.AppView = Backbone.View.extend({
   },
 
   checkbox_CA_Clicked:function(e){
-
     //$('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw margin-bottom"></i>');
-
-
     $('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw margin-bottom"></i><span>Looking for your current Location</span>');
     findCurrentLoc();
-
     // getPlaceNearby();
     this.addressType = e.target.id;
   },
 
   checkbox_HA_Clicked:function(e){
+    var thisUser = app.users.where({id: app.current_user});
+    console.log(thisUser[0].attributes.lat);
+    console.log(thisUser[0].attributes.lon);
+    renderMap(thisUser[0].attributes.lat, thisUser[0].attributes.lon,false);
+    $('#cust_location_label').text(Number(thisUser[0].attributes.lat.toFixed(3)) + ", " + Number(thisUser[0].attributes.lon.toFixed(3)));
+    $('#cust_location_label2').text(thisUser[0].attributes.address_one + ", " + thisUser[0].attributes.address_two);
     this.addressType = e.target.id;
   },
 
@@ -62,17 +64,26 @@ app.AppView = Backbone.View.extend({
   },
 
   renderTradeList:function(){
-
-  this.model.each(function(model){
-      var tradeView = new app.TradeView({model: model});
-     tradeView.render();
-  });
-},
+    this.model.each(function(model){
+        var tradeView = new app.TradeView({model: model});
+       tradeView.render();
+    });
+  },
 
   render: function() {
+    user = app.users.get(app.current_user);
+
     localStorage.setItem( 'currentLoc', "" );
+    if (user === undefined || user.attributes.trade === "customer"){
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
     this.renderTradeList();
+  } else {
+    localStorage.setItem( 'currentLoc', "" );
+    var appTradieViewTemplate = $('#appTradieViewTemplate').html();
+    this.$el.html(appTradieViewTemplate);
+    this.renderTradeList();
+  };
   }
+
 });

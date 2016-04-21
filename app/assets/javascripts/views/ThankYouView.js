@@ -13,6 +13,6 @@ app.ThankYouView = Backbone.View.extend({
 		var thankYouViewHTML = _.template( thankYouViewTemplate );
     this.$el.html(thankYouViewHTML(this));
 
-		this.$el.appendTo("#main");
+		this.$el.appendTo(".jumbotron");
   }
 });

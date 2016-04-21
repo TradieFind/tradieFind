@@ -57,6 +57,8 @@ $(document).ready(function(){
       console.log(userAddressOneHTML);
       user.save();
 
+      app.router.navigate("#user", true)
+
 
   },
 
@@ -65,6 +67,7 @@ $(document).ready(function(){
       var editUserViewHTML = _.template( editUserViewTemplate );
       console.log('rendering', this.model.toJSON())
       this.$el.html(editUserViewHTML(this.model.toJSON()));
+
       // var thisUser = app.users.where({id: app.current_user});
       // eu_firstName = thisUser.$el.attributes.first_name.html();
       // var thisUser = app.users.where({id: app.current_user});

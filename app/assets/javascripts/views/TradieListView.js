@@ -24,12 +24,20 @@ app.TradieListView = Backbone.View.extend({
     this.$('#reviewViewTemplate').remove();
     var appViewTemplate = $('#TradieListViewListAllTemplate').html();
     this.$el.append(appViewTemplate);
+    console.log(this.options.inTrade);
+    console.log(this.options.radius);
     var tradieByTrade = app.users.where({trade: this.options.inTrade});
-       console.log(app.users);
+
+
+
+
+    console.log(tradieByTrade);
     var tradieSimpleDist = []
     var self = this;
+    asdf=0;
     _(tradieByTrade).each(function(t){
-
+    asdf=asdf+1;
+    console.log(asdf);
      distToCustomer = distanceSimple(parseFloat(self.options.customer_Lat),
                       parseFloat(self.options.customer_Lon),
                       parseFloat(t.attributes.lat),
@@ -42,6 +50,8 @@ app.TradieListView = Backbone.View.extend({
     //Render the tradies within the radius
     var tag_count = 0;
     _(tradieSimpleDist).each(function(t){
+      //add to Map
+      showTradies(parseFloat(t.attributes.lat),parseFloat(t.attributes.lon),t.attributes.company_name);
       //need to calculate average rating
       var reviews_t = app.reviews.where({reviewee_id: t.attributes.id});
       if (reviews_t) {
@@ -61,11 +71,6 @@ app.TradieListView = Backbone.View.extend({
                + "<td id='goog_ref_" + tag_count + "'></td>"
                + "<td class='tradie_link' data-r='" + t.attributes.id + "'>Click to View</td></tr>" ; // GoogleDist//
 
-              //  strRowColHTML +=
-              //    "</td><td data-r='" + i +"' data-c='" + j+ "' data-f='"
-              //    + flightId + "' style='pointer-events: none; cursor: default;'>"+tmpName;
-
-
       $('#reviewListOfTradies').append(strHTML);
       var tag_ref = "goog_ref_"+tag_count;
       googDistance( parseFloat(self.options.customer_Lat),
@@ -80,7 +85,7 @@ app.TradieListView = Backbone.View.extend({
 
 
   showTradie: function(passingTD) {
-    
+
     var tradieID =  parseInt(passingTD.currentTarget.attributes[1].value);
     var appViewTemplate = $("#TradieListViewInfo").html();
     this.$el.append(appViewTemplate);
@@ -96,7 +101,7 @@ app.TradieListView = Backbone.View.extend({
             + "<li> 1000 </li>" //get Jobs completed
             + "<li>"  +  "</li>"  // get Ratings
             + "<li >Additional Instructions</li>" + "<input id='Add_info' type='text' />"
-            + "<li class='book_link' data-r='" + tradieID + "'><button class='btn btn-default'>Click to Book</button></li>"
+            + "<li class='book_link' data-r='" + tradieID + "'>Click to Book</button></li>"
             + "</ul>"
             + "</div>"; // GoogleDist//
     $('#TradieListViewDetails').html(strHTML);

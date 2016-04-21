@@ -15,8 +15,14 @@ body{
   );
   font-family: 'PT Sans Narrow', sans-serif !important;
 }
+
 .jumbotron{
   text-align: center;
+}
+
+#cust_location_map1 {
+  width: 300px;
+  height:300px
 }
 
 .footer{
