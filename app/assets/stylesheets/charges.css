@@ -1,14 +1,15 @@
-// Place all the styles related to the charges controller here.
+/*// Place all the styles related to the charges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//*/
 
 img.img3 {
   position: absolute;
   top:0;
   left:0;
   z-index: -1000;
-  width:48%;
-  height:48%;
+  width:200px;
+  height:200px;
   opacity:0.8;
 }
 
