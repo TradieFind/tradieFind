@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :reservations
   resources :quotes
   resources :trades
+  resources :charges
 
+  get '/charges/new' => 'charges#new', :as => 'pay_charges'
   get '/users' => "users#index"
   get '/users/edit' => "users#edit", :as => 'edit_user'
   get '/users/:id' => "users#show", :as => 'user_profile'
