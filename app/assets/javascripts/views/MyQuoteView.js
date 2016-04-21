@@ -13,7 +13,11 @@ app.MyQuoteView = Backbone.View.extend({
 
   clickPayButton: function(){
     //app.router.navigate("/charges/new", true);
-    this.redirectTo('http://localhost:3000/charges/new');
+    // this.redirectTo('http://localhost:3000/charges/new');
+      $(document).ready( function() {
+      url = "/charges/new";
+      $( location ).attr("href", url);
+    });
   },
 
   fetchViewAgain:function(reservationID){
