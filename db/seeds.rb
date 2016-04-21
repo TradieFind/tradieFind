@@ -100,15 +100,6 @@ Dale = User.create(first_name: 'Dale', last_name: "Someguy", email: "dale@gmail.
 Daniel = User.create(first_name: 'Daniel', last_name: "Someguy", email: "daniel@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "12/2 Bradly Ave",trade: "customer", address_two: "Sydney", lat: -33.790135, lon: 151.278855, company_name: "Daniel & Co.")
 Pogo = User.create(first_name: 'Pogo', last_name: "thedog", email: "pogo@gmail.com", password: "chicken", password_confirmation: "chicken", address_one: "1 emu street",trade: "customer", address_two: "Perth", lat: -31.9635, lon: 115.9570, company_name: "yada")
 
-
-
-
-
-
-
-
-
-
 Review.destroy_all()
 review1 = Review.create(reviewer_id: 1, reviewee_id: 1, comment: "Sucks", rating: 0)
 review2 = Review.create(reviewer_id: 2, reviewee_id: 2, comment: "Not Bad", rating: 3)
@@ -120,18 +111,41 @@ review8 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Yawn", rating:
 review9 = Review.create(reviewer_id: 3, reviewee_id: 2, comment: "Muppet", rating: 0)
 
 
-
-
-
 Reservation.destroy_all()
 reservation1 = Reservation.create(user_id: 1, location: "Milsons Point", trade_name: "Mechanic", request_time: "1202", comments: "Fix engine", job_status: "Pending")
 reservation2 = Reservation.create(user_id: 2, location: "Gordon", trade_name: "Carpenter", request_time: "1100", comments: "Leaky roof", job_status: "Completed")
 reservation3 = Reservation.create(user_id: 3, location: "Strathfield", trade_name: "Grave Digger", request_time: "0800", comments: "Bury wife", job_status: "Pending")
+reservation4 = Reservation.create(user_id: 4, location: "Manly", trade_name: "Locksmith", request_time: "1202", comments: "join me for a beer i'm lonely and sad", job_status: "Pending")
+reservation5 = Reservation.create(user_id: 5, location: "Milsons Point", trade_name: "Carpenter", request_time: "1202", comments: "Sesh brah", job_status: "Completed")
+reservation6 = Reservation.create(user_id: 6, location: "Bondi", trade_name: "Mechanic", request_time: "1202", comments: "Burger Time", job_status: "Completed")
+reservation7 = Reservation.create(user_id: 7, location: "Newtown", trade_name: "Mechanic", request_time: "1500", comments: "Newy Hotel", job_status: "Pending")
+reservation8 = Reservation.create(user_id: 8, location: "Penrith", trade_name: "Mechanic", request_time: "1202", comments: "Fix lights", job_status: "Pending")
+reservation9 = Reservation.create(user_id: 9, location: "Glenbrook", trade_name: "Carpenter", request_time: "1202", comments: "cut some wood", job_status: "Completed")
+reservation10 = Reservation.create(user_id: 10, location: "Milsons Point", trade_name: "Grave Digger", request_time: "1202", comments: "Dig a hole", job_status: "Pending")
+reservation11 = Reservation.create(user_id: 11, location: "Lavender Bay", trade_name: "Grave Digger", request_time: "2200", comments: "Fix hole", job_status: "Completed")
+reservation12 = Reservation.create(user_id: 12, location: "Hornsby", trade_name: "Locksmith", request_time: "1202", comments: "Open door", job_status: "Pending")
+reservation13 = Reservation.create(user_id: 13, location: "Hornsby", trade_name: "Locksmith", request_time: "1202", comments: "Close door", job_status: "Pending")
+reservation14 = Reservation.create(user_id: 14, location: "Lane Cove", trade_name: "Carpenter", request_time: "1202", comments: "Cut some more wood", job_status: "Completed")
+reservation15 = Reservation.create(user_id: 15, location: "Hornsby", trade_name: "Carpenter", request_time: "1202", comments: "Make a chair", job_status: "Pending")
+
 
 Quote.destroy_all()
 quote1 = Quote.create(reservation_id: 1, user_id: 1, quote_value: "$3.00", start_time: "1100", estimated_duration: "3 Hours", comment: "Aight")
 quote2 = Quote.create(reservation_id: 2, user_id: 2, quote_value: "$30000.00", start_time: "1300", estimated_duration: "5 Hours", comment: "Not Bad")
 quote3 = Quote.create(reservation_id: 3, user_id: 3, quote_value: "$200.00", start_time: "0400", estimated_duration: "10 Hours", comment: "Not Good")
+quote4 = Quote.create(reservation_id: 4, user_id: 4, quote_value: "$20.00", start_time: "0400", estimated_duration: "5 Hours", comment: "Good")
+quote5 = Quote.create(reservation_id: 5, user_id: 5, quote_value: "$500.00", start_time: "0400", estimated_duration: "2.5 Hours", comment: "Not Good")
+quote6 = Quote.create(reservation_id: 6, user_id: 6, quote_value: "$2300.00", start_time: "0700", estimated_duration: "10.5 Hours", comment: "Not Bad")
+quote7 = Quote.create(reservation_id: 7, user_id: 7, quote_value: "$800.00", start_time: "0100", estimated_duration: "9 Hours", comment: "Good")
+quote8 = Quote.create(reservation_id: 8, user_id: 8, quote_value: "$200000.00", start_time: "0400", estimated_duration: "120 Hours", comment: "No breaks")
+quote9 = Quote.create(reservation_id: 9, user_id: 9, quote_value: "$400.00", start_time: "0700", estimated_duration: "17 Hours", comment: "Good")
+quote10 = Quote.create(reservation_id: 10, user_id: 10, quote_value: "$100.00", start_time: "0400", estimated_duration: "10 Hours", comment: "Not Good")
+quote11 = Quote.create(reservation_id: 11, user_id: 11, quote_value: "$300.00", start_time: "0300", estimated_duration: "10 Hours", comment: "Not Good")
+quote12 = Quote.create(reservation_id: 12, user_id: 12, quote_value: "$20.00", start_time: "0500", estimated_duration: "11 Hours", comment: " Good")
+quote13 = Quote.create(reservation_id: 13, user_id: 13, quote_value: "$2009.00", start_time: "0600", estimated_duration: "12 Hours", comment: "Not that Great")
+quote14 = Quote.create(reservation_id: 14, user_id: 14, quote_value: "$2600.00", start_time: "0700", estimated_duration: "15 Hours", comment: " Good Job")
+quote15 = Quote.create(reservation_id: 15, user_id: 15, quote_value: "$20054.00", start_time: "0800", estimated_duration: "16 Hours", comment: "Good")
+
 
 Trade.destroy_all()
 trade1 = Trade.create(name: "Mechanic")
