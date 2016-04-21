@@ -120,8 +120,8 @@
          <div class="row">
            <label class="radio-inline"><input id="currentTDAddress"type="radio" name="optradio">My Current Address</label>
            <label class="radio-inline"><input id="homeTDAddress" type="radio" name="optradio">My Home Address</label>
-           <p id="cust_location_label">1</p>
-           <div id="cust_location_label2">1</div>
+           <p id="cust_location_label"></p>
+           <div id="cust_location_label2"></div>
             <div id="cust_location_map1"></div>
            </div>
        </div>
@@ -598,10 +598,10 @@
          <h2>My Reservation List</h2>
          <table class="table table-bordered" id="reservations">
            <tr>
-             <th>id</th>
-             <th>user_id</th>
-             <th>quote_id</th>
-             <th>Status</th>
+             <th>Trade</th>
+             <th>Description</th>
+             <th>Location</th>
+             <th>Job Status</th>
            </tr>
          </table>
        </script>
@@ -611,11 +611,10 @@
             <h3>Quotes For Reservation</h3>
             <table class="table table-bordered" id="quotes">
               <tr>
-                <th>Id</th>
-                <th>Reservation</th>
-                <th>user_id</th>
-                <th>Start Time</th>
-                <th>Estimated Duration</th>
+                <th>User</th>
+                <th>Quote Value</th>
+                <th>Estimated_duration</th>
+                <th>Comment</th>
               </tr>
             </table>
             </div>

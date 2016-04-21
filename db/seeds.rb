@@ -114,19 +114,19 @@ review9 = Review.create(reviewer_id: 8, reviewee_id: 8, comment: "Muppet", ratin
 
 Reservation.destroy_all()
 reservation1 = Reservation.create(user_id: 3,   location: "Milsons Point",  trade_name: "Mechanic", request_time: "1202", comments: "Fix engine", job_status: "Pending")
-reservation2 = Reservation.create(user_id: 3,   location: "Gordon",         trade_name: "Carpenter", request_time: "1100", comments: "Leaky roof", job_status: "Completed")
-reservation3 = Reservation.create(user_id: 3,   location: "Strathfield",    trade_name: "Grave Digger", request_time: "0800", comments: "Bury wife", job_status: "Pending")
+reservation2 = Reservation.create(user_id: 3,   location: "Gordon",         trade_name: "Carpenter", request_time: "1100", comments: "Leaky roof", job_status: "pending")
+reservation3 = Reservation.create(user_id: 3,   location: "Strathfield",    trade_name: "Grave Digger", request_time: "0800", comments: "Bury wife", job_status: "pending")
 
 reservation4 = Reservation.create(user_id: 4,   location: "Manly",          trade_name: "Locksmith", request_time: "1202", comments: "join me for a beer i'm lonely and sad", job_status: "pending")
-reservation5 = Reservation.create(user_id: 4,   location: "Milsons Point",  trade_name: "Carpenter", request_time: "1202", comments: "Sesh brah", job_status: "completed")
-reservation6 = Reservation.create(user_id: 4,   location: "Bondi",          trade_name: "Mechanic", request_time: "1202", comments: "Burger Time", job_status: "completed")
+reservation5 = Reservation.create(user_id: 4,   location: "Milsons Point",  trade_name: "Carpenter", request_time: "1202", comments: "Sesh brah", job_status: "pending")
+reservation6 = Reservation.create(user_id: 4,   location: "Bondi",          trade_name: "Mechanic", request_time: "1202", comments: "Burger Time", job_status: "pending")
 reservation7 = Reservation.create(user_id: 4,   location: "Newtown",        trade_name: "Mechanic", request_time: "1500", comments: "Newy Hotel", job_status: "pending")
 
 reservation8 = Reservation.create(user_id: 6,   location: "Penrith",        trade_name: "Mechanic", request_time: "1202", comments: "Fix lights", job_status: "pending")
-reservation9 = Reservation.create(user_id: 6,   location: "Glenbrook",      trade_name: "Carpenter", request_time: "1202", comments: "cut some wood", job_status: "completed")
+reservation9 = Reservation.create(user_id: 6,   location: "Glenbrook",      trade_name: "Carpenter", request_time: "1202", comments: "cut some wood", job_status: "pending")
 reservation10 = Reservation.create(user_id: 6,  location: "Milsons Point",  trade_name: "Grave Digger", request_time: "1202", comments: "Dig a hole", job_status: "pending")
 
-reservation11 = Reservation.create(user_id: 12, location: "Lavender Bay",   trade_name: "Grave Digger", request_time: "2200", comments: "Fix hole", job_status: "completed")
+reservation11 = Reservation.create(user_id: 12, location: "Lavender Bay",   trade_name: "Grave Digger", request_time: "2200", comments: "Fix hole", job_status: "pending")
 reservation12 = Reservation.create(user_id: 12, location: "Hornsby",        trade_name: "Locksmith", request_time: "1202", comments: "Open door", job_status: "pending")
 reservation13 = Reservation.create(user_id: 12, location: "Hornsby",        trade_name: "Mechanic", request_time: "1202", comments: "Close door", job_status: "pending")
 
@@ -141,27 +141,27 @@ reservation20 = Reservation.create(user_id: 15, location: "Hornsby",        trad
 
 Quote.destroy_all()
 quote1  = Quote.create(reservation_id: 1,  user_id: 1,   status: 'pending',  quote_value: "$3.00", start_time: "1100", estimated_duration: "3 Hours", comment: "I fix quic")
-quote2  = Quote.create(reservation_id: 1,  user_id: 2,   status: 'rejected', quote_value: "$30000.00", start_time: "1300", estimated_duration: "5 Hours", comment: "Mucho gusto fixo")
-quote3  = Quote.create(reservation_id: 1,  user_id: 10,  status: 'pending',  quote_value: "$200.00", start_time: "0400", estimated_duration: "10 Hours", comment: "need parts from japan")
+quote2  = Quote.create(reservation_id: 2,  user_id: 2,   status: 'pending', quote_value: "$30000.00", start_time: "1300", estimated_duration: "5 Hours", comment: "Mucho gusto fixo")
+quote3  = Quote.create(reservation_id: 3,  user_id: 10,  status: 'pending',  quote_value: "$200.00", start_time: "0400", estimated_duration: "10 Hours", comment: "need parts from japan")
 
 
-quote4  = Quote.create(reservation_id: 3,  user_id: 16,  status: 'pending', quote_value: "$666.00", start_time: "0001", estimated_duration: "enterity", comment: "See you soon :D")
+quote4  = Quote.create(reservation_id: 4,  user_id: 16,  status: 'pending', quote_value: "$666.00", start_time: "0001", estimated_duration: "enterity", comment: "See you soon :D")
 
-quote5  = Quote.create(reservation_id: 4,  user_id: 7,   status: 'pending',  quote_value: "$500.00", start_time:  "0400", estimated_duration: "2.5 Hours", comment: "I will come back and steal")
-quote6  = Quote.create(reservation_id: 4,  user_id: 11,  status: 'pending',  quote_value: "$2300.00", start_time: "0700", estimated_duration: "10.5 Hours", comment: "Can i use a chainsaw?")
-
-
-quote7  = Quote.create(reservation_id: 13,  user_id: 1,   status: 'pending',  quote_value: "$800.00",    start_time: "0100", estimated_duration: "9 Hours", comment: "hello")
-quote8  = Quote.create(reservation_id: 13,  user_id: 2,   status: 'pending',  quote_value: "$200000.00", start_time: "0400", estimated_duration: "120 Hours", comment: "hurro")
-quote9  = Quote.create(reservation_id: 13,  user_id: 10,  status: 'pending',  quote_value: "$400.00",    start_time: "0700", estimated_duration: "17 Hours", comment: "wuhwoo!")
+quote5  = Quote.create(reservation_id: 5,  user_id: 7,   status: 'pending',  quote_value: "$500.00", start_time:  "0400", estimated_duration: "2.5 Hours", comment: "I will come back and steal")
+quote6  = Quote.create(reservation_id: 6,  user_id: 11,  status: 'pending',  quote_value: "$2300.00", start_time: "0700", estimated_duration: "10.5 Hours", comment: "Can i use a chainsaw?")
 
 
-quote10 = Quote.create(reservation_id: 14, user_id:  5, status: 'pending',  quote_value: "$100.00", start_time: "0400", estimated_duration: "10 Hours", comment: "wood good")
-quote11 = Quote.create(reservation_id: 14, user_id:  8, status: 'pending',  quote_value: "$300.00", start_time: "0300", estimated_duration: "10 Hours", comment: "me nail it 4 u")
-quote12 = Quote.create(reservation_id: 14, user_id:  9, status: 'pending',  quote_value: "$20.00", start_time: "0500", estimated_duration: "11 Hours", comment: "saw it done once will hammer it ")
-quote13 = Quote.create(reservation_id: 14, user_id: 13, status: 'pending',  quote_value: "$2009.00", start_time: "0600", estimated_duration: "12 Hours", comment: "must supply hammer")
+quote7  = Quote.create(reservation_id: 7,  user_id: 1,   status: 'pending',  quote_value: "$800.00",    start_time: "0100", estimated_duration: "9 Hours", comment: "hello")
+quote8  = Quote.create(reservation_id: 7,  user_id: 2,   status: 'pending',  quote_value: "$200000.00", start_time: "0400", estimated_duration: "120 Hours", comment: "hurro")
+quote9  = Quote.create(reservation_id: 8,  user_id: 10,  status: 'pending',  quote_value: "$400.00",    start_time: "0700", estimated_duration: "17 Hours", comment: "wuhwoo!")
 
-quote14 = Quote.create(reservation_id: 19, user_id:  1, status: 'pending',  quote_value: "$2600.00", start_time: "0700", estimated_duration: "15 Hours", comment: "vroom?")
+
+quote10 = Quote.create(reservation_id: 9, user_id:  5, status: 'pending',  quote_value: "$100.00", start_time: "0400", estimated_duration: "10 Hours", comment: "wood good")
+quote11 = Quote.create(reservation_id: 10, user_id:  8, status: 'pending',  quote_value: "$300.00", start_time: "0300", estimated_duration: "10 Hours", comment: "me nail it 4 u")
+quote12 = Quote.create(reservation_id: 11, user_id:  9, status: 'pending',  quote_value: "$20.00", start_time: "0500", estimated_duration: "11 Hours", comment: "saw it done once will hammer it ")
+quote13 = Quote.create(reservation_id: 12, user_id: 13, status: 'pending',  quote_value: "$2009.00", start_time: "0600", estimated_duration: "12 Hours", comment: "must supply hammer")
+
+quote14 = Quote.create(reservation_id: 13, user_id:  1, status: 'pending',  quote_value: "$2600.00", start_time: "0700", estimated_duration: "15 Hours", comment: "vroom?")
 quote15 = Quote.create(reservation_id: 19, user_id:  2, status: 'rejected',  quote_value: "$20054.00", start_time: "0800", estimated_duration: "16 Hours", comment: "zoom zoom to ya soon")
 quote16 = Quote.create(reservation_id: 20, user_id:  5, status: 'accepted',  quote_value: "$20054.00", start_time: "0800", estimated_duration: "16 Hours", comment: "saw dust")
 
