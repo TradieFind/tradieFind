@@ -57,6 +57,10 @@ ActiveRecord::Schema.define(version: 20160420071338) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "email"
     t.text     "password_digest"
     t.string   "company_name"
@@ -68,8 +72,8 @@ ActiveRecord::Schema.define(version: 20160420071338) do
     t.string   "address_two"
     t.float    "lat"
     t.float    "lon"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
 end
