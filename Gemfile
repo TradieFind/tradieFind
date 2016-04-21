@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "annotate"
 gem "pry-rails"
 gem 'stripe'
+gem 'carrierwave'
+gem 'cloudinary'
 gem "gon"
 gem "rabl-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
