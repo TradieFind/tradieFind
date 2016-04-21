@@ -1,16 +1,16 @@
-var app = app || {};
+ var app = app || {};
 
 app.ViewReservationsView = Backbone.View.extend({
   initialize: function(){
-
+    console.log('ViewReservationsView init');
   },
 
   el: '#main',
 
 
   render: function(){
+    console.log('rendering ViewReservationsView')
     this.$el.empty();
-    console.log("here2");
     var ReservationsTemplate = $('#ViewReservationViewTemplate').html();
     this.$el.html(ReservationsTemplate);
     this.model.each(function(m){
