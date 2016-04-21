@@ -14,7 +14,6 @@ app.MyQuoteView = Backbone.View.extend({
     app.quotes.fetch().done(function(){
     var myQuotesView = new app.MyQuotesView({collection: app.quotes});
      myQuotesView.render();
-
      });
   },
 
