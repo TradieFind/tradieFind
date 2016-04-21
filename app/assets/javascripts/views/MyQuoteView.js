@@ -10,10 +10,11 @@ app.MyQuoteView = Backbone.View.extend({
       'click  .finish-quote': 'clickFinishQuote'
   },
 
-  fetchViewAgain:function(){
+  fetchViewAgain:function(reservationID){
     app.quotes.fetch().done(function(){
-    var myQuotesView = new app.MyQuotesView({collection: app.quotes});
-     myQuotesView.render();
+      var quotesList = app.quotes.where({reservation_id:reservationID});
+      var myQuotesView = new app.MyQuotesView({collection: new app.Quotes(quotesList)});
+      myQuotesView.render();
      });
   },
 
@@ -31,7 +32,7 @@ app.MyQuoteView = Backbone.View.extend({
     this.model.set({"status":"notaccepted"});
     this.model.save();
 
-    this.fetchViewAgain();
+    this.fetchViewAgain(reservation_id);
   },
 
   clickFinishQuote:function(e){
@@ -40,15 +41,12 @@ app.MyQuoteView = Backbone.View.extend({
       var reservation = app.reservations.get(reservation_id);
       reservation.set({job_status:"completed"})
       reservation.save();
-      this.fetchViewAgain();
+      this.fetchViewAgain(reservation_id);
   },
 
   clickAcceptQuote: function(e){
-    console.log(e.target);
     var quotesId =  this.model.get('id');
-    console.log("MODEL ID : :::::::: ",quotesId);
     var reservation_id = this.model.attributes.reservation_id;
-    // console.log(, reservation_id);
     this.model.set({"status":"accepted"});
     this.model.save();
 
@@ -69,7 +67,7 @@ app.MyQuoteView = Backbone.View.extend({
     var self = this;
     reservation.save();
 
-    this.fetchViewAgain();
+    this.fetchViewAgain(reservation_id);
   },
 
   render: function(){
@@ -84,14 +82,17 @@ app.MyQuoteView = Backbone.View.extend({
         td += "</td><td>";
         td += this.model.get("estimated_duration");
       //
-      var reservation_id = this.model.attributes.reservation_id;
-      var reservation = app.reservations.get(reservation_id);
-       var reservStatus =reservation.get("job_status");
-       var reservQuoteId  = reservation.get("quote_id");
-       var thisQuoteId = this.model.get('id');
-       console.log("model id: "+ thisQuoteId);
+        var reservation_id = this.model.attributes.reservation_id;
+        var reservation = app.reservations.get(reservation_id);
+        var reservStatus =reservation.get("job_status");
+        var reservQuoteId  = reservation.get("quote_id");
+        var thisQuoteId = this.model.get('id');
 
-        if(reservQuoteId === thisQuoteId  ){
+        var quoteStatus = this.model.get("status");
+
+        //if(reservQuoteId === thisQuoteId  ){
+
+        if(quoteStatus === 'accepted'){
          td += "</td><td class ='decline-quote' quote_id='"+this.model.get('id')+"'>";
         td += "Decline";
         td += "</td>";
