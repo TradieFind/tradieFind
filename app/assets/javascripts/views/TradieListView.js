@@ -80,7 +80,7 @@ app.TradieListView = Backbone.View.extend({
 
 
   showTradie: function(passingTD) {
-    
+
     var tradieID =  parseInt(passingTD.currentTarget.attributes[1].value);
     var appViewTemplate = $("#TradieListViewInfo").html();
     this.$el.append(appViewTemplate);
@@ -96,7 +96,7 @@ app.TradieListView = Backbone.View.extend({
             + "<li> 1000 </li>" //get Jobs completed
             + "<li>"  +  "</li>"  // get Ratings
             + "<li >Additional Instructions</li>" + "<input id='Add_info' type='text' />"
-            + "<li class='book_link' data-r='" + tradieID + "'><button class='btn btn-default'>Click to Book</button></li>"
+            + "<li class='book_link' data-r='" + tradieID + "'>Click to Book</button></li>"
             + "</ul>"
             + "</div>"; // GoogleDist//
     $('#TradieListViewDetails').html(strHTML);
