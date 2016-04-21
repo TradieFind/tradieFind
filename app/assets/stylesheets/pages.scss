@@ -96,3 +96,14 @@ body{
 .accept-quote{
   background-color: #BBD6AF;
 }
+
+.sub-invisible{
+  visibility: hidden;
+   position: absolute;
+   top: -9999px;
+}
+
+.sub-visible{
+  visibility: visible;
+     position: static;
+}

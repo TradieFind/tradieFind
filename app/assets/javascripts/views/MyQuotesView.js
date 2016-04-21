@@ -4,7 +4,9 @@ app.MyQuotesView = Backbone.View.extend({
 
   el: '#sub',
 
+
   render: function() {
+    this.$el.addClass("sub-visible");
     this.$el.empty();;
     var quotesViewTemplate = $('#quotesViewTemplate').html();
     this.$el.html(quotesViewTemplate);

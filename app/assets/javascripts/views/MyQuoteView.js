@@ -18,8 +18,8 @@ app.MyQuoteView = Backbone.View.extend({
      });
   },
 
-  clickDeclineQuote: function(){
-
+  clickDeclineQuote: function(e){
+    console.log(e.target);
     var reservation_id = this.model.attributes.reservation_id;
     var reservation = app.reservations.get(reservation_id);
     var reservQuoteId  = reservation.get("quote_id");
@@ -36,6 +36,7 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickFinishQuote:function(e){
+    console.log(e.target);
       var reservation_id = this.model.attributes.reservation_id;
       var reservation = app.reservations.get(reservation_id);
       reservation.set({job_status:"completed"})
@@ -44,6 +45,7 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickAcceptQuote: function(e){
+    console.log(e.target);
     var quotesId =  this.model.get('id');
     console.log("MODEL ID : :::::::: ",quotesId);
     var reservation_id = this.model.attributes.reservation_id;
