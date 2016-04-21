@@ -191,7 +191,7 @@
      <h1>{{= first_name }}'s Profile</h1>
   <div></div>
 
-  <p><img tag="{{= avatar_file_name}}" alt="Pat's hectic photo"></p>
+
    <p>First Name: {{= first_name }}</p>
    <p>Last Name:{{= last_name }}</p>
    <p>Email: {{= email }}</p>
@@ -488,14 +488,19 @@
   <script type="text/template" id="paymentViewTemplate">
       <h2>Pay Your Invoice</h2>
       <br>
-      <p>First Name: </p>
-      <p>Last Name: </p>
-      <p>Address: </p>
+      <% if logged_in? %>
+      <p>First Name: <%= current_user.first_name %></p>
+      <p>Last Name: <%= current_user.last_name %></p>
+      <p>Address: <%= current_user.address_one %></p>
+      <p>Suburb: <%= current_user.address_two %></p>
       <br>
       <h4>Please make sure the above details are correct before proceeding with payment</h4>
       <!-- <button id="processPayment">Proceed</button> -->
+      <br>
       <button onclick="window.location.href='/charges/new'">Proceed</button>
       <br>
+      <br>
+      <% end %>
       <%= link_to "Go Back Home", root_path %>
   </script>
 

@@ -19,9 +19,6 @@ $(document).ready(function(){
        user.set({first_name: userFirstNameFromHTML});
 
 
-    var userImageFromHTML = this.$el.find("#fileInput").val();
-     user.set({avatar_file_name: userImageFromHTML});
-
     var userLastNameFromHTML = this.$el.find("#last_name").val();
       user.set({last_name: userLastNameFromHTML});
 
@@ -70,6 +67,7 @@ $(document).ready(function(){
       var editUserViewHTML = _.template( editUserViewTemplate );
       console.log('rendering', this.model.toJSON())
       this.$el.html(editUserViewHTML(this.model.toJSON()));
+
       // var thisUser = app.users.where({id: app.current_user});
       // eu_firstName = thisUser.$el.attributes.first_name.html();
       // var thisUser = app.users.where({id: app.current_user});

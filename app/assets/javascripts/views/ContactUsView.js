@@ -19,8 +19,12 @@ events: {
 
   thankYou: function(event) {
     event.stopImmediatePropagation();
-
-    app.router.navigate('#thankyou', true);
+    debugger;
+    if ($(".input").val() === ""){
+      app.router.navigate('#thankyou', true);
+    } else {
+      alert("Please fill out all the fields");
+    }
   }
 
 });
