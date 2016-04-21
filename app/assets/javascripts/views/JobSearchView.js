@@ -4,10 +4,10 @@ app.JobSearchView = Backbone.View.extend({
  el: "#main",
 
   events: {
-  //  'click #searchButton' : 'searchForFlights',
-  //  'keypress textarea' : 'checkForEnterSearchFlights',
-   'click li.book_link' : 'makeReservation',
+   'click li.book_link' : 'makeQuote',
+  //  'click li.book_link' : 'remove',
    'click td.jobs_link' : 'showJobs'
+  //  'click td.jobs_link' : 'remove'
   },
 
   initialize: function(options) {
@@ -26,7 +26,7 @@ app.JobSearchView = Backbone.View.extend({
     this.$el.append(appViewTemplate);
     // console.log(this.options.inTrade);
     // console.log(this.options.radius);
-    var jobList = app.reservations.where({trade_name: this.options.inTrade});
+    var jobList = app.reservations.where({trade_name: this.options.inTrade, job_status: 'Pending'});
     // console.log("XXXXXXYYYYYY");
     // console.log(jobList);
     // console.log(jobList);
@@ -47,10 +47,10 @@ app.JobSearchView = Backbone.View.extend({
       //
       // console.log("XXXXXXXXXX");
       // console.log(jobCust);
-      console.log(parseFloat(self.options.td_Lat));
-                       console.log(parseFloat(self.options.td_Lon));
-                       console.log(parseFloat(jobCust[0].attributes.lat));
-                       console.log(parseFloat(jobCust[0].attributes.lon) );
+      // console.log(parseFloat(self.options.td_Lat));
+      //                  console.log(parseFloat(self.options.td_Lon));
+      //                  console.log(parseFloat(jobCust[0].attributes.lat));
+      //                  console.log(parseFloat(jobCust[0].attributes.lon) );
 
       var distToJob = distanceSimple(parseFloat(self.options.td_Lat),
                       parseFloat(self.options.td_Lon),
@@ -60,8 +60,8 @@ app.JobSearchView = Backbone.View.extend({
        jobsSimpleDist.push(j);
      };
     });
-    console.log("jsdjsd");
-    console.log(jobsSimpleDist);
+    // console.log("jsdjsd");
+    // console.log(jobsSimpleDist);
 
 
     //Render the tradies within the radius
@@ -69,33 +69,18 @@ app.JobSearchView = Backbone.View.extend({
     var tag_count = 0;
     _(jobsSimpleDist).each(function(j){
       var jobCust = app.users.where({id: j.attributes.user_id});
-      console.log("dddddddddddd");
-      console.log(jobCust);
-      //add to Map
-      console.log("a");
-      console.log(parseFloat(jobCust[0].attributes.lat));
-      console.log('b');
-      console.log(parseFloat(jobCust[0].attributes.lon));
-      console.log("c");
-      console.log(jobCust[0].attributes.first_name);
+      // console.log("dddddddddddd");
+      // console.log(jobCust);
+      // //add to Map
+      // console.log("a");
+      // console.log(parseFloat(jobCust[0].attributes.lat));
+      // console.log('b');
+      // console.log(parseFloat(jobCust[0].attributes.lon));
+      // console.log("c");
+      // console.log(jobCust[0].attributes.first_name);
       showTradies(parseFloat(jobCust[0].attributes.lat),parseFloat(jobCust[0].attributes.lon),jobCust[0].attributes.first_name);
-      //need to calculate average rating
-      // var reviews_t = app.reviews.where({reviewee_id: t.attributes.id});
-      // rating_t = "No reviews";
-      // console.log(reviews_t.length);
-      // console.log(reviews_t.length > 0);
-      // if (reviews_t.length > 0) {
-      //   var rating_t = 0;
-      //   var denom = 0;
-      //    _(reviews_t).each(function(r){
-      //      denom = denom + 1;
-      //      rating_t += r.attributes.rating;
-      //   });
-      //    rating_t = Number((rating_t / denom).toFixed(1));
-      // };
-      //render each tradie to the table '#reviewListOfTradies'
        var strHTML = "<tr><td>" + jobCust[0].attributes.first_name + " " + jobCust[0].attributes.last_name + "</td>"
-               + "<td>" + j.attributes.locations + "</td>"
+               + "<td>" + j.attributes.location + "</td>"
                + "<td>" + j.attributes.comments + "</td>"
                + "<td>" + j.attributes.request_time+ "</td>"  // get Ratings
                + "<td id='goog_ref_" + tag_count + "'></td>"
@@ -103,8 +88,8 @@ app.JobSearchView = Backbone.View.extend({
 
       $('#reviewListOfJobs').append(strHTML);
       var tag_ref = "goog_ref_"+tag_count;
-      console.log("tag_ref");
-      console.log(tag_ref);
+      // console.log("tag_ref");
+      // console.log(tag_ref);
       googDistance( parseFloat(self.options.td_Lat),
                     parseFloat(self.options.td_Lon),
                     parseFloat(jobCust[0].attributes.lat),
@@ -116,49 +101,49 @@ app.JobSearchView = Backbone.View.extend({
 
 
 
-  showJobs: function(passingTD) {
+  showJobs: function(x) {
+    console.log(x.currentTarget.attributes[1].value);
+    console.log("clicked");
+    // QUOTE STATUS: notaccepted  || accepted
+    var resID =  parseInt(x.currentTarget.attributes[1].value);
+    var appViewTemplate = $("#JobViewInfo").html();
+    this.$el.append(appViewTemplate);
+    var r = app.reservations.findWhere({id: resID});
+    var strHTML
+            =
+             "<div class='well well-lg' >"
+            + "<h4>Job details and Quote</h4>"
+            + "<ul style='list-style: none;'>"
+            + "<li >Quote fee</li>" + "<input id='quote_value' type='text' />"
+            + "<li >Start time</li>" + "<input id='start_time' type='text' />"
+            + "<li >Estimated duration</li>" + "<input id='estimate_duration' type='text' />"
+            + "<li >Comments</li>" + "<input id='comment' type='text' />"
+            + "<li class='book_link' data-r='" + resID + "'>Click to submit Quote</button></li>"
+            + "</ul>"
+            + "</div>"; // GoogleDist//
+    $('#JobViewDetails').html(strHTML);
+  }, //END showJobs
 
-    // var tradieID =  parseInt(passingTD.currentTarget.attributes[1].value);
-    // var appViewTemplate = $("#TradieListViewInfo").html();
-    // this.$el.append(appViewTemplate);
-    //
-    // var t = app.users.findWhere({id: tradieID});
-    // var strHTML
-    //         =
-    //          "<div class='well well-lg' >"
-    //         + "<h4>Profile</h4>"
-    //         + "<ul style='list-style: none;'>"
-    //         + "<li>Name: " + t.attributes.first_name + " " + t.attributes.last_name + "</li>"
-    //         + "<li>" + t.attributes.company_name + "</li>"
-    //         + "<li> 1000 </li>" //get Jobs completed
-    //         + "<li>"  +  "</li>"  // get Ratings
-    //         + "<li >Additional Instructions</li>" + "<input id='Add_info' type='text' />"
-    //         + "<li class='book_link' data-r='" + tradieID + "'>Click to Book</button></li>"
-    //         + "</ul>"
-    //         + "</div>"; // GoogleDist//
-    // $('#TradieListViewDetails').html(strHTML);
-  }, //END showTradie
 
 
+  makeQuote: function(passingLi) {
+    console.log("xe,kasdf");
+    var newQ = new app.Quote();
 
-  makeReservation: function(passingLi) {
-    // var newRes = new app.Reservation();
-    // var tradieID =  parseInt(passingLi.currentTarget.attributes[1].value);
-    // var cust = app.users.findWhere({id: app.current_user});
-    // var addressOfCustomer = cust.attributes.address_one+", "+cust.attributes.address_two;
-    // var t = app.users.findWhere({id: tradieID});
-    // var tradeType = t.attributes.trade;
-    // var commentsTxt = $('#Add_info').val();
-    // newRes.set({
-    //   user_id: app.current_user,
-    //   location: addressOfCustomer,
-    //   trade_name: tradeType,
-    //   request_time:  Date("Fri Mar 25 2015 09:56:24"),
-    //   comments: commentsTxt,
-    //   job_status: "booked"
-    // });
-    // newRes.save();
-    // passingLi.toElement.textContent = "BOOKED";
-    // passingLi.toElement.style.pointerEvents = "none"
+    var resID =  parseInt(passingLi.currentTarget.attributes[1].value);
+    // var tradieID = app.users.findWhere({id: app.current_user});
+    newQ.set({
+      reservation_id: resID,
+      user_id: app.current_user,
+      quote_value: $('#quote_value').val(),
+      comment: $('#comment').val(),
+      start_time: $('#start_time').val(),
+      estimate_duration: $('#estimate_duration').val(),
+      status: 'pending'
+    });
+    newQ.save();
+    passingLi.toElement.textContent = "QUOTE SENT";
+    passingLi.toElement.style.pointerEvents = "none"
+
   } //END makeReservations
 });

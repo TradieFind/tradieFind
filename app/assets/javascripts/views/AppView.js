@@ -61,6 +61,10 @@ app.AppView = Backbone.View.extend({
   },
 
   createHash: function(){
+    this.$('#TradieListTable').remove();
+    var appViewTemplate = $('#TradieListTable').html();
+    this.$el.append(appViewTemplate);
+
     var radius = $('#distance').val();
     var inTrade= $('#tradeOptions option:selected').val();
     var thisUser = app.users.where({id: app.current_user});
@@ -84,6 +88,11 @@ app.AppView = Backbone.View.extend({
   },
 
   createTDHash: function(){
+
+    this.$el.remove('#JobViewTable');
+    var appViewTemplate = $('#JobViewTable').html();
+    this.$el.append(appViewTemplate);
+
     var radius = $('#distance').val();
     var thisUser = app.users.where({id: app.current_user});
     if (this.addressType === 'homeTDAddress') {
@@ -122,11 +131,15 @@ app.AppView = Backbone.View.extend({
     if (user === undefined || user.attributes.trade === "customer"){
     var appViewTemplate = $('#appViewTemplate').html();
     this.$el.html(appViewTemplate);
+    var appViewTemplate = $('#TradieListViewListAllTemplate').html();
+    this.$el.append(appViewTemplate);
     this.renderTradeList();
   } else {
     localStorage.setItem( 'currentLoc', "" );
     var appTradieViewTemplate = $('#appTradieViewTemplate').html();
     this.$el.html(appTradieViewTemplate);
+    var appViewTemplate = $('#JobViewListAllTemplate').html();
+    this.$el.append(appViewTemplate);
     this.renderTradeList();
   };
   }

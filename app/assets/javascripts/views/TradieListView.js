@@ -4,10 +4,10 @@ app.TradieListView = Backbone.View.extend({
  el: "#main",
 
   events: {
-  //  'click #searchButton' : 'searchForFlights',
-  //  'keypress textarea' : 'checkForEnterSearchFlights',
    'click li.book_link' : 'makeReservation',
-   'click td.tradie_link' : 'showTradie'
+   'click li.book_link' : 'remove',
+   'click td.tradie_link' : 'showTradie',
+   'click td.tradie_link' : 'remove'
   },
 
   initialize: function(options) {
