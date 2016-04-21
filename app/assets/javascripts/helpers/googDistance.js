@@ -9,6 +9,12 @@ function googDistance(lat1, lon1, lat2, lon2, tag_ref) {
       travelMode: google.maps.TravelMode.DRIVING
     },
     function(response, status) {
+      console.log("COORDS");
+      console.log(lat1);
+      console.log(lon1);
+      console.log(lat2);
+      console.log(lon2);
+      console.log(tag_ref);
       if (status !== google.maps.DistanceMatrixStatus.OK) {
         alert('Error was: ' + status);
       } else {
@@ -84,6 +90,7 @@ function handleLocationError() {
 
 
 function renderMap(inLat, inLon, getAddressBool) {
+
   var centerLoc = new google.maps.LatLng(inLat, inLon);
   // cust_location_label2'
   window.map = new google.maps.Map(document.getElementById('cust_location_map1'), {
