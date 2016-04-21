@@ -1,3 +1,4 @@
+<div id="paymentpage">
 <%= form_tag charges_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -6,7 +7,8 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $10.00</span>
+      <p id="amountp">You have the following outstanding<p>
+      <span class="amount">Invoice: $10.00</span>
     </label>
   </article>
 
@@ -15,4 +17,10 @@
           data-description="Invoice"
           data-amount="1000"
           data-locale="auto"></script>
+          <%= image_tag  "cash1.jpg",  :class => 'img6' %>
+          <%= image_tag  "cash2.jpg",  :class => 'img6' %>
+          <%= image_tag  "cash3.jpg",  :class => 'img6' %>
+          <%= image_tag  "cash4.jpg",  :class => 'img6' %>
+
 <% end %>
+</div>
