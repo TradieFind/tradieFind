@@ -16,6 +16,10 @@ body{
   font-family: 'PT Sans Narrow', sans-serif !important;
 }
 
+.avatar img {
+  border-radius: 33%;
+}
+
 .jumbotron{
   text-align: center;
   p {
@@ -32,6 +36,8 @@ body{
   margin: 0 auto;
   // width: 50vw;
   height: 80vh;
+  border-radius: 3%;
+
 }
 
 .footer{
@@ -150,17 +156,23 @@ body{
      position: static;
 }
 
+.hide{
+  display:none;
+  background-color: red;
+}
+
 #cust_location_label{
   display: none;
 }
 
 
+
 .completed-quote{
   background-color: #D9EDF7;
 }
-.img3{
-  text-align: center;
-}
-.img4{
-  text-align: center;
-}
+// .img3{
+//   text-align: center;
+// }
+// .img4{
+//   text-align: center;
+// }

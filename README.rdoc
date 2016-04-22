@@ -1,4 +1,0 @@
-== README For tradie find
-
-
-Relations Between Models

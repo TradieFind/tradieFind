@@ -5,7 +5,7 @@ app.contactUsView = Backbone.View.extend({
 el: '#main',
 
 events: {
-  'click button':'thankYou'
+  'click button#cusubmit':'thankYou'
 },
 
   render: function(){
