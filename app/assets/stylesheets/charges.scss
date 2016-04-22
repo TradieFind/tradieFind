@@ -8,8 +8,8 @@ img.img3 {
   top:0;
   left:0;
   z-index: -1000;
-  width:200px;
-  height:200px;
+  width:50%;
+  height:50%;
   opacity:0.8;
 }
 
@@ -18,8 +18,8 @@ img.img4 {
   top:0;
   right:0;
   z-index: -1000;
-  width:48%;
-  height:48%;
+  width:50%;
+  height:50%;
   opacity:0.8;
 }
 
@@ -28,8 +28,8 @@ img.img5 {
   bottom:0;
   right:0;
   z-index: -1000;
-  width:48%;
-  height:48%;
+  width:50%;
+  height:50%;
   opacity:0.8;
 }
 
@@ -38,7 +38,16 @@ img.img6 {
   bottom:0;
   left:0;
   z-index: -1000;
-  width:48%;
-  height:48%;
+  width:50%;
+  height:50%;
   opacity:0.8;
+}
+
+.paymentform {
+  margin-left:390px;
+  color: white;
+}
+
+.paymentform a {
+  color: white;
 }
