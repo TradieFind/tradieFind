@@ -61,7 +61,8 @@ app.AppView = Backbone.View.extend({
   },
 
   createHash: function(){
-    this.$('#TradieListTable').remove();
+    this.$('#reviewListOfTradies').remove();
+    this.$('#xyz').remove();
     var appViewTemplate = $('#TradieListTable').html();
     this.$el.append(appViewTemplate);
 
@@ -88,9 +89,10 @@ app.AppView = Backbone.View.extend({
   },
 
   createTDHash: function(){
-
-    this.$el.unbind('#JobViewTable');
-    this.$el.remove('#JobViewTable');
+    console.log("asdfasdfasdfasdfasdfasdfasdfds");
+    // this.$el.unbind('#JobViewTable');
+    this.$('#reviewListOfJobs').remove();
+    this.$('#xyzxyz').remove();
     var appViewTemplate = $('#JobViewTable').html();
     this.$el.append(appViewTemplate);
 
