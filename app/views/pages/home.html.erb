@@ -60,15 +60,15 @@
        </div>
        <div class="form-group">
          <div class="row">
-           <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio">My Current Address</label>
-           <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio">My Home Address</label>
+           <label class="radio-inline"><input id="currentAddress"type="radio" name="optradio"  /> My Current Address</label>
+           <label class="radio-inline"><input id="homeAddress" type="radio" name="optradio" >My Home Address</label>
            <br>
            <p id="cust_location_label"></p>
            <br>
            <p id="cust_location_label2"></p>
 
            <div id="mappy">
-           <div id="cust_location_map1"></div>
+           <div id="cust_location_map1" class="hide"></div>
            </div>
 
            </div>
@@ -608,7 +608,7 @@
 
        <script id="quotesViewTemplate" type="text/template">
             <div class="row">
-            <h3>Quotes For Reservation</h3>
+            <h4>Quote(s) for this Reservation</h4>
             <table class="table table-bordered" id="quotes">
               <tr>
                 <th>User</th>

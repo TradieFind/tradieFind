@@ -11,6 +11,17 @@ app.MyQuoteView = Backbone.View.extend({
       'click td.completed-quote': 'clickPayButton'
   },
 
+  cleanUpClasses:function(){
+    $( ".accept-quote" ).removeClass( "finish-quote" );
+    $( ".accept-quote" ).removeClass( "completed-quote" );
+    $( ".completed-quote" ).removeClass( "finish-quote" );
+    $( ".completed-quote" ).removeClass( "accept-quote" );
+    $( ".finish-quote" ).removeClass( "accept-quote" );
+    $( ".finish-quote" ).removeClass( "completed-quote" );
+    $( ".decline-quote row" ).removeClass( "finish-quote" );
+    $( ".decline-quote row" ).removeClass( "completed-quote" );
+  },
+
   clickPayButton: function(){
     //app.router.navigate("/charges/new", true);
     // this.redirectTo('http://localhost:3000/charges/new');
@@ -29,7 +40,7 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickDeclineQuote: function(e){
-
+    this.cleanUpClasses();
     var reservation_id = this.model.attributes.reservation_id;
     var reservation = app.reservations.get(reservation_id);
     var reservQuoteId  = reservation.get("quote_id");
@@ -45,6 +56,7 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickFinishQuote:function(e){
+    this.cleanUpClasses();
     console.log(e.target);
       var reservation_id = this.model.attributes.reservation_id;
       var reservation = app.reservations.get(reservation_id);
@@ -54,6 +66,7 @@ app.MyQuoteView = Backbone.View.extend({
   },
 
   clickAcceptQuote: function(e){
+    this.cleanUpClasses();
     // var quoteID =  parseInt(e.currentTarget.attributes[1].value);
 
     var quotesId =  this.model.get('id');
@@ -66,7 +79,7 @@ app.MyQuoteView = Backbone.View.extend({
 
     var reservQuoteId  = reservation.get("quote_id");
     var thisQuoteId = quotesId;
-    if(reservQuoteId == thisQuoteId  ){
+  if(reservQuoteId == thisQuoteId  ){
     reservation.set({job_status:"pending"});
     reservation.set({quote_id: 0});
    }else{
@@ -106,21 +119,30 @@ app.MyQuoteView = Backbone.View.extend({
         //if(reservQuoteId === thisQuoteId  ){
 
         if(reservStatus === 'booked'){
+
          td += "</td><td class ='decline-quote row'  quote_id='"+this.model.get('id')+"'>";
+        //  $( ".decline-quote row" ).removeClass( "finish-quote" );
+        //  $( ".decline-quote row" ).removeClass( "completed-quote" );
         td += "Decline";
         td += "</td>";
         td += "</td><td class ='finish-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Completed";
        td += "</td>";
+      //  $( ".finish-quote" ).removeClass( "accept-quote" );
+      //  $( ".finish-quote" ).removeClass( "completed-quote" );
      }else if(reservStatus ==='completed'){
        td += "</td><td class ='completed-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Pay";
        td += "</td>";
+      //  $( ".completed-quote" ).removeClass( "finish-quote" );
+      //  $( ".completed-quote" ).removeClass( "accept-quote" );
 
      }else if(reservStatus ==='pending'){
         td += "</td><td class ='accept-quote' quote_id='"+this.model.get('id')+"'>";
        td += "Accept this Quote";
        td += "</td>";
+      //  $( ".accept-quote" ).removeClass( "finish-quote" );
+      //  $( ".accept-quote" ).removeClass( "completed-quote" );
       }
 
 

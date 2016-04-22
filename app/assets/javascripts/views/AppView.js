@@ -14,6 +14,7 @@ app.AppView = Backbone.View.extend({
   },
 
   checkbox_CA_Clicked:function(e){
+    $("#cust_location_map1").removeClass('hide');
     //$('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw margin-bottom"></i>');
     $('#cust_location_label').html('<i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw margin-bottom"></i><span>Looking for your current Location</span>');
     findCurrentLoc();
@@ -22,6 +23,7 @@ app.AppView = Backbone.View.extend({
   },
 
   checkbox_HA_Clicked:function(e){
+    $("#cust_location_map1").removeClass('hide');
     var thisUser = app.users.where({id: app.current_user});
     console.log(thisUser[0].attributes.lat);
     console.log(thisUser[0].attributes.lon);

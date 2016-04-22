@@ -150,9 +150,15 @@ body{
      position: static;
 }
 
+.hide{
+  display:none;
+  background-color: red;
+}
+
 #cust_location_label{
   display: none;
 }
+
 
 
 .completed-quote{
